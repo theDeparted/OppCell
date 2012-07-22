@@ -338,7 +338,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
 	<script type="text/javascript">
 $(document).ready(function () {
 //CUSTOMIZE HERE
-var loading_text_2 = "\
+var loading_text = "\
  _       _______ _______ ______ __________       _______  p\
 ( !     (  ___  (  ___  (  __  !!__   __( (    /(  ____ ! p\
 | (     | (   ) | (   ) | (  !  )  ) (  |  !  ( | (    !/ p\
@@ -354,7 +354,7 @@ p\
 p\
 ";
 
-var loading_text="\
+var loading_text_1="\
                        _                      _  _  ___    ___    ___   p\
                       ( )                    (_)(_)(  _`! (  _`! |  _`! p\
   ___ ___     _      _| |   __   _ __   ___  | || || (_(_)| (_(_)| (_) )p\
