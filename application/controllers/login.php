@@ -11,7 +11,7 @@
 
 		public function post_index()
 		{
-			//if(Input::has('ajax'))
+			if(Input::has('ajax'))
 			{
 				$s = "'%".mysql_real_escape_string(Input::get('s'))."%'";
 				$query = DB::query("select id, concat_ws(' ', first_name, middle_name, last_name) as name, role, reg_no, img from students where concat_ws(' ', first_name, middle_name, last_name, reg_no) like $s ORDER BY name ASC LIMIT 8");
@@ -25,10 +25,10 @@
 							// ->get();
 				echo json_encode($query);
 			}
-			//else
-			//{
-			//	echo "No";
-			//}
+			else
+			{
+				echo "No";
+			}
 		}
 
 	}
