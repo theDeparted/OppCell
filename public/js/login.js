@@ -161,7 +161,7 @@ p\
 
 	//DOM data initialize
 	{
-		$('#list_of_names').html(gen_Name_Element("1","Yet Another Guest","Foreigner\'s Login",0));
+		$('#list_of_names').html(gen_Name_Element("1","Yet Another Guest","Foreigner\'s Login",2,"0"));
 	}
 
 	
@@ -177,7 +177,7 @@ p\
   			finalList=finalList+(gen_Name_Element(item.id,item.name,item.reg_no,item.role,item.img));
   		});
 
-		finalList=finalList + (gen_Name_Element("1","Yet Another Guest","Foreigner\'s Login",0));
+		finalList=finalList + (gen_Name_Element("1","Yet Another Guest","Foreigner\'s Login",2,"0"));
 
 		$('#list_of_names').html(finalList);
 	}
