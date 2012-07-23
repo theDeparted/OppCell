@@ -320,7 +320,7 @@ Suspendisse pellentesque aliquet tortor nec ullamcorper. Mauris et nulla eu diam
 	<center>
 	<!-- convert this bit to php, for a random function generating a new string everytime -->
 	<!-- <p class="userinput_caption">Your Name, Sapian!</p>-->
-	<p>Your Name, Sapian! </p>
+	<p id="feedback_title">And you are...</p>
 	<input id="main_input_box" class="userinput_text" type="text"> </input>
 
 <br/><br/>
