@@ -121,8 +121,6 @@ var animate_loadbar_interval_id = setInterval(function() {
 		move_div();
 	})
 });
-	</script>
-	<script type="text/javascript">
 $(document).ready(function () {
 	function init_graphics(){
 		var window_height=$(window).height();
