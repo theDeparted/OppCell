@@ -3549,7 +3549,7 @@
 
 		public function seed11()
 		{
-			//
+			DB::query('TRUNCATE TABLE students');
 		}
 
 		public function seed_admin()
