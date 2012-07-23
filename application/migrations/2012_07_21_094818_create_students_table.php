@@ -18,17 +18,17 @@ class Create_Students_Table {
 			// Name
 			$table->string('first_name');
 			$table->string('middle_name')->nullable();
-			$table->string('last_name');
+			$table->string('last_name')->nullable();
 
 			// Registration Number
 			$table->string('reg_no')->unique();
 
 			// Role (1 - Monkey, 0 - Human)
-			$table->integer('role');
+			$table->integer('role')->default(0);
 
 			// Email ID and Password
 			$table->string('email');
-			$table->string('password')->nullable;
+			$table->string('password')->nullable();
 
 			// Timestamps
 			$table->timestamps();
