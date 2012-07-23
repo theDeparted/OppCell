@@ -2028,7 +2028,7 @@
 			Student::create(array(
 				'first_name' => 'Tess',
 				'last_name' => 'George',
-				'reg_no' => 'MS1104',
+				'reg_no' => 'MS11046',
 				'email' => 'ms11046@iisermohali.ac.in'
 			));
 			Student::create(array(
@@ -2041,7 +2041,7 @@
 			Student::create(array(
 				'first_name' => 'Thapasya',
 				'last_name' => 'Vijayan',
-				'reg_no' => 'MS1104',
+				'reg_no' => 'MS11048',
 				'email' => 'ms11048@iisermohali.ac.in'
 			));
 			Student::create(array(
