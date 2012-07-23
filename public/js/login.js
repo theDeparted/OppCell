@@ -185,7 +185,8 @@ p\
 			//url: 'http://10.42.0.15/theDeparted/OppCell/public/index.php/',
 
 			//url: "/index.php"+"/",
-			url: "'"+base_path + "/index.php/'",
+			//url: "'"+base_path + "/index.php/'",
+			url: base_path + "/index.php/",
 
 			//url: 'http://10.42.0.1/index2.html',
 			
