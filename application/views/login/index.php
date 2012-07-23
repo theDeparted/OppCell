@@ -490,7 +490,7 @@ $(document).ready(function () {
 	<div class=\"name_container\"> \
 		<table> \
 		<tr> \
-			<td><img src=\"../common_images/default_"+user_type_string+".jpg\" width=\"64\"></td> \
+			<td><img src=\"../img/default_"+user_type_string+".jpg\" width=\"64\"></td> \
 			<td> \
 				<div class=\"name_contained\">" + user_name + "</div> \
 				<div class=\"info_contained\">" + user_info + "</div> \
