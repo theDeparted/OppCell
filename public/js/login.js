@@ -28,15 +28,9 @@ p\
                 Welcome to the real IISER Mohali website.p\
 ";
 
-//var obj_width=880;
 var obj_width=700;
 var obj_height=300;
 
-/*
-CONVERSION TABLE
-\ 				!
-<br/> 			p
-*/
 function parse_ASCII_text(source_string)
 {
 
@@ -59,9 +53,6 @@ var animate_loadbar_interval_id = setInterval(function() {
       }
       else
       {      	
-      	//$('#la_loadbar').html('<br/>Now this is the real IISER website!');
-      	//$('#la_loadbar').append('<p>Now this is the real IISER website!</p>');
-   		//$('#la_status').append('<br/><br/>Welcome to the real IISER website!');
 
       	setTimeout(function () {
 	      	$('#la_verycenter').animate({height: '0.0'},500,function () {
@@ -124,7 +115,7 @@ var animate_loadbar_interval_id = setInterval(function() {
 $(document).ready(function () {
 	function init_graphics(){
 		var window_height=$(window).height();
-		var obj_top2 = $('#main_input_box').position().top - 250;//70;
+		var obj_top2 = $('#main_input_box').position().top - 70; //250
 		var obj_top= $('#list_center_maker').position().top;
 		var new_height=window_height-(obj_top-obj_top2);
 		//alert(obj_top);
