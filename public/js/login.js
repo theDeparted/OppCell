@@ -31,6 +31,7 @@ p\
 	var obj_width=700;
 	var obj_height=300;
 
+	//var selected_person=new selected_person();
 
 
 	//Shouldn't need to change these functions
@@ -39,8 +40,50 @@ p\
 	{
 		var base_path=$('#lara_path').val();
 		var processing_last_request=false;
+		var reg_no_selected="guest";
+		var login_invoked=false;
 	}
 
+	//When an item is clicked, what should happen
+	function Login_as(reg_no) {
+		login_invoked=true;
+		$('#main_input_box').unbind('keyup');		
+		var main_input_box= $('#main_input_box').remove();
+		$('.name_container').unbind();
+
+		//$('#main_input_box').hide();
+		//$('#main_input_box').animate({height:'0', opacity:'0'},200);
+
+		$('.name_list_container').not('#'+reg_no).animate({height: '0', opacity: '0'}, 200,function (){
+			//			
+			//main_input_box.val('');
+			//main_input_box.attr('type','password');
+		
+			//$('#list_center_maker').after(main_input_box);			
+
+			//$('#main_input_box').unbind('keyup');
+			//$('#main_input_box').focus();
+			$('#feedback_title').text('Password Sapian!');
+			$('#list_center_maker').css('height',200);	
+			$('#password_input_box').show(100);
+			$('#password_input_box').focus();
+
+		});
+	// 	setTimeout(function() {
+
+	// }, 200)
+
+		//$('#main_input_box').val('');
+
+		//alert(reg_no);
+		//feedback_title
+	}
+
+	function On_item_click() {
+		//alert(event.target.id);
+		//alert($(this).attr("id"));
+		Login_as($(this).attr("reg_no"));
+	}
 	//Function to parse ASCII code
 	function parse_ASCII_text(source_string)
 	{
@@ -86,7 +129,7 @@ p\
 	//DOM position initializations
 	function init_graphics(){
 		var window_height=$(window).height();
-		var obj_top2 = $('#main_input_box').position().top - 250;//- 70; //
+		var obj_top2 = $('#main_input_box').position().top - 70; //- 250;//
 		var obj_top= $('#list_center_maker').position().top;
 		var new_height=window_height-(obj_top-obj_top2);
 		$('#list_center_maker').css('height',new_height);
@@ -139,10 +182,10 @@ p\
 			img_path=img_path+"default_" + user_type_string;
 		else
 			img_path=img_path+user_img;
-
+		//" <li id=\"+ user_id +\"> \
 		var string = 
-		" <li id=\"+ user_id +\"> \
-			<div class=\"name_container\"> \
+		" <li class=\"name_list_container\" id=\"" + user_id + "\"> \
+			<div class=\"name_container\" reg_no=\"" + user_id + "\"> \
 				<table> \
 				<tr> \
 					<td><img src=\""+img_path+".jpg\" width=\"64\"></td> \
@@ -161,7 +204,10 @@ p\
 
 	//DOM data initialize
 	{
-		$('#list_of_names').html(gen_Name_Element("1","Yet Another Guest","Foreigner\'s Login",2,"0"));
+		var guest_string=gen_Name_Element("guest","Yet Another Guest","guest",2,"0");
+		$('#list_of_names').html(guest_string);
+		//We've to do that everytime we update the list it seems!
+		$('.name_container').on("click", On_item_click);
 	}
 
 	
@@ -171,33 +217,28 @@ p\
 		var finalList='';
 		//var test_string='[{"id":"2","first_name":"Atul","middle_name":"Singh","last_name":"Arora","reg_no":"MS11003","role":"1","email":"toatularora@gmail.com","password":"","created_at":"2012-07-21 11:05:51","updated_at":"2012-07-21 11:05:51"},{"id":"26","first_name":"Atul","middle_name":null,"last_name":"Mantri","reg_no":"MS09033","role":"0","email":"ms09033@iisermohali.ac.in","password":"","created_at":"2012-07-21 11:05:52","updated_at":"2012-07-21 11:05:52"},{"id":"27","first_name":"Atul","middle_name":null,"last_name":"Verma","reg_no":"MS09034","role":"0","email":"ms09034@iisermohali.ac.in","password":"","created_at":"2012-07-21 11:05:52","updated_at":"2012-07-21 11:05:52"}]';
 		var data=jQuery.parseJSON(data_json);//test_string);
-
+		var empty=true;
 		$.each(data, function(i,item){  
+			empty=false;
+			if(i==0){reg_no_selected=item.reg_no;}
   			//finalList=finalList+(gen_Name_Element(item.id,item.first_name+' ' + ((item.middle_name != null) ? (item.middle_name + ' '): '') + ((item.last_name != ' ') ? item.last_name : '') ,item.reg_no,item.role));
-  			finalList=finalList+(gen_Name_Element(item.id,item.name,item.reg_no,item.role,item.img));
+  			finalList=finalList+(gen_Name_Element(item.reg_no,item.name,item.reg_no,item.role,item.img));
   		});
+		
+		if(empty==true) {reg_no_selected="guest";}
 
-		finalList=finalList + (gen_Name_Element("1","Yet Another Guest","Foreigner\'s Login",2,"0"));
+		finalList=finalList + guest_string;//(gen_Name_Element("1","Yet Another Guest","Foreigner\'s Login",2,"0"));
 
 		$('#list_of_names').html(finalList);
+
+		$('.name_container').on("click", On_item_click);
 	}
 
 	function query_result(name) {	
 	$('#DEBUG').append("Invoked\n");	
 		$.ajax({
 			type: 'POST',
-			//url: 'http://10.42.0.1/laravel-project-public/index.php/',
-			//url: 'http://192.168.2.138/laravel-project-public/index.php/',
-			//url: 'http://10.42.0.15/theDeparted/OppCell/public/index.php/',
-
-			//url: "/index.php"+"/",
-			//url: "'"+base_path + "/index.php/'",
 			url: base_path + "/index.php/",
-
-			//url: 'http://10.42.0.1/index2.html',
-			
-			//url: 'http://localhost/WhoLetTheMonkeysOut/SignUp_Page/currentwork/php/test.php',
-			//url: 'http://10.42.0.15/WhoLetTheMonkeysOut/SignUp_Page/currentwork/php/test.php',
 			statusCode: {
 				404: function () {
 					$('#DEBUG').append("Page not found\n");
@@ -206,44 +247,32 @@ p\
 					$('#DEBUG').append("Other Error\n");	
 				}
 			},
-			//data: 's='+name,
-			//data: '{ "s":' + name + ', "ajax":"1" }',			
 			data: {s: name, ajax: '1'},
 			success: function (data) {
-				
-				//$('#list_of_names').html(data);
-				//$('#DEBUG').append("SUCCESS! "+data);
-				updatelistNOW(data);
+				if(login_invoked==false)
+					{updatelistNOW(data);}
 			}
 		}).error(function() {
-			//alert('An error occured');
 			$('#DEBUG').append("An Error Occured!\n");
 		});
-//$.post('192.168.1.102/monkeys/index.php/login/q_name', { s: name } , function (data) {
-
-
-/*
-$('#DEBUG').append("Invoked<br>");
-$.post('php/test.php', { s: name } , function (data) {
-			$('#DEBUG').append(data);
-		}).error(function () {
-			$('#DEBUG').append('An error occured<br>');
-		}).complete(function () {
-			$('#DEBUG').append('Request Complete!<br>');
-		}).success(function () {
-			$('#DEBUG').append('Success!<br>');
-		});	
-*/
-
 	}
 	
-	//$('#DEBUG').append("Hello");
-
-	$('#main_input_box').keyup(function () {
-		//alert("invoked");
-		//$('#DEBUG').append("Invoked<br>");
-		var name=$(this).val();
-		query_result(name);
-
+	//$('#main_input_box').blur(function () {
+	//	$('#main_input_box').focus();
+	//});
+	$('#main_input_box').keyup(function (event) {
+		
+		if(event.which == 13)
+		{
+			Login_as(reg_no_selected);
+		}
+		else
+		{
+			var name=$(this).val();
+			query_result(name);			
+		}
 	});
+
+
+
 });

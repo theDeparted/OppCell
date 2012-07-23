@@ -16,7 +16,7 @@
 <html lang="en">
 <head>
 	<meta chrset="utf-8">
-	<title>Jungle Passport Office</title>
+	<title>Opportunity Cell</title>
 	<style>
 .userinput_text {
 	font-family:sans-serif;
@@ -329,10 +329,13 @@ Suspendisse pellentesque aliquet tortor nec ullamcorper. Mauris et nulla eu diam
 <ul id="list_of_names">
 </ul>
 </div>
+<div class="userinput_desc">
+	<input id="password_input_box" class="userinput_text" type="password" style="display:none"> </input>
+</div>
 </center>
 </div>
-<input type="text" id="lara_path" value=<?php echo "\"".URL::base()."\"" ?> > </input>
-<textarea rows="10" cols="100" id="DEBUG"><?php echo URL::base(); ?></textarea>
+<input style="display:none" type="text" id="lara_path" value=<?php echo "\"".URL::base()."\"" ?> > </input>
+<textarea style="display:none" rows="10" cols="100" id="DEBUG"><?php echo URL::base(); ?></textarea>
 
 
 
