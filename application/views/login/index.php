@@ -329,7 +329,7 @@ Suspendisse pellentesque aliquet tortor nec ullamcorper. Mauris et nulla eu diam
 </div>
 </center>
 </div>
-<textarea rows="10" cols="100" id="DEBUG">DEBUG REPORT</textarea>
+<textarea rows="10" cols="100" id="DEBUG"><?php echo path('public'); ?></textarea>
 	<script type="text/javascript">
 $(document).ready(function () {
 //CUSTOMIZE HERE
@@ -474,12 +474,14 @@ $(document).ready(function () {
 	function gen_Name_Element(user_id,user_name,user_info,user_type) {		
 		//user type is either m (monkey, super user), g (guest), or h (human, most common)
 		//if(!(user_type=="g" || user_type=="m" || user_type="h"))
+		//0 is citizen
+		//1 is monkey
 		var user_type_string="g";
-		if(user_type==2)
+		if(user_type==1)
 		{	
 			user_type_string="m";
 		}
-		else if(user_type==1)
+		else if(user_type==0)
 		{
 			user_type_string="h";
 		}
@@ -488,7 +490,7 @@ $(document).ready(function () {
 	<div class=\"name_container\"> \
 		<table> \
 		<tr> \
-			<td><img src=\"../../common_images/default_"+user_type_string+".jpg\" width=\"64\"></td> \
+			<td><img src=\"../common_images/default_"+user_type_string+".jpg\" width=\"64\"></td> \
 			<td> \
 				<div class=\"name_contained\">" + user_name + "</div> \
 				<div class=\"info_contained\">" + user_info + "</div> \
