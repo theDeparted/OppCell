@@ -13,8 +13,8 @@
 		{
 			//if(Input::has('ajax'))
 			{
-				$s = Input::get('s');
-				$query = DB::query("select id, first_name, middle_name, last_name, role, reg_no from students where concat_ws(' ', first_name, middle_name, last_name, reg_no) like (?) ORDER BY first_name ASC LIMIT 8",("%".mysql_real_escape_string(Input::get('s'))."%"));
+				$s = "'%".mysql_real_escape_string(Input::get('s'))."%'";
+				$query = DB::query("select id, concat_ws(' ', first_name, middle_name, last_name) as name, role, reg_no from students where concat_ws(' ', first_name, middle_name, last_name, reg_no) like $s ORDER BY name ASC LIMIT 8");
 				// DB::table('students')
 							// ->where('first_name', 'LIKE', $s)
 							// ->or_where('middle_name', 'LIKE', $s)
