@@ -329,7 +329,7 @@ Suspendisse pellentesque aliquet tortor nec ullamcorper. Mauris et nulla eu diam
 </div>
 </center>
 </div>
-<textarea rows="10" cols="100" id="DEBUG"><?php echo path('public'); ?></textarea>
+<textarea rows="10" cols="100" id="DEBUG"><?php echo URL::base(); ?></textarea>
 	<script type="text/javascript">
 $(document).ready(function () {
 //CUSTOMIZE HERE
