@@ -267,7 +267,7 @@ font-family:"league-gothic-1","league-gothic-2",sans-serif;
 }
 </style>
 
-<script type="text/javascript" src="http://192.168.2.138/laravel-project-public/js/jquery-1.7.2.js"> </script>
+<script type="text/javascript" src=<?php echo "\"".URL::base()."/js/jquery-1.7.2.js\""; ?>> </script>
 </head>
 
 <body>
@@ -577,7 +577,7 @@ $.post('php/test.php', { s: name } , function (data) {
 
 	}
 	
-	$('#DEBUG').append("Hello");
+	//$('#DEBUG').append("Hello");
 
 	$('#main_input_box').keyup(function () {
 		//alert("invoked");
