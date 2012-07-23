@@ -206,8 +206,8 @@ p\
 					$('#DEBUG').append("Other Error\n");	
 				}
 			},
-			data: 's='+name,
-			//data: '{ "s":' + name + ', "ajax":"1" }',			
+			//data: 's='+name,
+			data: '{ "s":' + name + ', "ajax":"1" }',			
 			success: function (data) {
 				
 				//$('#list_of_names').html(data);
