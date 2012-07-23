@@ -271,6 +271,8 @@ font-family:"league-gothic-1","league-gothic-2",sans-serif;
 </head>
 
 <body>
+	
+
 	<div id="la_verycenter"><div id="la_loadbar"></div><div id="la_status"></div><div id="la_inner"><div id="la_loading_text">Loading Bananas</div></div></div></div>
 <div id="la_background_text"> 
 <p> 
@@ -329,7 +331,11 @@ Suspendisse pellentesque aliquet tortor nec ullamcorper. Mauris et nulla eu diam
 </div>
 </center>
 </div>
+<input type="text" id="lara_path" value=<?php echo "\"".URL::base()."\"" ?> > </input>
 <textarea rows="10" cols="100" id="DEBUG"><?php echo URL::base(); ?></textarea>
+
+
+
 	<script type="text/javascript">
 $(document).ready(function () {
 //CUSTOMIZE HERE
@@ -485,12 +491,15 @@ $(document).ready(function () {
 		{
 			user_type_string="h";
 		}
+
+		var img_path=$('#lara_path').value() + "/img/";
+
 		var string = 
 		" <li id=\"+ user_id +\"> \
 	<div class=\"name_container\"> \
 		<table> \
 		<tr> \
-			<td><img src=\"../img/default_"+user_type_string+".jpg\" width=\"64\"></td> \
+			<td><img src=\""+img_path+user_type_string+".jpg\" width=\"64\"></td> \
 			<td> \
 				<div class=\"name_contained\">" + user_name + "</div> \
 				<div class=\"info_contained\">" + user_info + "</div> \
