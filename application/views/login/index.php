@@ -492,7 +492,7 @@ $(document).ready(function () {
 			user_type_string="h";
 		}
 
-		var img_path=$('#lara_path').value() + "/img/";
+		var img_path=$('#lara_path').val() + "/img/";
 
 		var string = 
 		" <li id=\"+ user_id +\"> \
