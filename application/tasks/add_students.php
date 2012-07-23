@@ -3549,7 +3549,499 @@
 
 		public function seed11()
 		{
-			DB::query('TRUNCATE TABLE students');
+			DB::query('TRUNCATE TABLE students');));
+			Student::create(array(
+				'first_name' => 'Athira',
+				'middle_name' => 'J',
+				'last_name' => 'Nair',
+				'reg_no' => 'MS11001',
+				'email' => 'ms11001@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Arpit',
+				'last_name' => 'Porwal',
+				'reg_no' => 'MS11002',
+				'email' => 'ms11002@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Atul',
+				'middle_name' => 'Singh',
+				'last_name' => 'Arora',
+				'reg_no' => 'MS11003',
+				'email' => 'ms11003@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Biplob',
+				'middle_name' => 'Kumar',
+				'last_name' => 'Nandy',
+				'reg_no' => 'MS11004',
+				'email' => 'ms11004@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Saumya',
+				'last_name' => 'Gupta',
+				'reg_no' => 'MS11005',
+				'email' => 'ms11005@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Srijit',
+				'last_name' => 'Mukherjee',
+				'reg_no' => 'MS11006',
+				'email' => 'ms11006@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Kirti',
+				'last_name' => 'Singh',
+				'reg_no' => 'MS11007',
+				'email' => 'ms11007@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Abhishek',
+				'last_name' => ' ',
+				'reg_no' => 'MS11009',
+				'email' => 'ms11009@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Joydeep',
+				'last_name' => 'Chakravarthy',
+				'reg_no' => 'MS11010',
+				'email' => 'ms11010@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Love',
+				'last_name' => 'Grover',
+				'reg_no' => 'MS11011',
+				'email' => 'ms11011@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Garima',
+				'last_name' => 'Singh',
+				'reg_no' => 'MS11012',
+				'email' => 'ms11012@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Neha',
+				'last_name' => 'Sharma',
+				'reg_no' => 'MS11014',
+				'email' => 'ms11014@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Devwrat',
+				'last_name' => 'Dube',
+				'reg_no' => 'MS11015',
+				'email' => 'ms11015@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Kishor',
+				'last_name' => 'Bharti',
+				'reg_no' => 'MS11016',
+				'email' => 'ms11016@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Vivek',
+				'last_name' => 'Sagar',
+				'reg_no' => 'MS11017',
+				'email' => 'ms11017@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Rajendra',
+				'middle_name' => 'Singh',
+				'last_name' => 'Bhati',
+				'reg_no' => 'MS11019',
+				'email' => 'ms11019@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Deepanshu',
+				'last_name' => ' ',
+				'reg_no' => 'MS11020',
+				'email' => 'ms11020@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Prashansa',
+				'last_name' => 'Gupta',
+				'reg_no' => 'MS11021',
+				'email' => 'ms11021@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Diksha',
+				'last_name' => 'Jain',
+				'reg_no' => 'MS11022',
+				'email' => 'ms11022@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Shiven',
+				'last_name' => 'Dhiman',
+				'reg_no' => 'MS11023',
+				'email' => 'ms11023@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Akshey',
+				'last_name' => 'Sandhu',
+				'reg_no' => 'MS11024',
+				'email' => 'ms11024@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Ritu',
+				'middle_name' => 'Roy',
+				'last_name' => 'Choudhury',
+				'reg_no' => 'MS11025',
+				'email' => 'ms11025@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Abhinav',
+				'last_name' => 'Kala',
+				'reg_no' => 'MS11026',
+				'email' => 'ms11026@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Jopaul',
+				'last_name' => 'Mathew',
+				'reg_no' => 'MS11027',
+				'email' => 'ms11027@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Akhilrag',
+				'last_name' => 'K',
+				'reg_no' => 'MS11028',
+				'email' => 'ms11028@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Athira',
+				'middle_name' => 'T',
+				'last_name' => 'John',
+				'reg_no' => 'MS11029',
+				'email' => 'ms11029@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Akhil',
+				'last_name' => 'Francis',
+				'reg_no' => 'MS11030',
+				'email' => 'ms11030@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Anooja',
+				'last_name' => 'Jayaraj',
+				'reg_no' => 'MS11031',
+				'email' => 'ms11031@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Shubham',
+				'last_name' => 'Chauhan',
+				'reg_no' => 'MS11032',
+				'email' => 'ms11032@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Manu',
+				'last_name' => 'J',
+				'reg_no' => 'MS11033',
+				'email' => 'ms11033@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Sruthi',
+				'last_name' => 'Mohan',
+				'reg_no' => 'MS11034',
+				'email' => 'ms11034@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Evelyn',
+				'last_name' => 'Abraham',
+				'reg_no' => 'MS11035',
+				'email' => 'ms11035@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Manisha',
+				'last_name' => ' ',
+				'reg_no' => 'MS11036',
+				'email' => 'ms11036@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Amritha',
+				'last_name' => 'Sreekumar',
+				'reg_no' => 'MS11037',
+				'email' => 'ms11037@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Sandhya',
+				'last_name' => ' ',
+				'reg_no' => 'MS11038',
+				'email' => 'ms11038@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Justin',
+				'middle_name' => 'K',
+				'last_name' => 'Thomas',
+				'reg_no' => 'MS11039',
+				'email' => 'ms11039@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Aakanksha',
+				'last_name' => 'Rawat',
+				'reg_no' => 'MS11040',
+				'email' => 'ms11040@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Varun',
+				'last_name' => 'Kumar',
+				'reg_no' => 'MS11041',
+				'email' => 'ms11041@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Yashpal',
+				'last_name' => 'Singh',
+				'reg_no' => 'MS11042',
+				'email' => 'ms11042@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Gaikwad',
+				'middle_name' => 'Akshay',
+				'last_name' => 'Ramdas',
+				'reg_no' => 'MS11043',
+				'email' => 'ms11043@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Manvendra',
+				'last_name' => 'Singh',
+				'reg_no' => 'MS11044',
+				'email' => 'ms11044@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Shwetha',
+				'last_name' =>. 'S',
+				'reg_no' => 'MS11045',
+				'email' => 'ms11045@iisermohali.ac.in'
+		));
+			Student::create(array(
+				'first_name' => 'Tess',
+			'last_name' =>	 'George',
+			'reg_no' => 'MS1104',,
+			'email' => 'ms11046@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Gobbilla',
+				'middle_name' => 'Sai',
+				'last_name' =>. 'Kumar',
+				'reg_no' => 'MS11047',
+				'email' => 'ms11047@iisermohali.ac.in'
+		));
+			Student::create(array(
+				'first_name' => 'Thapasya',
+			'last_name' =>	 'Vijayan',
+			'reg_no' => 'MS1104',,
+			'email' => 'ms11048@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Partha',
+				'middle_name' => 'Sankar',
+				'last_name' => 'R P S',
+				'reg_no' => 'MS11049',
+				'email' => 'ms11049@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Priyanka',
+				'middle_name' => 'Sudheendra',
+				'last_name' => 'Jamadagni',
+				'reg_no' => 'MS11050',
+				'email' => 'ms11050@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Biswajit',
+				'last_name' => 'Panda',
+				'reg_no' => 'MS11051',
+				'email' => 'ms11051@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Raminder',
+				'last_name' => 'Singh',
+				'reg_no' => 'MS11052',
+				'email' => 'ms11052@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Saurabh',
+				'last_name' => 'Thapliyal',
+				'reg_no' => 'MS11053',
+				'email' => 'ms11053@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Sabari',
+				'last_name' => 'R',
+				'middle_name' => 'V',
+				'reg_no' => 'MS11054',
+				'email' => 'ms11054@iisermohali.ac.in'
+		));
+			Student::create(array(
+				'first_name' => 'Teke',
+			'last_name' =>	 'Nakul',
+			'last_name' => 'Kushabhau',
+			'reg_no' => 'MS1105',,
+			'email' => 'ms11055@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Abhinay',
+				'last_name' => Vardhan,
+				'reg_no' => 'MS11057',
+				'email' => 'ms11057@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Gyanendra',
+				'last_name' => Yadav,
+				'reg_no' => 'MS11058',
+				'email' => 'ms11058@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Rashmi',
+				'last_name' => Jain,
+				'reg_no' => 'MS11059',
+				'email' => 'ms11059@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Yosman',
+				'last_name' => Bapat Dhar,
+				'reg_no' => 'MS11060',
+				'email' => 'ms11060@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Jagdeep',
+				'last_name' => Singh,
+				'reg_no' => 'MS11061',
+				'email' => 'ms11061@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Rohit',
+				'last_name' => Kumar Patidar,
+				'reg_no' => 'MS11062',
+				'email' => 'ms11062@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Aiswarya',
+				'last_name' => Joy M,
+				'reg_no' => 'MS11063',
+				'email' => 'ms11063@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Lakshmi',
+				'last_name' => Bhai N V,
+				'reg_no' => 'MS11064',
+				'email' => 'ms11064@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Deepthi',
+				'last_name' => Krishna.P,
+				'reg_no' => 'MS11065',
+				'email' => 'ms11065@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Harikrishnan',
+				'last_name' =>.P.S,
+				'reg_no' => 'MS11066',
+				'email' => 'ms11066@iisermohali.ac.in'
+		));
+			Student::create(array(
+				'first_name' => 'Vivek',
+			'last_name' =>	 Singh,
+			'reg_no' => 'MS1106',,
+			'email' => 'ms11067@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Arsila',
+				'last_name' => Ashraf P.K,
+				'reg_no' => 'MS11068',
+				'email' => 'ms11068@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Gursimranjeet',
+				'last_name' => Singh,
+				'reg_no' => 'MS11070',
+				'email' => 'ms11070@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Aman',
+				'last_name' => Kumar Bhonsle,
+				'reg_no' => 'MS11071',
+				'email' => 'ms11071@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Barun',
+				'last_name' => Khaidem,
+				'reg_no' => 'MS11072',
+				'email' => 'ms11072@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Arjit',
+				'last_name' => Kant Gupta,
+				'reg_no' => 'MS11073',
+				'email' => 'ms11073@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Vaishali',
+				'last_name' =>,
+				'reg_no' => 'MS11074',
+				'email' => 'ms11074@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Saneedh',
+				'last_name' => Anand,
+				'reg_no' => 'MS11075',
+				'email' => 'ms11075@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Santosh',
+				'last_name' => Kumari,
+				'reg_no' => 'MS11076',
+				'email' => 'ms11076@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Anjali',
+				'last_name' => Mahadevan,
+				'reg_no' => 'MS11077',
+				'email' => 'ms11077@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Manmohan',
+				'last_name' =>,
+				'reg_no' => 'MS11078',
+				'email' => 'ms11078@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Ruchika',
+				'last_name' =>,
+				'reg_no' => 'MS11079',
+				'email' => 'ms11079@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Manvendra',
+				'last_name' => Pratap Rajvanshi,
+				'reg_no' => 'MS11080',
+				'email' => 'ms11080@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Ankita',
+				'last_name' => Verma,
+				'reg_no' => 'MS11082',
+				'email' => 'ms11082@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Dhanya',
+				'last_name' => Ann Thomas,
+				'reg_no' => 'MS11083',
+				'email' => 'ms11083@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Rashmi',
+				'last_name' => Sinha,
+				'reg_no' => 'MS11084',
+				'email' => 'ms11084@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Yengkhom',
+				'last_name' => Sunanda,
+				'reg_no' => 'MS11085',
+				'email' => 'ms11085@iisermohali.ac.in'
+			));
+			Student::create(array(
+				'first_name' => 'Manu',
+				'last_name' => S,
+				'reg_no' => 'MS11086',
+				'email' => 'ms11086@iisermohali.ac.in'
 		}
 
 		public function seed_admin()
