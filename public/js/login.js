@@ -84,16 +84,17 @@ p\
 
 
 	//DOM position initializations
-	(function init_graphics(){
+	function init_graphics(){
 		var window_height=$(window).height();
 		var obj_top2 = $('#main_input_box').position().top - 250;//- 70; //
 		var obj_top= $('#list_center_maker').position().top;
 		var new_height=window_height-(obj_top-obj_top2);
 		$('#list_center_maker').css('height',new_height);
-	})();
+	};
+	init_graphics();
 
 	//Function to Re adjust size of scrollbar
-	(function move_div() {
+	function move_div() {
 		$('#la_loading_text').css('display','none');
 		window_width = $(window).width();
 		window_height = $(window).height();
@@ -106,7 +107,8 @@ p\
 		$('#la_verycenter').width(obj_width);
 		//obj_height=$('#la_verycenter').height();
 		$('#la_verycenter').height(obj_height);
-	})();
+	};
+	move_div();
 
 
 	//Bind necessary functions to the window resize event	
@@ -117,7 +119,7 @@ p\
 
 	//Function to generate a DOM list element for the login list
 	//INFO: 0 is citizen, 1 is monkey, anything else is null
-	function gen_Name_Element(user_id,user_name,user_info,user_type) {		
+	function gen_Name_Element(user_id,user_name,user_info,user_type,user_img) {		
 		//user type is either m (monkey, super user), g (guest), or h (human, most common)
 		//if(!(user_type=="g" || user_type=="m" || user_type="h"))
 		//0 is citizen
@@ -132,14 +134,18 @@ p\
 			user_type_string="h";
 		}
 
-		var img_path=base_path + "/img/default_";
+		var img_path=base_path + "/img/";
+		if(user_img=='0')
+			img_path=img_path+"default_" + user_type_string;
+		else
+			img_path=img_path+user_img;
 
 		var string = 
 		" <li id=\"+ user_id +\"> \
 			<div class=\"name_container\"> \
 				<table> \
 				<tr> \
-					<td><img src=\""+img_path+user_type_string+".jpg\" width=\"64\"></td> \
+					<td><img src=\""+img_path+".jpg\" width=\"64\"></td> \
 					<td> \
 						<div class=\"name_contained\">" + user_name + "</div> \
 						<div class=\"info_contained\">" + user_info + "</div> \
@@ -168,7 +174,7 @@ p\
 
 		$.each(data, function(i,item){  
   			//finalList=finalList+(gen_Name_Element(item.id,item.first_name+' ' + ((item.middle_name != null) ? (item.middle_name + ' '): '') + ((item.last_name != ' ') ? item.last_name : '') ,item.reg_no,item.role));
-  			finalList=finalList+(gen_Name_Element(item.id,item.name,item.reg_no,item.role));
+  			finalList=finalList+(gen_Name_Element(item.id,item.name,item.reg_no,item.role,item.img));
   		});
 
 		finalList=finalList + (gen_Name_Element("1","Yet Another Guest","Foreigner\'s Login",0));
@@ -204,8 +210,8 @@ p\
 			success: function (data) {
 				
 				//$('#list_of_names').html(data);
-				$('#DEBUG').append("SUCCESS! "+data);
-				//updatelistNOW(data);
+				//$('#DEBUG').append("SUCCESS! "+data);
+				updatelistNOW(data);
 			}
 		}).error(function() {
 			//alert('An error occured');
