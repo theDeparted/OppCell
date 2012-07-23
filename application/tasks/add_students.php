@@ -3547,6 +3547,11 @@
 
 		}
 
+		public function seed11()
+		{
+			//
+		}
+
 		public function seed_admin()
 		{
 			DB::query('TRUNCATE TABLE students');
