@@ -2,7 +2,6 @@ untitled.sublime-project
 untitled.sublime-workspace
 git
 git.pub
-application/config/*
 # Compiled source #
 ###################
 *.com
