@@ -36,5 +36,9 @@
 return array(
 
 	'docs' => array('handles' => 'docs'),
+<<<<<<< HEAD
+=======
+	'phpmailer' => array('auto' => true),
+>>>>>>> dcd6073c1c16c1cb4bf66f4424bb4146f62a4eb2
 
 );
