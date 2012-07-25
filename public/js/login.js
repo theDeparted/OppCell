@@ -75,7 +75,7 @@ p\
 
 		$.ajax({
 			type: 'POST',
-			url: base_path + "/index.php/login.php",
+			url: base_path + "/index.php/check",
 			statusCode: {
 				404: function () {
 					$('#DEBUG').append("Page not found\n");
