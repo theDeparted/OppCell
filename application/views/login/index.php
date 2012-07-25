@@ -83,10 +83,15 @@ Suspendisse pellentesque aliquet tortor nec ullamcorper. Mauris et nulla eu diam
 <br/>
 <div class="userinput_desc">
 	<input id="password_input_box" class="userinput_text" type="password" value="password" style="text-align:center;"> </input>
+	<div id="msg_new_user" style="opacity:0;">
+		<p>Your password has been sent to your IISER email.</p>
+		<p>If you're unable to login, contact <a href="mailto:toatularora@gmail.com">theDeparted</a>.</p>
+	</div>
 </div>
 </center>
 </div>
 <input style="display:none" type="text" id="lara_path" value=<?php echo "\"".URL::base()."\"" ?> > </input>
+<input style="display:none" type="text" id="loadtype" value=<?php echo "\"".$loadtype."\"" ?> > </input>
 <textarea style="display:none" rows="10" cols="100" id="DEBUG"><?php echo URL::base(); ?></textarea>
 
 <script type="text/javascript" src=<?php echo "\"".URL::base()."/js/login.js\""; ?>>	</script>
