@@ -35,7 +35,14 @@
 // First Page
 Route::get('/', array('before' => 'auth',  function()
 	{
-		return View::make('login.index');
+		if(Input::has('loadtype'))
+		{
+			return View::make('login.index',array('loadtype' => Input::get('loadtype')));
+		}
+		else
+		{
+			return View::make('login.index',array('loadtype' => "default"));
+		}
 	}
 ));
 

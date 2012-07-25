@@ -47,6 +47,7 @@ p\
 	//When an item is clicked, what should happen
 	function Login_as(reg_no) {
 		login_invoked=true;
+		reg_no_selected=reg_no;	//to update events that took place with a click!
 		$('#main_input_box').unbind('keyup');		
 		var main_input_box= $('#main_input_box').remove();
 		$('.name_container').unbind();
@@ -86,12 +87,18 @@ p\
 			},
 			data: {reg_no: reg_no, ajax: '1'},
 			success: function (data) {
-				//if(data==)
+				if(data=='new')
+				{
+					$('#msg_new_user').animate({opacity:1.0},1000);
+					setTimeout(function() {
+						$('#msg_new_user').animate({opacity:0.2},1000);
+					},3000)
+				}
 				//	{updatelistNOW(data);}
-				$('#DEBUG').append(data).show();
+				$('#DEBUG').append(data);
 			}
 		}).error(function() {
-			$('#DEBUG').append("An Error Occured!\n").show();
+			$('#DEBUG').append("An Error Occured!\n");
 		});
 
 
@@ -114,17 +121,26 @@ p\
 	//Function to parse ASCII code
 	function parse_ASCII_text(source_string)
 	{
-	var s=source_string;
-	//$('#la_loadbar').html(s);
-	s=s.replace(/!/g, '\\');
-	s=s.replace(/p/g, '<br/>');
-	s=s.replace(/ /g, '&nbsp');
-	return s;
+		var s=source_string;
+		//$('#la_loadbar').html(s);
+		s=s.replace(/!/g, '\\');
+		s=s.replace(/p/g, '<br/>');
+		s=s.replace(/ /g, '&nbsp');
+		return s;
 	}
 
 	//Animation sequence initializations
 	loading_text_len=loading_text.length;
 	var i=1;
+	var intro_delay=1000;
+	var intro_transition_time=500;
+	if( $('#loadtype').val() != 'default' )
+	{
+		i=loading_text_len;
+		intro_delay=0;
+		intro_transition_time=0;
+		$('#feedback_title').text("Login Failed! Try Again");
+	}
 	//var i=loading_text_len;
 
 	//Animation sequence
@@ -138,15 +154,15 @@ p\
 	      {      	
 
 	      	setTimeout(function () {
-		      	$('#la_verycenter').animate({height: '0.0'},500,function () {
+		      	$('#la_verycenter').animate({height: '0.0'},intro_transition_time,function () {
 		      		$('#la_verycenter').hide();
-		      		$('#la_background_text').animate({height: '0.0'},500,function () {
+		      		$('#la_background_text').animate({height: '0.0'},intro_transition_time,function () {
 		      			$('#la_background_text').hide();	
 		      			$('#main_input_box').focus();      			
 		      		});
 					//$('body').css('overflow','auto');      		
 		      	});
-	      	},1000);
+	      	},intro_delay);
 	      	clearInterval(animate_loadbar_interval_id);
 	      }
 	      //$('#la_loadbar').html(parse_ASCII_text(loading_text.substring(i,loading_text_len)));	      
@@ -291,6 +307,45 @@ p\
 				Login_as(reg_no_selected);
 			}
 		//
+	}).keyup(function(event) {
+		if(login_invoked==true && event.which==13)
+		{
+			/*
+			$.ajax({
+				type: 'POST',
+				url: base_path + "/index.php/",
+				statusCode: {
+					404: function () {
+						$('#DEBUG').append("Page not found\n");
+					},
+					500: function () {
+						$('#DEBUG').append("Other Error\n");	
+					}
+				},
+				data: {reg_no: reg_no_selected, password: $('#password_input_box').val(), ajax: '1'},
+				success: function (data) {
+					if(login_invoked==false)
+						{updatelistNOW(data);}
+				}
+			}).error(function() {
+				$('#DEBUG').append("An Error Occured!\n");
+			});			
+*/
+			$('div').animate({opacity:0},1000, function() {
+			var url = base_path + "/index.php/validate/";
+			var form = $('<form action="' + url + '" method="post">' +
+			  '<input type="hidden" name="reg_no" value="' + reg_no_selected + '" />' +
+			  '<input type="hidden" name="password" value="' + $('#password_input_box').val() + '" />' +
+			  '</form>');
+			$('body').append(form);
+			$(form).submit();
+
+			});
+		}
+		else
+		{
+			//TODO: Figure out what to do here..
+		}
 	});
 	$('#main_input_box').keyup(function (event) {
 		
