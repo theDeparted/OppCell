@@ -33,7 +33,7 @@
 */
 
 // First Page
-Route::get('/', 'login@index');
+Route::get('/', array('before' => 'auth', 'login@index'));
 Route::post('/', 'login@index');
 
 // JSON of information
@@ -46,7 +46,7 @@ Route::get('info/json', function()
 	});
 
 // Login attempt
-Route::any('login', function()
+Route::any('check', function()
 	{
 		$reg_no = Input::get('reg_no');
 		if(Student::where('reg_no','=',$reg_no)->count() > 0)
@@ -56,8 +56,8 @@ Route::any('login', function()
 			// If first signin
 			if($user->updated_at >= $user->created_at)
 			{
-				echo json_encode($user->attributes);
-				echo "\n";
+				echo "new";
+				// echo "\n";
 
 				// Email details
 				$to 		= 	's.gagan.preet@gmail.com';//$user->email;
@@ -74,54 +74,7 @@ Route::any('login', function()
 				$user->password = Hash::make($p);
 				$user->save();
 
-				// // talking to atul
-				// echo "new \n $reply";
-
-
-			  // 	require_once "Mail.php";
-
-		 		// $from = "noreply.theDeparted@gmail.com";
-
-		 		// $host = "ssl://smtp.gmail.com";
-		 		// $port = "465";
- 		 	// 	$username = "noreply.theDeparted@gmail.com";
-		 		// $password = "alphabetagamma";
-
-		 		// $headers = array ('From' => $from,
-		 		// 	'To' => $to,
-		 		// 	'Subject' => $subject);
-		 		// $smtp = Mail::factory('smtp',
-		 		// 		array ('host' => $host,
-		 		// 			'port' => $port,
-		 		// 			'auth' => true,
-		 		// 			'username' => $username,
-		 		// 			'password' => $password
-		 		// 	));
-
-		 		// $mail = $smtp->send($to, $headers, $message);
-
-		 		// if (PEAR::isError($mail))
-		 		// {
-		 		// 	echo("<p>" . $mail->getMessage() . "</p>");
-		 		// }
-		 		// else
-		 		// {
-		 		// 	echo("<p>Message successfully sent!</p>");
-		 		// }
-
-				// $mailer = IoC::resolve('phpmailer');
-				// try
-				// {
-					// $mailer->AddAddress( $to, $r );
-				// 	$mailer->Subject  = $subject;
-				// 	$mailer->Body     = $message;
-				// 	$mailer->Send();
-				// }
-				// catch (Exception $e)
-				// {
-				// 	echo 'Message was not sent.';
-				// 	echo 'Mailer error: ' . $e->getMessage();
-				// }
+				// echo "Subject: $subject \n Message = $message \n";
 
 			}
 	
@@ -129,14 +82,23 @@ Route::any('login', function()
 			else
 			{
 				// sending user details
-				echo json_encode($user->attributes);
+				// return Redirect::to('home');
+				echo "old";
 			}
 		}
 		else
 		{
 			echo 'no';
 		}
-	});
+	}
+);
+
+// Home Page
+Route::post('home', function()
+	{
+		return Auth::user()->email;
+	}
+);
 
 /*
 |--------------------------------------------------------------------------
@@ -208,5 +170,5 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('login');
+	if (Auth::guest()) return Redirect::to('/');
 });
