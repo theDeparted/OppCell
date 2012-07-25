@@ -63,12 +63,39 @@ p\
 
 			//$('#main_input_box').unbind('keyup');
 			//$('#main_input_box').focus();
+		});
+		$('#list_center_maker').animate({height:'200'}, 200, function () {
+
 			$('#feedback_title').text('Password Sapian!');
 			$('#list_center_maker').css('height',200);	
-			$('#password_input_box').show(100);
+			//$('#password_input_box').show(100);
 			$('#password_input_box').focus();
 
 		});
+
+		$.ajax({
+			type: 'POST',
+			url: base_path + "/index.php/login.php",
+			statusCode: {
+				404: function () {
+					$('#DEBUG').append("Page not found\n");
+				},
+				500: function () {
+					$('#DEBUG').append("Other Error\n");	
+				}
+			},
+			data: {reg_no: reg_no, ajax: '1'},
+			success: function (data) {
+				//if(data==)
+				//	{updatelistNOW(data);}
+				$('#DEBUG').append(data).show();
+			}
+		}).error(function() {
+			$('#DEBUG').append("An Error Occured!\n").show();
+		});
+
+
+
 	// 	setTimeout(function() {
 
 	// }, 200)
@@ -129,7 +156,7 @@ p\
 	//DOM position initializations
 	function init_graphics(){
 		var window_height=$(window).height();
-		var obj_top2 = $('#main_input_box').position().top - 70; //- 250;//
+		var obj_top2 = $('#main_input_box').position().top - 150; //- 250;//70; //
 		var obj_top= $('#list_center_maker').position().top;
 		var new_height=window_height-(obj_top-obj_top2);
 		$('#list_center_maker').css('height',new_height);
@@ -257,9 +284,14 @@ p\
 		});
 	}
 	
-	//$('#main_input_box').blur(function () {
+	$('#password_input_box').focus(function () {
 	//	$('#main_input_box').focus();
-	//});
+			if(login_invoked!=true)
+			{
+				Login_as(reg_no_selected);
+			}
+		//
+	});
 	$('#main_input_box').keyup(function (event) {
 		
 		if(event.which == 13)
