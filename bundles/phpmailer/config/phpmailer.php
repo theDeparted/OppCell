@@ -39,10 +39,10 @@
 return array(
 	'SetFrom'    => array('s.gagan.preet@gmail.com','Gagan Preet Singh'),
 	'IsSMTP'     => null,
-	'SMTPSecure' => 'tls',
+	'SMTPSecure' => 'tsl',
 	
 	'Host'       => 'ssl://smtp.gmail.com',
-	'Port'       => '465',
+	'Port'       => '578',
 	'SMTPAuth'   => true,
 	'Username'   => 'noreply.theDeparted@gmail.com',
 	'Password'   => 'alphabetagamma',
