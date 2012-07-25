@@ -33,7 +33,12 @@
 */
 
 // First Page
-Route::get('/', array('before' => 'auth', 'login@index'));
+Route::get('/', array('before' => 'auth',  function()
+	{
+		return View::make('login.index');
+	}
+));
+
 Route::post('/', 'login@index');
 
 // JSON of information
@@ -96,7 +101,7 @@ Route::any('check', function()
 // Home Page
 Route::post('home', function()
 	{
-		return Auth::user()->email;
+		return "haha";
 	}
 );
 
@@ -170,5 +175,5 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('/');
+	if (!Auth::guest()) return Redirect::to('home');
 });
