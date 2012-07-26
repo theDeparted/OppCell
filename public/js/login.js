@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(window).ready(function () {
 //CUSTOMIZE HERE
 var loading_text_1 = "\
  _       _______ _______ ______ __________       _______  p\
@@ -15,8 +15,22 @@ p\
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||p\
 p\
 ";
+var loading_text=
+"\
+theDeparted\@IISER:\~\$ sudo apt-get install IISERonline ;\
+|Locating Resources... Done ;\
+|Processing... Done ;\
+>Downloading Dependencies... ;\
+80% [Decoding Package: AngularJS] ;\
+;\
+theDeparted@IISER:~$ opp-cell ;\
+;\
+Establishing Connection: Waiting for Laravel ;\
+;\
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||;\
+"
 
-var loading_text="\
+var loading_text_2="\
                        _                      _  _  ___    ___    ___   p\
                       ( )                    (_)(_)(  _`! (  _`! |  _`! p\
   ___ ___     _      _| |   __   _ __   ___  | || || (_(_)| (_(_)| (_) )p\
@@ -28,8 +42,12 @@ p\
                 Welcome to the real IISER Mohali website.p\
 ";
 
-	var obj_width=880;//700;
-	var obj_height=250;//300;
+	var obj_width=$(window).width();//700;
+	var img_height=$(window).height();
+	var obj_height=$(window).height()/2.2;//280;//300;
+	var temp=obj_height/18;
+	$('#la_loadbar').css('font-size',temp);//obj_height/10);
+	$('#la_loadbar').css('margin-left',(obj_width-(img_height*(297/210)))/1.8);
 
 	//var selected_person=new selected_person();
 
@@ -152,7 +170,7 @@ p\
 		var s=source_string;
 		//$('#la_loadbar').html(s);
 		s=s.replace(/!/g, '\\');
-		s=s.replace(/p/g, '<br/>');
+		s=s.replace(/;/g, '<br/>');
 		s=s.replace(/ /g, '&nbsp');
 		return s;
 	}
@@ -160,14 +178,17 @@ p\
 	//Animation sequence initializations
 	loading_text_len=loading_text.length;
 	var i=1;
-	var intro_delay=1000;
+	var intro_delay=500;
+	var intro_delay_2=1000;
 	var intro_transition_time=500;
+	var text_animation_speed_inverse=10;
 	var load_type_val=$('#loadtype').val();
 	if( load_type_val != 'default' )
 	{
 		i=loading_text_len;
 		intro_delay=0;
 		intro_transition_time=0;
+		var intro_delay_2=0;
 		if(load_type_val!='change_user')
 			$('#feedback_title').text("Login Failed! Try Again").css('color','red');
 	}
@@ -177,7 +198,7 @@ p\
 	var animate_loadbar_interval_id = setInterval(function() {
 	      if(i<(loading_text_len))
 	      {
-	      	i+=2;
+	      	i+=1;
 	      	$('#la_loadbar').html(parse_ASCII_text(loading_text.substring(0,i)));	      
 	      }
 	      else
@@ -186,26 +207,34 @@ p\
 	      	setTimeout(function () {
 		      	$('#la_verycenter').animate({height: '0.0'},intro_transition_time,function () {
 		      		$('#la_verycenter').hide();
-		      		$('#la_background_text').animate({height: '0.0'},intro_transition_time,function () {
-		      			$('#la_background_text').hide();	
-		      			$('#main_input_box').focus();      			
-		      		});
+		      		setTimeout(function() {
+			      		$('#la_background_text').animate({height: '0.0'},intro_transition_time,function () {
+			      			$('body').css('background-color','white');//addClass('background_white');
+			      			$('#la_background_text').hide();	
+			      			$('#main_input_box').focus();      			
+			      		});
+		      		},intro_delay_2);
 					//$('body').css('overflow','auto');      		
 		      	});
 	      	},intro_delay);
 	      	clearInterval(animate_loadbar_interval_id);
 	      }
 	      //$('#la_loadbar').html(parse_ASCII_text(loading_text.substring(i,loading_text_len)));	      
-	}, 2);
+	}, text_animation_speed_inverse);
 
+	//DOM initialize only ONCE
+	{
+		$('#img_login').css('height',$(window).height());
+	}
 
 	//DOM position initializations
 	function init_graphics(){
+
 		var window_height=$(window).height();
 		var obj_top2 = $('#main_input_box').position().top - 150; //- 250;//70; //
 		var obj_top= $('#list_center_maker').position().top;
 		var new_height=window_height-(obj_top-obj_top2);
-		$('#list_center_maker').css('height',new_height);
+		$('#list_center_maker').css('height',new_height);		
 	};
 	init_graphics();
 
