@@ -16,7 +16,9 @@
 <html lang="en">
 <head>
 	<meta chrset="utf-8">
-	<title>Opportunity Cell</title>
+	<title>Identity Crisis</title>
+
+	<link rel="Shortcut Icon" href=<?php echo "\"".URL::base()."/img/favicon.ico\""; ?> >
 	<link rel="stylesheet" type="text/css" href=<?php echo "\"".URL::base()."/css/login.css\""; ?> />
 	<script type="text/javascript" src=<?php echo "\"".URL::base()."/js/jquery-1.7.2.js\""; ?>> </script>
 </head>
@@ -24,7 +26,7 @@
 <body>
 	
 
-	<div id="la_verycenter"><div id="la_loadbar"></div><div id="la_status"></div><div id="la_inner"><div id="la_loading_text">Loading Bananas</div></div></div></div>
+	<div id="la_verycenter"><div id="la_loadbar"></div><div id="la_status"></div><div id="la_inner"><div id="la_loading_text">Loading Resources</div></div></div></div>
 <div id="la_background_text"> 
 <p> 
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies vulputate dapibus. Fusce non viverra orci. Ut vitae nibh orci, interdum fermentum leo. Donec lobortis quam eleifend tellus venenatis molestie. Sed id tellus eget augue elementum porttitor quis ac magna. Nullam dignissim felis in tortor hendrerit viverra. Ut massa lacus, volutpat eu dictum eget, gravida sagittis felis. Aliquam eget rhoncus mi. Donec scelerisque, dolor a consectetur laoreet, arcu sem viverra diam, et aliquam tellus dui mattis leo. Mauris rutrum augue a urna pharetra viverra viverra sapien tincidunt.
@@ -83,9 +85,22 @@ Suspendisse pellentesque aliquet tortor nec ullamcorper. Mauris et nulla eu diam
 <br/>
 <div class="userinput_desc">
 	<input id="password_input_box" class="userinput_text" type="password" value="password" style="text-align:center;"> </input>
-	<div id="msg_new_user" style="opacity:0;">
-		<p>Your password has been sent to your IISER email.</p>
+	<br><br>
+	<p class="small_font"> <a id="change_user" class="links_below">change user name</a> | <a id="forgot_password" class="links_below">forgot password!</a> </p> </div>
+	<br><br>
+	<div id="msg_new_user" class="msg_below">
+		<p>Your password has been sent to your official IISER email account.</p>
 		<p>If you're unable to login, contact <a href="mailto:toatularora@gmail.com">theDeparted</a>.</p>
+	</div>
+	<div id="msg_no_guests" class="msg_below">
+		<p>Guest Login is currently unavailable. You will be redirected shortly.</p>
+		<p>Not a guest? Contact <a href="mailto:toatularora@gmail.com">theDeparted</a>.</p>
+	</div>
+	<div id="msg_forgot_password" class="msg_below">
+		<p>We've sent your password to your official IISER email account.</p>
+		<p>Did not receive an email? Contact <a href="mailto:toatularora@gmail.com">theDeparted</a>.</p>		
+	</div>
+	<div id="msg_error" class="msg_below">		
 	</div>
 </div>
 </center>

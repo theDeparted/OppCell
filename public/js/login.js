@@ -1,6 +1,6 @@
 $(document).ready(function () {
 //CUSTOMIZE HERE
-var loading_text = "\
+var loading_text_1 = "\
  _       _______ _______ ______ __________       _______  p\
 ( !     (  ___  (  ___  (  __  !!__   __( (    /(  ____ ! p\
 | (     | (   ) | (   ) | (  !  )  ) (  |  !  ( | (    !/ p\
@@ -16,7 +16,7 @@ p\
 p\
 ";
 
-var loading_text_1="\
+var loading_text="\
                        _                      _  _  ___    ___    ___   p\
                       ( )                    (_)(_)(  _`! (  _`! |  _`! p\
   ___ ___     _      _| |   __   _ __   ___  | || || (_(_)| (_(_)| (_) )p\
@@ -28,26 +28,42 @@ p\
                 Welcome to the real IISER Mohali website.p\
 ";
 
-	var obj_width=700;
-	var obj_height=300;
+	var obj_width=880;//700;
+	var obj_height=250;//300;
 
 	//var selected_person=new selected_person();
 
 
 	//Shouldn't need to change these functions
-	
+	//Method to reload page for changing user
+	function change_user_method(){
+		$('#change_user').addClass('link_not_available');
+		$('div').animate({opacity:0},1000, function() {
+			var url = base_path + "/index.php/";
+			var form = $('<form action="' + url + '" method="get">' +
+			  '<input type="hidden" name="loadtype" value="change_user" />' +
+			  '</form>');
+			$('body').append(form);
+			$(form).submit();
+		});
+	}
+
 	//Auto Initializations
 	{
 		var base_path=$('#lara_path').val();
 		var processing_last_request=false;
 		var reg_no_selected="guest";
 		var login_invoked=false;
+		var workingonrequest=false;
+		var name_last_invoke='';
 	}
 
 	//When an item is clicked, what should happen
 	function Login_as(reg_no) {
 		login_invoked=true;
 		reg_no_selected=reg_no;	//to update events that took place with a click!
+		$('#change_user').show().animate({opacity:1},2000);
+		$('#forgot_password').show().animate({opacity:1},2000);
 		$('#main_input_box').unbind('keyup');		
 		var main_input_box= $('#main_input_box').remove();
 		$('.name_container').unbind();
@@ -66,8 +82,19 @@ p\
 			//$('#main_input_box').focus();
 		});
 		$('#list_center_maker').animate({height:'200'}, 200, function () {
+			$('#feedback_title').animate({opacity:0}, 300, function() {
+				if(reg_no!='guest')
+					$('#feedback_title').text('Password Sapian!').css('color','black').animate({opacity:1},300);	
+				else
+				{
+					$('#feedback_title').text('We\'re not mature enough! ').css('color','black').animate({opacity:1},300);	
+					$('.msg_below').hide();
+					$('#msg_no_guests').show().animate({opacity:1},300);
+					setTimeout(change_user_method,5000);
+				}
 
-			$('#feedback_title').text('Password Sapian!');
+			});
+			
 			$('#list_center_maker').css('height',200);	
 			//$('#password_input_box').show(100);
 			$('#password_input_box').focus();
@@ -89,10 +116,11 @@ p\
 			success: function (data) {
 				if(data=='new')
 				{
-					$('#msg_new_user').animate({opacity:1.0},1000);
+					$('.msg_below').hide();
+					$('#msg_new_user').show().animate({opacity:1.0},1000);
 					setTimeout(function() {
 						$('#msg_new_user').animate({opacity:0.2},1000);
-					},3000)
+					},3000);
 				}
 				//	{updatelistNOW(data);}
 				$('#DEBUG').append(data);
@@ -134,12 +162,14 @@ p\
 	var i=1;
 	var intro_delay=1000;
 	var intro_transition_time=500;
-	if( $('#loadtype').val() != 'default' )
+	var load_type_val=$('#loadtype').val();
+	if( load_type_val != 'default' )
 	{
 		i=loading_text_len;
 		intro_delay=0;
 		intro_transition_time=0;
-		$('#feedback_title').text("Login Failed! Try Again");
+		if(load_type_val!='change_user')
+			$('#feedback_title').text("Login Failed! Try Again").css('color','red');
 	}
 	//var i=loading_text_len;
 
@@ -256,32 +286,127 @@ p\
 	
 	//Function to populate the list with the give json data
 	function updatelistNOW(data_json){
-		$('#DEBUG').append("SUCCESS"+data_json+"\n");
-		var finalList='';
-		//var test_string='[{"id":"2","first_name":"Atul","middle_name":"Singh","last_name":"Arora","reg_no":"MS11003","role":"1","email":"toatularora@gmail.com","password":"","created_at":"2012-07-21 11:05:51","updated_at":"2012-07-21 11:05:51"},{"id":"26","first_name":"Atul","middle_name":null,"last_name":"Mantri","reg_no":"MS09033","role":"0","email":"ms09033@iisermohali.ac.in","password":"","created_at":"2012-07-21 11:05:52","updated_at":"2012-07-21 11:05:52"},{"id":"27","first_name":"Atul","middle_name":null,"last_name":"Verma","reg_no":"MS09034","role":"0","email":"ms09034@iisermohali.ac.in","password":"","created_at":"2012-07-21 11:05:52","updated_at":"2012-07-21 11:05:52"}]';
-		var data=jQuery.parseJSON(data_json);//test_string);
-		var empty=true;
-		$.each(data, function(i,item){  
-			empty=false;
-			if(i==0){reg_no_selected=item.reg_no;}
-  			//finalList=finalList+(gen_Name_Element(item.id,item.first_name+' ' + ((item.middle_name != null) ? (item.middle_name + ' '): '') + ((item.last_name != ' ') ? item.last_name : '') ,item.reg_no,item.role));
-  			finalList=finalList+(gen_Name_Element(item.reg_no,item.name,item.reg_no,item.role,item.img));
-  		});
-		
-		if(empty==true) {reg_no_selected="guest";}
+		//if(data_json!=null)
+		if(login_invoked==false)
+		{
+			$('#DEBUG').append("SUCCESS"+data_json+"\n");
+			//console(data_json);
+			var finalList='';
+			//var test_string='[{"id":"2","first_name":"Atul","middle_name":"Singh","last_name":"Arora","reg_no":"MS11003","role":"1","email":"toatularora@gmail.com","password":"","created_at":"2012-07-21 11:05:51","updated_at":"2012-07-21 11:05:51"},{"id":"26","first_name":"Atul","middle_name":null,"last_name":"Mantri","reg_no":"MS09033","role":"0","email":"ms09033@iisermohali.ac.in","password":"","created_at":"2012-07-21 11:05:52","updated_at":"2012-07-21 11:05:52"},{"id":"27","first_name":"Atul","middle_name":null,"last_name":"Verma","reg_no":"MS09034","role":"0","email":"ms09034@iisermohali.ac.in","password":"","created_at":"2012-07-21 11:05:52","updated_at":"2012-07-21 11:05:52"}]';
+			var data=jQuery.parseJSON(data_json);//test_string);
+			var empty=true;
+			$.each(data, function(i,item){  
+				empty=false;
+				if(i==0){reg_no_selected=item.reg_no;}
+	  			//finalList=finalList+(gen_Name_Element(item.id,item.first_name+' ' + ((item.middle_name != null) ? (item.middle_name + ' '): '') + ((item.last_name != ' ') ? item.last_name : '') ,item.reg_no,item.role));
+	  			finalList=finalList+(gen_Name_Element(item.reg_no,item.name,item.reg_no,item.role,item.img));
+	  		});
+			
+			if(empty==true) {reg_no_selected="guest"; }
 
-		finalList=finalList + guest_string;//(gen_Name_Element("1","Yet Another Guest","Foreigner\'s Login",2,"0"));
+			finalList=finalList + guest_string;//(gen_Name_Element("1","Yet Another Guest","Foreigner\'s Login",2,"0"));
 
-		$('#list_of_names').html(finalList);
+			$('#list_of_names').html(finalList);
 
-		$('.name_container').on("click", On_item_click);
+			$('.name_container').on("click", On_item_click);
+		}
 	}
 
-	function query_result(name) {	
-	$('#DEBUG').append("Invoked\n");	
+	function query_result(name) {
+		if(workingonrequest==false)
+		{	
+			//the following is used for auto re request after a second if the server can't reply as fast as the user types
+			name_last_invoke=name;
+
+			if($.trim(name)!='')
+			{
+				workingonrequest=true;
+				$('#DEBUG').append("Invoked\n");
+					$.ajax({
+						type: 'POST',
+						url: base_path + "/index.php/",
+						statusCode: {
+							404: function () {
+								$('#DEBUG').append("Page not found\n");
+							},
+							500: function () {
+								$('#DEBUG').append("Other Error\n");	
+							}
+						},
+						data: {s: name, ajax: '1'},
+						success: function (data) {
+							workingonrequest=false;
+							updatelistNOW(data);
+						}
+					}).error(function() {
+						workingonrequest=false;
+						$('#DEBUG').append("An Error Occured!\n");
+					});
+			}
+			else
+			{
+				//alert('blank');
+				//var data=null;
+					updatelistNOW('[]');
+			}			
+		}
+		else
+			//if a request is already being processed
+		{
+			//TODO: change this to improve CPU load..make the auto decrement smaller
+			//try again after a second, if the last request is different from the current
+			//var name=$('#main_input_box').val();
+			if(name_last_invoke!=name)
+			{
+			setTimeout(function(){
+
+			//querry only if the last request is different from the current				
+			var name=$('#main_input_box').val();
+				if(name_last_invoke!=name)
+				{
+					//alert('invoked');
+					query_result(name);
+
+				}
+			},1000);
+			}
+		}
+	}
+	
+
+	function show_error_msg(data){
+		$('.msg_below').hide();
+		if($.trim(data)=='')
+			$('#msg_error').html('<p>The server didn\'t reply. </p> <p>You\'re certain you have internet access?</p>');
+		else
+			$('#msg_error').html('<p>The server says</p><p>' + data + '</p>');
+		$('#msg_error').show().animate({opacity:1},1000,function(){ //animation time		
+			setTimeout(function(){				
+				$('#msg_error').animate({opacity:0.3},1000);//function(){ //animation time
+			},2000); //duration for which the msg is show
+		});	
+	}
+
+	function show_forgot_password_msg()
+	{
+		//SUCCESS
+		$('.msg_below').hide();
+		$('#msg_forgot_password').show().animate({opacity:1},1000,function(){ //animation time		
+			setTimeout(function(){				
+				$('#msg_forgot_password').animate({opacity:0.3},1000);//function(){ //animation time
+			},2000); //duration for which the msg is shown
+		});
+	}
+	var forgot_password_request_completed=true;
+	$('#forgot_password').click(function(){
+		//alert('invoked');
+		//TODO: do the action here!
+	if(forgot_password_request_completed==true)
+	{
+		$(this).addClass('link_not_available');
 		$.ajax({
 			type: 'POST',
-			url: base_path + "/index.php/",
+			url: base_path + "/index.php/password_reset",
 			statusCode: {
 				404: function () {
 					$('#DEBUG').append("Page not found\n");
@@ -290,16 +415,33 @@ p\
 					$('#DEBUG').append("Other Error\n");	
 				}
 			},
-			data: {s: name, ajax: '1'},
+			data: {s: reg_no_selected, ajax: '1'},
 			success: function (data) {
-				if(login_invoked==false)
-					{updatelistNOW(data);}
+				if(data=='success')
+				{
+					show_forgot_password_msg();
+				}
+				else
+				{
+					show_error_msg(data);
+				}
+				//workingonrequest=false;
+				//updatelistNOW(data);
 			}
 		}).error(function() {
-			$('#DEBUG').append("An Error Occured!\n");
+			show_error_msg('');
+			//workingonrequest=false;
+			//$('#DEBUG').append("An Error Occured!\n");
+		}).complete(function() {
+			forgot_password_request_completed=true;
+			//alert('called');
+			$('#forgot_password').removeClass('link_not_available');
 		});
+		
 	}
-	
+
+
+	});
 	$('#password_input_box').focus(function () {
 	//	$('#main_input_box').focus();
 			if(login_invoked!=true)
@@ -347,17 +489,25 @@ p\
 			//TODO: Figure out what to do here..
 		}
 	});
+	$('#change_user').click(function() {
+		change_user_method();
+	});
 	$('#main_input_box').keyup(function (event) {
 		
 		if(event.which == 13)
 		{
 			Login_as(reg_no_selected);
-		}
+		}		
 		else
 		{
+			if(event.which==27)
+			{				
+				$(this).attr('value','');
+			}			
 			var name=$(this).val();
-			query_result(name);			
+			query_result(name);
 		}
+//alert(event.which);
 	});
 
 
