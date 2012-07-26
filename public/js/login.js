@@ -27,7 +27,7 @@ theDeparted@IISER:~$ opp-cell ;\
 ;\
 Establishing Connection: Waiting for Laravel ;\
 ;\
-|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||;\
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||;\
 "
 
 var loading_text_2="\
@@ -47,14 +47,19 @@ p\
 		var window_height=$(window).height();
 		var window_width=$(window).width();
 
-		var obj_width=$(window).width();//700;		
-		var obj_height=$(window).height()/2.2;//280;//300;
+		
+
 
 		var img_height=$(window).height();
-		
+		var img_width=img_height*(297/210);
+
+		var obj_width=img_width;
+		var obj_height=$(window).height()/2.2;//280;//300;
+
 		var temp=obj_height/18;
 		$('#la_loadbar').css('font-size',temp);//obj_height/10);
-		$('#la_loadbar').css('margin-left',(obj_width-(img_height*(297/210)))/1.8);
+		//$('#la_loadbar').css('margin-left',(window_width-(img_width))/1.8);
+		$('#la_loadbar').css('margin-left',(img_width)*0.01);
 		
 		$('#img_login').css('height',img_height);
 		$('#img_login').css('width',img_height*(297/210));
@@ -488,7 +493,7 @@ p\
 
 	});
 	$('#password_input_box').focus(function () {
-		
+
 	//	$('#main_input_box').focus();
 			if(login_invoked!=true)
 			{

@@ -22,7 +22,7 @@
 	-moz-user-focus:select-all;
 	-webkit-user-focus:select-all;
 	-o-user-focus:select-all;
-	
+
 	width:300px;	
    border: 1px solid #ccc;
    -moz-border-radius: 0px;
@@ -227,6 +227,7 @@ body{
 	font-weight: 120%;
 	font-size: 150%;
 	vertical-align:bottom;
+	overflow:hidden;
 	/*
 	-moz-box-shadow: 0 0 5px 5px #888;
 	-webkit-box-shadow: 0 0 5px 5px#888;
@@ -300,6 +301,7 @@ animation-play-state: running;
 	font-size:18px;
 	/*margin-left:30%;*/
 	margin-top:30px;
+	cursor:default;
 /*line-height:0px;*/
 }
 
