@@ -42,12 +42,35 @@ p\
                 Welcome to the real IISER Mohali website.p\
 ";
 
-	var obj_width=$(window).width();//700;
-	var img_height=$(window).height();
-	var obj_height=$(window).height()/2.2;//280;//300;
-	var temp=obj_height/18;
-	$('#la_loadbar').css('font-size',temp);//obj_height/10);
-	$('#la_loadbar').css('margin-left',(obj_width-(img_height*(297/210)))/1.8);
+	function init_intro_graphics(){
+		alert('called');
+		var window_height=$(window).height();
+		var window_width=$(window).width();
+
+		var obj_width=$(window).width();//700;		
+		var obj_height=$(window).height()/2.2;//280;//300;
+
+		var img_height=$(window).height();
+		
+		var temp=obj_height/18;
+		$('#la_loadbar').css('font-size',temp);//obj_height/10);
+		$('#la_loadbar').css('margin-left',(obj_width-(img_height*(297/210)))/1.8);
+
+
+		//obj_width=$('#la_verycenter').width();
+		$('#la_verycenter').css('top',(window_height /2 ) - (obj_height/2)).css('left',(window_width/2) - (obj_width/2));
+
+		//$('#la_verycenter').animate({height: obj_height width: obj_width},200, function () {
+
+		$('#la_verycenter').width(obj_width);
+		//obj_height=$('#la_verycenter').height();
+		$('#la_verycenter').height(obj_height);
+
+	}
+
+	something_else();
+
+	init_intro_graphics();
 
 	//var selected_person=new selected_person();
 
@@ -244,14 +267,6 @@ p\
 		window_width = $(window).width();
 		window_height = $(window).height();
 
-		//obj_width=$('#la_verycenter').width();
-		$('#la_verycenter').css('top',(window_height /2 ) - (obj_height/2)).css('left',(window_width/2) - (obj_width/2));
-
-		//$('#la_verycenter').animate({height: obj_height width: obj_width},200, function () {
-
-		$('#la_verycenter').width(obj_width);
-		//obj_height=$('#la_verycenter').height();
-		$('#la_verycenter').height(obj_height);
 	};
 	move_div();
 
@@ -260,6 +275,7 @@ p\
 	$(window).resize(function () {
 		move_div();
 		init_graphics();
+		init_intro_graphics();
 	})
 
 	//Function to generate a DOM list element for the login list
