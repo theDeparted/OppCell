@@ -9,31 +9,20 @@
 	font-size:20px;
 }
 #main_input_box{
-	transition: all 1s;
-	-moz-transition: all 1s;
-	-webkit-transition: all 1s;
-	-o-transition: all 1s;
 	width:500px;	
-   border: 1px solid #ccc;
-   -moz-border-radius: 0px;
-   -webkit-border-radius: 0px;
-   border-radius: 0px;
-   text-align:center;
-   padding: 4px 7px;
-   outline: 0;
-   -webkit-appearance: none;
-}
-#main_input_box:focus {
-	box-shadow: inset 0 0 3px rgba(0,0,0,0.4); 
-   border-color: #339933;
 }
 
-#password_input_box{
+.input_box{
 	transition: all 1s;
 	-moz-transition: all 1s;
 	-webkit-transition: all 1s;
 	-o-transition: all 1s;
-
+	
+	user-focus:select-all;
+	-moz-user-focus:select-all;
+	-webkit-user-focus:select-all;
+	-o-user-focus:select-all;
+	
 	width:300px;	
    border: 1px solid #ccc;
    -moz-border-radius: 0px;
@@ -43,12 +32,15 @@
    padding: 4px 7px;
    outline: 0;
    -webkit-appearance: none;
+
 }
-#password_input_box:focus{
+.input_box:focus{
 	/*box-shadow: 0 0 0.5px 0.5px #339933;*/
 	box-shadow: inset 0 0 3px rgba(255,0,0,0.3); 
 	border-color: #339933;
+
 }
+
 
 #list_center_maker{
 	width: 500px; /*500*/

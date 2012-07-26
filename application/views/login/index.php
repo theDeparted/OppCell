@@ -40,8 +40,8 @@
 	<center>
 	<!-- convert this bit to php, for a random function generating a new string everytime -->
 	<!-- <p class="userinput_caption">Your Name, Sapian!</p>-->
-	<p id="feedback_title">Identify Yourself..</p>
-	<input id="main_input_box" class="userinput_text" type="text"> </input>
+	<p id="feedback_title">Identify Yourself</p>
+	<input id="main_input_box" class="userinput_text input_box" type="text"> </input>
 
 
 <div id="list_center_maker">
@@ -51,7 +51,7 @@
 
 <br/>
 <div class="userinput_desc">
-	<input id="password_input_box" class="userinput_text" type="password" value="password" style="text-align:center;"> </input>
+	<input id="password_input_box" class="userinput_text input_box" type="password" value="password" style="text-align:center;"> </input>
 	<br><br>
 	<p class="small_font"> <a id="change_user" class="links_below">change user name</a> | <a id="forgot_password" class="links_below">forgot password!</a> </p> </div>
 	<br><br>

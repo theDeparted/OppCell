@@ -27,7 +27,7 @@ theDeparted@IISER:~$ opp-cell ;\
 ;\
 Establishing Connection: Waiting for Laravel ;\
 ;\
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||;\
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||;\
 "
 
 var loading_text_2="\
@@ -43,7 +43,7 @@ p\
 ";
 
 	function init_intro_graphics(){
-		alert('called');
+
 		var window_height=$(window).height();
 		var window_width=$(window).width();
 
@@ -55,7 +55,9 @@ p\
 		var temp=obj_height/18;
 		$('#la_loadbar').css('font-size',temp);//obj_height/10);
 		$('#la_loadbar').css('margin-left',(obj_width-(img_height*(297/210)))/1.8);
-
+		
+		$('#img_login').css('height',img_height);
+		$('#img_login').css('width',img_height*(297/210));
 
 		//obj_width=$('#la_verycenter').width();
 		$('#la_verycenter').css('top',(window_height /2 ) - (obj_height/2)).css('left',(window_width/2) - (obj_width/2));
@@ -67,8 +69,6 @@ p\
 		$('#la_verycenter').height(obj_height);
 
 	}
-
-	something_else();
 
 	init_intro_graphics();
 
@@ -128,7 +128,7 @@ p\
 					$('#feedback_title').text('Password Sapian!').css('color','black').animate({opacity:1},300);	
 				else
 				{
-					$('#feedback_title').text('We\'re not mature enough! ').css('color','black').animate({opacity:1},300);	
+					$('#feedback_title').text('Coming Soon').css('color','black').animate({opacity:1},300);	
 					$('.msg_below').hide();
 					$('#msg_no_guests').show().animate({opacity:1},300);
 					setTimeout(change_user_method,5000);
@@ -204,7 +204,7 @@ p\
 	var intro_delay=500;
 	var intro_delay_2=1000;
 	var intro_transition_time=500;
-	var text_animation_speed_inverse=10;
+	var text_animation_speed_inverse=15;
 	var load_type_val=$('#loadtype').val();
 	if( load_type_val != 'default' )
 	{
@@ -488,6 +488,7 @@ p\
 
 	});
 	$('#password_input_box').focus(function () {
+		
 	//	$('#main_input_box').focus();
 			if(login_invoked!=true)
 			{
