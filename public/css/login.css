@@ -241,22 +241,22 @@ body{
 }
 @keyframes flashing
 {
-0%   {color: rgba(255,255,255,1);}
-50%  {color: rgba(0,0,0,0);}
+50%   {color: rgba(255,255,255,1);}
+0%  {color: rgba(0,0,0,0);}
 100% {color: rgba(255,0,0,1);}
 }
 
 @-moz-keyframes flashing /* Firefox */
 {
-0%   {color: rgba(255,255,255,1);}
-50%  {color: rgba(0,0,0,0);}
+50%   {color: rgba(255,255,255,1);}
+0%  {color: rgba(0,0,0,0);}
 100% {color: rgba(255,0,0,1);}
 }
 
 @-webkit-keyframes flashing /* Safari and Chrome */
 {
-0%   {color: rgba(255,255,255,1);}
-50%  {color: rgba(0,0,0,0);}
+50%   {color: rgba(255,255,255,1);}
+0%  {color: rgba(0,0,0,0);}
 100% {color: rgba(255,0,0,1);}
 }
 #la_loading_text{
