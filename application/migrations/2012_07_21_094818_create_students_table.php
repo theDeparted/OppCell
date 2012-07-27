@@ -28,7 +28,7 @@ class Create_Students_Table {
 
 			// Email ID and Password
 			$table->string('email');
-			$table->string('password')->nullable();
+			$table->string('password')->nullable()->length(40);
 
 			// Timestamps
 			$table->timestamps();

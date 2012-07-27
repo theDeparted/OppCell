@@ -76,17 +76,43 @@ Route::any('check', function()
 				$r 			=	$user->reg_no;
 				$p 			=	Hash::make($user->reg_no);
 				$subject	= 	'IISER Mohali Opportunity Cell Web Portal';
-				$message	= 	"Welcome to Opportunity Cell of IISER Mohali. \n\n Please use the following details to login: \n \t Registration Number \t: $r \n \t Password \t \t: $p \n \n Make the best use of this.";
+				$body		= 	"Welcome to Opportunity Cell of IISER Mohali. \n\n Please use the following details to login: \n \t Registration Number \t: $r \n \t Password \t \t: $p \n \n Make the best use of this.";
 				$headers	= 	'From: noreply@oppcell.com';
 	
 				// sending email
-				$reply = mail('s.gagan.preet@gmail.com', $subject, $message, $headers);
+				// $reply = mail('s.gagan.preet@gmail.com', $subject, $message, $headers);
 	
 				// Updating the password to the database
 				$user->password = Hash::make($p);
 				$user->save();
 
 				// echo "Subject: $subject \n Message = $message \n";
+
+				include('Mail.php');
+ 
+				$from =     "noreply.theDeparted@gmail.com";
+				$host =     "ssl://smtp.gmail.com";
+				$port =     "465";
+				$username = $from;
+				$password = "alphabetagamma";
+				 
+				$headers = array (
+				         'From' => $from,
+				         'To' => $to,
+				         'Subject' => $subject);
+				 
+				$smtp = @Mail::factory('smtp',
+				      array (
+				            'host' => $host,
+				            'port' => $port,
+				            'auth' => true,
+				            'username' => $username,
+				            'password' => $password));
+				 
+				$mail = @$smtp->send($to, $headers, $body);
+				 
+				if (@PEAR::isError($mail)) die($mail->getMessage());
+ 
 
 			}
 	
