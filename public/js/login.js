@@ -84,6 +84,7 @@ p\
 	//Method to reload page for changing user
 	function change_user_method(){
 		$('#change_user').addClass('link_not_available');
+		$('body').css('background-color','black');
 		$('div').animate({opacity:0},1000, function() {
 			var url = base_path + "/index.php/";
 			var form = $('<form action="' + url + '" method="get">' +
@@ -211,14 +212,20 @@ p\
 	var intro_transition_time=500;
 	var text_animation_speed_inverse=15;
 	var load_type_val=$('#loadtype').val();
+
 	if( load_type_val != 'default' )
 	{
 		i=loading_text_len;
 		intro_delay=0;
 		intro_transition_time=0;
-		var intro_delay_2=0;
+		var intro_delay_2=0;		
 		if(load_type_val!='change_user')
 			$('#feedback_title').text("Login Failed! Try Again").css('color','red');
+	}
+	else
+	{
+		//THis has been added here specifically to avoid flickering
+		$('#img_login').css('opacity','1');
 	}
 	//var i=loading_text_len;
 
