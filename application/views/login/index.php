@@ -32,7 +32,7 @@
 
 <div id="la_background_text"> 	
 	<center>
-	<img id="img_login" src=<?php echo "\"".URL::base()."/img/theDeparted_login.svg\""; ?> />
+	<img id="img_login" src=<?php echo "\"".URL::base()."/img/theDeparted_login_2.svg\""; ?> />
 	</center>
 </div>
 

@@ -56,7 +56,7 @@ p\
 		var obj_width=img_width;
 		var obj_height=$(window).height()/2.2;//280;//300;
 
-		var temp=obj_height/18;
+		var temp=obj_height/16;
 		$('#la_loadbar').css('font-size',temp);//obj_height/10);
 		//$('#la_loadbar').css('margin-left',(window_width-(img_width))/1.8);
 		$('#la_loadbar').css('margin-left',(img_width)*0.01);
