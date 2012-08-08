@@ -8,6 +8,15 @@
 	text-align: center;
 	font-size:20px;
 }
+
+#DEBUG{
+	position:fixed;
+	display:none; /*block; none;*/
+/*	top: 0px;*/
+	left: 0px;
+	bottom: 0px;
+}
+
 #main_input_box{
 	width:500px;	
 }
@@ -121,6 +130,7 @@ body{
 	-webkit-transition: all 1s;
 	-o-transition: all 1s;	
 	background-color: black;
+	overflow:hidden;
 }
 /* Track */
 ::-webkit-scrollbar-track {
@@ -217,9 +227,7 @@ tr{
 }	
 
 
-body{
-	overflow:hidden;
-}
+
 #la_verycenter{
 	display: block;
 	position: fixed;

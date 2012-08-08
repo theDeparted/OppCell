@@ -150,7 +150,7 @@ p\
 
 		$.ajax({
 			type: 'POST',
-			url: base_path + "/index.php/check",
+			url: base_path + "/login/check",
 			statusCode: {
 				404: function () {
 					$('#DEBUG').append("Page not found\n");
@@ -381,7 +381,7 @@ p\
 				$('#DEBUG').append("Invoked\n");
 					$.ajax({
 						type: 'POST',
-						url: base_path + "/index.php/",
+						url: base_path + "/login/index",
 						statusCode: {
 							404: function () {
 								$('#DEBUG').append("Page not found\n");
@@ -463,7 +463,7 @@ p\
 		$(this).addClass('link_not_available');
 		$.ajax({
 			type: 'POST',
-			url: base_path + "/index.php/password_reset",
+			url: base_path + "/login/passreset",
 			statusCode: {
 				404: function () {
 					$('#DEBUG').append("Page not found\n");
@@ -532,7 +532,7 @@ p\
 			});			
 */
 			$('div').animate({opacity:0},1000, function() {
-			var url = base_path + "/index.php/validate/";
+			var url = base_path + "/login/validate/";
 			var form = $('<form action="' + url + '" method="post">' +
 			  '<input type="hidden" name="reg_no" value="' + reg_no_selected + '" />' +
 			  '<input type="hidden" name="password" value="' + $('#password_input_box').val() + '" />' +

@@ -32,102 +32,21 @@
 |
 */
 
-// First Page
-Route::get('/', array('before' => 'auth',  function()
+// Controllers
+/*
+List:
+	1.	Login (login)
+		a. GET 	-	Index	=>	Login page
+		b. POST	-	Index	=>	Query list of People
+*/
+Route::controller(Controller::detect());
+
+Route::get('/', 'login@index');
+
+// OppCell Home Page
+Route::get('oppcell', function()
 	{
-		if(Input::has('loadtype'))
-		{
-			return View::make('login.index',array('loadtype' => Input::get('loadtype')));
-		}
-		else
-		{
-			return View::make('login.index',array('loadtype' => "default"));
-		}
-	}
-));
-
-Route::post('/', 'login@index');
-
-// JSON of information
-Route::get('info/json', function()
-	{
-		$info = array(
-					'url' => URL::base()
-				);
-		echo json_encode($info);
-	});
-
-// Login attempt
-Route::any('check', function()
-	{
-		$reg_no = Input::get('reg_no');
-		if(Student::where('reg_no','=',$reg_no)->count() > 0)
-		{
-			$user = Student::where('reg_no','=',$reg_no)->first();
-	
-			// If first signin
-			if($user->updated_at >= $user->created_at)
-			{
-				echo "new";
-				// echo "\n";
-
-				// Email details
-				$to 		= 	's.gagan.preet@gmail.com';//$user->email;
-				$r 			=	$user->reg_no;
-				$p 			=	Hash::make($user->reg_no);
-				$subject	= 	'IISER Mohali Opportunity Cell Web Portal';
-				$body		= 	"Welcome to Opportunity Cell of IISER Mohali. \n\n Please use the following details to login: \n \t Registration Number \t: $r \n \t Password \t \t: $p \n \n Make the best use of this.";
-				$headers	= 	'From: noreply@oppcell.com';
-	
-				// sending email
-				// $reply = mail('s.gagan.preet@gmail.com', $subject, $message, $headers);
-	
-				// Updating the password to the database
-				$user->password = Hash::make($p);
-				$user->save();
-
-				// echo "Subject: $subject \n Message = $message \n";
-
-				include('Mail.php');
- 
-				$from =     "noreply.theDeparted@gmail.com";
-				$host =     "ssl://smtp.gmail.com";
-				$port =     "465";
-				$username = $from;
-				$password = "alphabetagamma";
-				 
-				$headers = array (
-				         'From' => $from,
-				         'To' => $to,
-				         'Subject' => $subject);
-				 
-				$smtp = @Mail::factory('smtp',
-				      array (
-				            'host' => $host,
-				            'port' => $port,
-				            'auth' => true,
-				            'username' => $username,
-				            'password' => $password));
-				 
-				$mail = @$smtp->send($to, $headers, $body);
-				 
-				if (@PEAR::isError($mail)) die($mail->getMessage());
- 
-
-			}
-	
-			// If old user
-			else
-			{
-				// sending user details
-				// return Redirect::to('home');
-				echo "old";
-			}
-		}
-		else
-		{
-			echo 'no';
-		}
+		return View::make('oppcell.home');
 	}
 );
 
@@ -208,5 +127,5 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (!Auth::guest()) return Redirect::to('home');
+	if (Auth::guest()) return Redirect::to('login');
 });

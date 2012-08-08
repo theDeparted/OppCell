@@ -1,22 +1,8 @@
-<!--?php
-	echo Form::open('/', 'POST');
-
-	echo Form::label('s', 'Username');
-	echo Form::text('s','');
-
-	echo Form::hidden('ajax','1');
-
-	echo Form::submit('Login');
-
-	echo Form::close();
--->
-
-
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 <head>
 	<meta chrset="utf-8">
-	<title>Identity Crisis</title>
+	<title>Home</title>
 
 	<link rel="Shortcut Icon" href=<?php echo "\"".URL::base()."/img/favicon.ico\""; ?> >
 	<link rel="stylesheet" type="text/css" href=<?php echo "\"".URL::base()."/css/login.css\""; ?> />
@@ -24,12 +10,8 @@
 </head>
 
 <body>
-	
-
 	<div id="la_verycenter"><div id="la_loadbar"></div><div id="la_status"></div>
 	<div id="la_inner"><div id="la_loading_text">Loading Resources</div></div></div>
-
-
 <div id="la_background_text"> 	
 	<center>
 	<img id="img_login" src=<?php echo "\"".URL::base()."/img/theDeparted_login_2.svg\""; ?> />
@@ -39,8 +21,8 @@
 <div class="userinput_desc">
 	<center>
 	<!-- convert this bit to php, for a random function generating a new string everytime -->
-	<!-- <p class="userinput_caption">Your Name, Sapian!</p>-->
-	<p id="feedback_title">Identify Yourself</p>
+	<!-- <p class="userinput_caption">Your Name, Sapian!</p>--> -->
+<!-- 	<p id="feedback_title">Home Page</p>
 	<input id="main_input_box" class="userinput_text input_box" type="text"> </input>
 
 
@@ -72,11 +54,14 @@
 </div>
 </center>
 </div>
-<textarea rows="10" cols="100" id="DEBUG"><?php echo URL::base(); ?></textarea>
 <input style="display:none" type="text" id="lara_path" value=<?php echo "\"".URL::base()."\"" ?> > </input>
-<input style="display:none" type="text" id="loadtype" value=<?php echo "\"".$loadtype."\"" ?> > </input>
+<textarea style="display:none" rows="10" cols="100" id="DEBUG"><?php echo URL::base(); ?></textarea>
 
 <script type="text/javascript" src=<?php echo "\"".URL::base()."/js/login.js\""; ?>>	</script>
 </body>
 
+</html> -->
+<html>
+<h1> Now this is the home page!! </h1>
+<?php echo "\"".URL::base()."/img/theDeparted_login_2.svg\""; ?>
 </html>
