@@ -16,7 +16,11 @@
 	<div class="Bar_height">		
 	</div>
 	<div class="Options_Bar">
-		hello
+		<ul>
+			<li><a href="http://google.com">OPTION 1</a></li>
+			<li><a href="http://google.com">OPTION 2</a></li>
+			<li><a href="http://google.com">OPTION 3</a></li>
+		</ul>
 	</div>
 </body>
 
