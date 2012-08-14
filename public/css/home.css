@@ -10,7 +10,10 @@
 .Bar_height{
 	height:180px;
 }
-
+.IMAGE{
+	position:absolute;
+	z-index:1;
+}
 .Vertical_Align_Centre{
 	display:table-cell;
 	vertical-align:middle;
@@ -25,17 +28,20 @@
 	position:fixed;
 	width:100%;
 	background-color: black;
+	z-index:10;
 	/*height:100%;*/
 	-webkit-animation: loading 2s;
 }
 .Options_Bar{
-	position:block;
-	width:1500px;
+	position:absolute;
+	z-index: 2;
+	vertical-align: middle;
+	/*width:1500px;*/
 	/*min-height:100%;*/
 	/*height:100%-180px;*/
-	height:100px;
-	background-color: white;
-	overflow:auto;
+	/*height:100px;*/
+/*	background-color: white;*/
+	overflow:hidden;
 }
 @-webkit-keyframes fadefromblack
 {
@@ -48,20 +54,32 @@
 	from {height: 10000px; background-color:white;}
 	to {height: 180px; background-color:black;}
 }
-ul{
-	list-style: none;
-}
-li {
-	padding: 0 200px 0 200px;
-	/*display: inline;*/
-	background-color:yellow;
+/*.Option1, .Option2, .Option3, .Option4 {*/
+.option {	
+	-webkit-transition: all 1s;
+	top:50px;
 	float:left;
+	height:100%;
+	width:25%;
+	text-align: center;
+	vertical-align: middle;
+	background-color: rgba(0,0,0,0.9);
+	cursor:pointer;
+	border-radius:2px;
+	color:gray;
+	font-family:league-gothic-1, sans-serif;
+	font-size:50px;
+	z-index:3;
+
 }
-.option1, .option2, .option3 {
-	height:300px;
+.option:hover{
+	/*height:15%;	*/
+	background-color: rgba(40,0,0,0.0);	
+	color:white;
+	text-shadow: 0px 0px 15px #000000;
 }
 body,html{
-	background-color:gray;
+	background-color:rgb(0,10,50);
 	padding: 0;
 	margin:0;
 	width:100%;
