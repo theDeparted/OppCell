@@ -1,6 +1,6 @@
 .OppCell_logo{
 	position:relative;
-	left: 20px;
+	left: 50px;
 	font-family:"league-gothic-1", sans-serif;
 	font-size:70px;
 	color:white;
@@ -11,6 +11,7 @@
 	height:180px;
 }
 .IMAGE{
+	-webkit-transition: all 1s;		
 	position:absolute;
 	z-index:1;
 }
@@ -34,23 +35,90 @@
 	-webkit-animation: loading 2s;
 }
 .About{
+	-webkit-transition: all 1s;	
 	font-family:sans-serif;
 	font-size:40;
 	color:white;
 	position:fixed;
-	width:1%;	
+	text-align:right;
+	color:rgba(255,255,255,0.1);
+	/*border-radius: 4px;*/
+	/*left:10px;*/	
+	right:97%;
+	width:50%;
 	height:80%;
-	box-shadow: 0px 0px 15px #000000;	
+	border-radius: 3px;
+	box-shadow: 0px 0px 50px #000000;	
 	z-index:11;
-	text-shadow: 0px 0px 15px #000000;
-	background-color:rgba(0,255,0,0.0);	
+	/*text-shadow: 0px 0px 15px #000000;*/
+	/*background-color:rgba(15,12,45,0.8);	*/
+	background-color:rgba(15,12,45,0.2);	
 }
+.About:hover{
+	color:rgba(255,255,255,1);
+	right:50%;
+	background-color:rgba(15,12,45,0.8);	
+}
+
+.HowTo{
+	-webkit-transition: all 1s;	
+	font-family:sans-serif;
+	font-size:40;
+	color:white;
+	position:fixed;
+	color:rgba(255,255,255,0.1);
+	/*border-radius: 4px;*/
+	/*left:10px;*/
+	top:10%;
+	left:97%;
+	width:50%;
+	height:80%;
+	border-radius: 3px;
+	box-shadow: 0px 0px 50px #000000;	
+	z-index:11;
+	/*text-shadow: 0px 0px 15px #000000;*/
+	/*background-color:rgba(15,12,45,0.8);	*/
+	background-color:rgba(15,12,45,0.2);	
+}
+.HowTo:hover{
+	color:rgba(255,255,255,1);
+	left:50%;
+	background-color:rgba(15,12,45,0.8);	
+}
+
+.Live{
+ margin: 0px;
+  padding: 0px;	
+	-webkit-transition: all 1s;	
+	font-family:sans-serif;
+	font-size:40;
+	color:white;
+	position:fixed;
+
+	/*left:10px;*/
+	bottom:-40%;
+	/*left:99%;*/
+	width:100%;
+	height:50%;
+	border-radius: 3px;
+	box-shadow: 0px 0px 50px #000000;	
+	z-index:11;
+	/*text-shadow: 0px 0px 15px #000000;*/
+	/*background-color:rgba(15,12,45,0.8);	*/
+	background-color:rgba(15,12,45,0.2);	
+}
+.Live:hover{
+	bottom:0%;
+	background-color:rgba(15,12,45,0.8);	
+}
+
 
 .Options_Bar{
 	position:absolute;
 	z-index: 2;
 	top:0;
 	vertical-align: middle;
+	-webkit-transition: all 1s;		
 	/*width:1500px;*/
 	/*min-height:100%;*/
 	/*height:100%-180px;*/
@@ -84,7 +152,8 @@
 	/*color:gray;*/
 	color:transparent;
 	/*font-family:league-gothic-1, sans-serif;*/
-	font-family:monospace;
+	font-family:sans-serif;
+	/*font-family:monospace;*/
 	font-size:25px;
 	z-index:3;
 	text-shadow: 0px 0px 8px #fff;
@@ -95,7 +164,7 @@
 	background-color: rgba(40,0,0,0.0);	
 	font-size:35px;
 	color:white;
-	text-shadow: 0px 0px 25px #000000;
+	text-shadow: 0px 0px 35px #000000;
 }
 body,html{
 	background-color:rgb(0,10,50);
@@ -113,7 +182,8 @@ src:url(data:font/opentype;base64,d09GRk9UVE8AADFYAA0AAAAARxQAAAAAAAAAAAAAAAAAAA
 font-style:normal;
 font-weight:400;
 }
-h1,h2.entry-title,h3#comments-title,h3#reply-title,input[type=button],input[type=submit],nav#access,p.entry-meta .day{
+/*h1*/
+h2.entry-title,h3#comments-title,h3#reply-title,input[type=button],input[type=submit],nav#access,p.entry-meta .day{
 font-family:"league-gothic-1","league-gothic-2",sans-serif;
 }
 
@@ -137,4 +207,24 @@ font-family:"league-gothic-1","league-gothic-2",sans-serif;
 /* Let's get this party started */
 ::-webkit-scrollbar {
     width: 12px;
+}
+.alignright{
+	text-align: right;
+}
+.verticalText {
+	color:#fff;
+	border:0px solid red;
+	writing-mode:tb-rl;
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	-o-transform: rotate(90deg);
+	white-space:nowrap;
+	display:block;
+	bottom:0;
+	width:20px;
+	height:20px;
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-size:16px;
+	font-weight:normal;
+	text-shadow: 0px 0px 1px #333;
 }

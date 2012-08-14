@@ -30,7 +30,7 @@ function FrameFit(biasX,biasY,frameWidth,frameHeight,winWidth,winHeight)
 	};
 }
 ////////////////////////////
-
+var a=0.0;
 $(window).ready(function() {
 ///////////////////////////////////////////////////////
 //DOM manipulation functions
@@ -52,9 +52,8 @@ $(window).ready(function() {
 		$('.Options_Bar').css('left',setting.x);
 
 		$('.About').css('top',(height*0.1));
-
-		// alert(setting.y);
-		// alert(setting.x);
+		$('.HowTo').css('top',(height*0.1));
+		// $('.Live').css('left',(width*0.01));
 	}
 
 	$('.IMAGE').load(function(){
