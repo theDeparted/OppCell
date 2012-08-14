@@ -35,7 +35,6 @@ $(window).ready(function() {
 ///////////////////////////////////////////////////////
 //DOM manipulation functions
 	function Resize_DOM(){
-
 		// var setting=FrameFit(0.0,180.0,388,373,$(window).width(),$(window).height());
 		var width=$('.IMAGE').width();
 		var height=$('.IMAGE').height();
@@ -51,6 +50,8 @@ $(window).ready(function() {
 		$('.Options_Bar').width(setting.width);
 		$('.Options_Bar').css('top',setting.y);
 		$('.Options_Bar').css('left',setting.x);
+
+		$('.About').css('top',(height*0.1));
 
 		// alert(setting.y);
 		// alert(setting.x);
