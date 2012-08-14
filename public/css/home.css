@@ -70,7 +70,7 @@
 	to {height: 180px; background-color:black;}
 }
 /*.Option1, .Option2, .Option3, .Option4 {*/
-.option {	
+.option {
 	-webkit-transition: all 1s;	
 	top:50px;
 	float:left;
@@ -95,7 +95,7 @@
 	background-color: rgba(40,0,0,0.0);	
 	font-size:35px;
 	color:white;
-	text-shadow: 0px 0px 15px #000000;
+	text-shadow: 0px 0px 25px #000000;
 }
 body,html{
 	background-color:rgb(0,10,50);
