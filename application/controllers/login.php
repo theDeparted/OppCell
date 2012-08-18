@@ -99,7 +99,7 @@
 				Auth::login($user);	
 				$user->middle_name = "AAAA";
 				$user->save();
-				return Redirect::to('oppcell');
+				return Redirect::to('home');
 			}
 			else
 			{
