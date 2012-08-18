@@ -40,11 +40,15 @@ $(window).ready(function() {
 		var height=$('.IMAGE').height();
 		// alert(width);
 		// alert(height);
-		var setting=FrameFit(0.0,180.0,width,height,$(window).width(),$(window).height());
+		var setting=FrameFit(0.0,180.0,width,height,$(window).width(),$(window).height()-50);
 		$('.IMAGE').height(setting.height);
 		$('.IMAGE').width(setting.width);
 		$('.IMAGE').css('top',setting.y);
 		$('.IMAGE').css('left',setting.x);
+
+		// $('.Parent > div').css('width',width/4);
+		$('.Parent > div').css('height',setting.height);
+		$('.Bar').css('z-index',10);
 
 		$('.Options_Bar').height(setting.height);
 		$('.Options_Bar').width(setting.width);
@@ -53,7 +57,8 @@ $(window).ready(function() {
 
 		$('.About').css('top',(height*0.1));
 		$('.HowTo').css('top',(height*0.1));
-		// $('.Live').css('left',(width*0.01));
+
+		// $('.Live').css('bottom','-45%');
 	}
 
 	$('.IMAGE').load(function(){

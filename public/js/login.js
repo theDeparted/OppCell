@@ -103,6 +103,8 @@ p\
 		var login_invoked=false;
 		var workingonrequest=false;
 		var name_last_invoke='';
+		var keyboard_reg_no_selected=-1;
+		var last_global_data;
 	}
 
 	//When an item is clicked, what should happen
@@ -315,7 +317,7 @@ p\
 		//" <li id=\"+ user_id +\"> \
 		var string = 
 		" <li class=\"name_list_container\" id=\"" + user_id + "\"> \
-			<div class=\"name_container\" reg_no=\"" + user_id + "\"> \
+			<div class=\"name_container\" reg_no=\"" + user_id + "\" id=\"id_" + user_id + "\"> \
 				<table> \
 				<tr> \
 					<td><img src=\""+img_path+".jpg\" width=\"64\"></td> \
@@ -351,10 +353,27 @@ p\
 			var finalList='';
 			//var test_string='[{"id":"2","first_name":"Atul","middle_name":"Singh","last_name":"Arora","reg_no":"MS11003","role":"1","email":"toatularora@gmail.com","password":"","created_at":"2012-07-21 11:05:51","updated_at":"2012-07-21 11:05:51"},{"id":"26","first_name":"Atul","middle_name":null,"last_name":"Mantri","reg_no":"MS09033","role":"0","email":"ms09033@iisermohali.ac.in","password":"","created_at":"2012-07-21 11:05:52","updated_at":"2012-07-21 11:05:52"},{"id":"27","first_name":"Atul","middle_name":null,"last_name":"Verma","reg_no":"MS09034","role":"0","email":"ms09034@iisermohali.ac.in","password":"","created_at":"2012-07-21 11:05:52","updated_at":"2012-07-21 11:05:52"}]';
 			var data=jQuery.parseJSON(data_json);//test_string);
+			// last_global_data=JQuery.parseJSON(data_json);
+			// var data=last_global_data;
+			last_global_data=data;
 			var empty=true;
+			
+
 			$.each(data, function(i,item){  
+				// $('.name_container').css('display','none');
 				empty=false;
 				if(i==0){reg_no_selected=item.reg_no;}
+				// if(i==keyboard_reg_no_selected){
+				// 	// $('#'+item.reg_no).addClass('name_container_selected');
+				// 	//$('#id_'+item.reg_no).css('background-color','gray');
+				// 	// $('#id_'+item.reg_no).css('background-color','gray');
+				// 	// $('.name_container').css('color','yellow');//css('background-color','blue');
+				// 	// alert("class added");
+				// }
+				// else
+				// {
+				// 	// $('#'+item.reg_no).removeClass('name_container_selected');
+				// }
 	  			//finalList=finalList+(gen_Name_Element(item.id,item.first_name+' ' + ((item.middle_name != null) ? (item.middle_name + ' '): '') + ((item.last_name != ' ') ? item.last_name : '') ,item.reg_no,item.role));
 	  			finalList=finalList+(gen_Name_Element(item.reg_no,item.name,item.reg_no,item.role,item.img));
 	  		});
@@ -364,6 +383,24 @@ p\
 			finalList=finalList + guest_string;//(gen_Name_Element("1","Yet Another Guest","Foreigner\'s Login",2,"0"));
 
 			$('#list_of_names').html(finalList);
+			
+
+			//if there's no data, that is length is zero, it'll automatically highlight guest
+			if(keyboard_reg_no_selected>=data.length || keyboard_reg_no_selected<0)
+			{
+				keyboard_reg_no_selected=0;
+			}
+				
+			if(data.length==0)
+				keyboard_reg_no_selected=-1;
+			else
+			{
+				$('.name_container').removeClass('name_container_selected');
+				$('#id_'+data[keyboard_reg_no_selected].reg_no).addClass('name_container_selected');
+				// $('.name_container').css('background-color','black');
+				// alert("did something");
+			}
+			
 
 			$('.name_container').on("click", On_item_click);
 		}
@@ -554,16 +591,53 @@ p\
 		
 		if(event.which == 13)
 		{
-			Login_as(reg_no_selected);
+			// var temp_data=jQuery.parseJSON(data_json);
+			// Login_as(reg_no_selected);
+			if(keyboard_reg_no_selected>=0)
+				Login_as(last_global_data[keyboard_reg_no_selected].reg_no);
+			else
+				Login_as('guest');
 		}		
 		else
 		{
 			if(event.which==27)
 			{				
 				$(this).attr('value','');
-			}			
-			var name=$(this).val();
-			query_result(name);
+			}
+			else if (event.which==38)
+			{
+				//UP key
+				if(keyboard_reg_no_selected>=0 && keyboard_reg_no_selected<last_global_data.length)
+				{
+					keyboard_reg_no_selected--;
+					if(keyboard_reg_no_selected<0)
+						keyboard_reg_no_selected=last_global_data.length-1;					
+					$('.name_container').removeClass('name_container_selected');
+					$('#id_'+last_global_data[keyboard_reg_no_selected].reg_no).addClass('name_container_selected');
+
+					// $('#main_input_box').value(last_global_data[keyboard_reg_no_selected].name);
+					// alert(last_global_data[keyboard_reg_no_selected].name);
+				}
+			}
+			else if (event.which==40)
+			{
+				//DOWN key
+				if(keyboard_reg_no_selected>=0 && keyboard_reg_no_selected<last_global_data.length)
+				{
+					keyboard_reg_no_selected++;
+					if(keyboard_reg_no_selected>=last_global_data.length)
+						keyboard_reg_no_selected=0;
+					$('.name_container').removeClass('name_container_selected');
+					$('#id_'+last_global_data[keyboard_reg_no_selected].reg_no).addClass('name_container_selected');
+					// $('#main_input_box').value(last_global_data[keyboard_reg_no_selected].name);
+					// alert(last_global_data[keyboard_reg_no_selected].name);
+				}
+			}
+			else
+			{
+				var name=$(this).val();			
+				query_result(name);
+			}
 		}
 //alert(event.which);
 	});

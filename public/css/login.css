@@ -183,7 +183,7 @@ tr{
 	width: 600px; /*500*/
 	/*height:72px;*/
 	/*height:200px;*/
-	
+	/*color:red;*/
 	padding:0px;
 	margin:0px;
 
@@ -209,6 +209,9 @@ tr{
 
 .name_container:hover{	
 	background-color: gray;
+}
+.name_container_selected{
+	background-color:gray;
 }
 
 .name_contained{
