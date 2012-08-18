@@ -44,18 +44,19 @@ Route::controller(Controller::detect());
 Route::get('/', 'login@index');
 
 // OppCell Home Page
-Route::get('oppcell', function()
+Route::get('oppcell', array('before' => 'auth' , 'do' => function()
 	{
 		return View::make('oppcell.home');
 	}
-);
+));
 
 // Home Page
-Route::post('home', function()
+Route::get('home', function()
 	{
-		return "haha";
+		return View::make('oppcell.redirect');
 	}
 );
+
 
 /*
 |--------------------------------------------------------------------------
@@ -127,5 +128,5 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('login');
+	if (Auth::guest()) return Redirect::to('/?loadtype=error');
 });
