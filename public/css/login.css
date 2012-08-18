@@ -206,9 +206,8 @@ tr{
 	border-color: gray;
 	
 }
-
 .name_container:hover{	
-	background-color: gray;
+	background-color: rgba(200,200,200,1);
 }
 .name_container_selected{
 	background-color:gray;
