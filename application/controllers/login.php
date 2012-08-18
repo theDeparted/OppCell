@@ -94,35 +94,14 @@
 
 			$user = Student::where('reg_no','=',Input::get('reg_no'))->first();
 
-			// if (Hash::check(Input::get('password'), $user->password) == '1')
-			// {
-			// 	Auth::login($user);	
-			// 	$user->middle_name = "AAAA";
-			// 	$user->save();
-			// 	return Redirect::to('home');
-			// }
-			// else
-			// {
-			// 	$user->middle_name = Hash::check('AAAA',$user->password);
-			// 	$user->save();
-			// 	return Redirect::to('/?loadtype=error?user='.Input::get('reg_no')."?pass=".Input::get('password'));
-			// }
-
-			// Auth::login($user);
-			// return Redirect::to('home');
-
 			if (Auth::attempt($credentials))
 			{
-				// Auth::login($user);
-				// return Redirect::to('oppcell');
 				return Redirect::to('oppcell');
 			}
 			else
 			{
 				return Redirect::to('/?loadtype=error?user='.Input::get('reg_no')."?pass=".Input::get('password'));
 			}
-			// validate username and password
-			// return Redirect::to('/?loadtype=change_user');
 		}
 
 		public function post_passreset()
