@@ -195,11 +195,11 @@ tr{
 	vertical-align: middle;
 
 
-	transition: all 1s;
-	-moz-transition: all 1s; /* Firefox 4 */
-	-webkit-transition: all 1s; /* Safari and Chrome */
-	-o-transition: all 1s; /* Opera */
-
+/*	transition: all 1s;
+	-moz-transition: all 1s; 
+	-webkit-transition: all 1s; 
+	-o-transition: all 1s; 
+*/
 	border-style:solid;
 	border-width: 0px;
 	border-color: gray;

@@ -28,9 +28,9 @@
 	<img src=<?php echo "\"".URL::base()."/img/Home_Page.jpg\""; ?> class="IMAGE" />
 	<div class="Options_Bar">
 		<div class="Parent">
-			<div class="Option1">RESEARCH <br/> @ <br/> IISER</div>
-			<div class="Option2">SUMMER <br/> PROJECTS</div>
-			<div class="Option3">PhD</div>
+			<div class="Option1">RESEARCH <br/> @ <br/> IISER</div>			
+			<div class="Option2">PhD</div>
+			<div class="Option3">SUMMER <br/> PROJECTS</div>
 			<div class="Option4">OTHER <br/> RESOURCES</div>
 		</div>
 	</div>

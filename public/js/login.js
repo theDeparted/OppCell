@@ -72,6 +72,8 @@ p\
 		$('#la_verycenter').width(obj_width);
 		//obj_height=$('#la_verycenter').height();
 		$('#la_verycenter').height(obj_height);
+		//$('#main_input_box').css('display','none');
+		// $('#main_input_box').focus();
 
 	}
 
@@ -248,6 +250,7 @@ p\
 			      		$('#la_background_text').animate({height: '0.0'},intro_transition_time,function () {
 			      			$('body').css('background-color','white');//addClass('background_white');
 			      			$('#la_background_text').hide();	
+			      			// $('#main_input_box').css('display','block');
 			      			$('#main_input_box').focus();      			
 			      		});
 		      		},intro_delay_2);
