@@ -8,7 +8,8 @@
 	<script type="text/javascript" src=<?php echo "\"".URL::base()."/js/jquery-1.7.2.js\""; ?>> </script>
 </head>
 
-<body style="background-image: url(img/pattern.png), url(img/back.jpg);">
+<body style="background-image: url(<?php echo URL::base()."/img/pattern.png"; ?>), url(<?php echo URL::base()."/img/back.jpg"; ?>);">
+<!-- <body style="background-image: url(img/pattern.png), url(img/back.jpg);"> -->
 	<div class="About"><h1> HELP </h1> This is Opp Cell</div>
 	<!-- <div class="verticalText">HOW TO</div> -->
 	<div class="HowTo"><h1> HOW TO </h1> <br/>Now what do you want?</div>
