@@ -61,6 +61,12 @@ $(window).ready(function() {
 		// $('.Live').css('bottom','-45%');
 	}
 
+
+	$('.IMAGE').ready(function(){
+		Resize_DOM();
+	});
+	
+
 	$('.IMAGE').load(function(){
 		Resize_DOM();
 	});

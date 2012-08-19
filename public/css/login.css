@@ -195,17 +195,17 @@ tr{
 	vertical-align: middle;
 
 
-	transition: background-color 1s;
-	-moz-transition: background-color 1s; /* Firefox 4 */
-	-webkit-transition: background-color 1s; /* Safari and Chrome */
-	-o-transition: background-color 1s; /* Opera */
-
+/*	transition: all 1s;
+	-moz-transition: all 1s; 
+	-webkit-transition: all 1s; 
+	-o-transition: all 1s; 
+*/
 	border-style:solid;
 	border-width: 0px;
 	border-color: gray;
 	
 }
-.name_container:hover{	
+.name_container:hover{
 	/*color: rgba(100,150,100,1);*/
 	color: rgb(0,0,0);
 	border-width:1px;
