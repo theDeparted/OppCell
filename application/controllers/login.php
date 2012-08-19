@@ -51,10 +51,7 @@
 					// $body		= 	"Welcome to Opportunity Cell of IISER Mohali. \n\n Please use the following details to login: \n \t Registration Number \t: $r \n \t Password \t \t: $p \n \n Make the best use of this.";
 
 					$p = "AAAA";
-					$user->password = Hash::make("AAAA");
-					$user->save();
-
-					$user->middle_name = Hash::check('AAAA',$user->password);
+					$user->password = Hash::make($p);
 					$user->save();
 
 					// return $this->passwordEmail($to, $message, $subject);
@@ -100,7 +97,7 @@
 			}
 			else
 			{
-				return Redirect::to('/?loadtype=error?user='.Input::get('reg_no')."?pass=".Input::get('password'));
+				return Redirect::to('login?loadtype=error');
 			}
 		}
 

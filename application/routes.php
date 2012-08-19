@@ -43,7 +43,10 @@ Route::controller(Controller::detect());
 
 Route::get('/', function()
 	{
-		return Redirect::to('oppcell');
+		if (Auth::guest())
+			return Redirect::to('login');
+		else
+			return Redirect::to('oppcell');
 	}
 );
 
