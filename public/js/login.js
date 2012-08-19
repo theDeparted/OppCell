@@ -86,7 +86,7 @@ p\
 		$('#change_user').addClass('link_not_available');
 		$('body').css('background-color','black');
 		$('div').animate({opacity:0},1000, function() {
-			var url = base_path + "/index.php/";
+			var url = base_path + "/index.php/login";
 			var form = $('<form action="' + url + '" method="get">' +
 			  '<input type="hidden" name="loadtype" value="change_user" />' +
 			  '</form>');
