@@ -9,11 +9,11 @@
 		{
 			if(Input::has('loadtype'))
 			{
-				return View::make('login.index',array('loadtype' => Input::get('loadtype')));
+				return View::make('login.index',array('loadtype' => Input::get('loadtype'),'address' => Input::get('address')));
 			}
 			else
 			{
-				return View::make('login.index',array('loadtype' => "default"));
+				return View::make('login.index',array('loadtype' => "default",'address' => Input::get('address')));
 			}
 	
 		}

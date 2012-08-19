@@ -69,11 +69,11 @@ Route::get('oppcell', array('before' => 'auth' , 'do' => function()
 ));
 
 // Home Page
-Route::get('home', function()
+Route::get('home', array('before' => 'auth' , 'do' => function()
 	{
 		return View::make('oppcell.redirect');
 	}
-);
+));
 
 
 /*
@@ -146,5 +146,12 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('login?loadtype=error');
+	$address = '';
+	$referer = Session::get('referer');
+	if($referer != URL::to('login'))
+		$address = $referer;
+	else
+		$address = URL::to('oppcell') ;
+	if (Auth::guest())
+		return Redirect::to('login?loadtype=error&address='.$address);
 });
