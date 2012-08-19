@@ -81,12 +81,12 @@ Route::group(array('before' => 'auth'), function()
 	// Research At IISER
 	Route::get('oppcell/research', function()
 		{
-			return View::make('oppcell.research.home');
+			return View::make('oppcell.research.researchHome');
 		}
 	);
 
-	// A Particular Profs Page
-	Route::post('oppcell/research', function()
+	// A Particular Profs Page (JSON)
+	Route::get('oppcell/research/(:num)', function()
 		{
 			//
 		}
