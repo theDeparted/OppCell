@@ -55,7 +55,7 @@
 }
 
 #list_center_maker{
-	width: 500px; /*500*/
+	width: 505px; /*500*/
 	height: 300px;
 	overflow:auto;	
 	overflow-x:hidden;
@@ -180,7 +180,9 @@ tr{
 	/*background-color: green;*/
 }
 .name_container{	
-	width: 600px; /*500*/
+	width: 490px; /*500*/
+	color: rgb(0,0,0);
+	opacity: 0.8;
 	/*height:72px;*/
 	/*height:200px;*/
 	/*color:red;*/
@@ -191,11 +193,8 @@ tr{
 	/*background-color: rgba(200,200,200,1);*/
 	cursor: pointer;
 	vertical-align: middle;
-/*
-	-moz-box-shadow: 0 0 2px 2px #000;
-	-webkit-box-shadow: 0 0 2px 2px #000;
-	box-shadow: 0 0 2px 2px #000;
-*/	
+
+
 	transition: background-color 1s;
 	-moz-transition: background-color 1s; /* Firefox 4 */
 	-webkit-transition: background-color 1s; /* Safari and Chrome */
@@ -207,10 +206,24 @@ tr{
 	
 }
 .name_container:hover{	
-	background-color: rgba(200,200,200,1);
+	/*color: rgba(100,150,100,1);*/
+	color: rgb(0,0,0);
+	border-width:1px;
+	opacity: 1;
+
+	-moz-box-shadow: 5px 5px 5px #888888;
+	-webkit-box-shadow: 5px 5px 5px #888888;
+	box-shadow: 5px 5px 5px #888888;
+
 }
 .name_container_selected{
+	color: rgb(0,0,0);
 	background-color:gray;
+	opacity: 1;
+	-moz-box-shadow: 5px 5px 5px #888888;
+	-webkit-box-shadow: 5px 5px 5px #888888;
+	box-shadow: 5px 5px 5px #888888;
+
 }
 
 .name_contained{

@@ -615,7 +615,7 @@ p\
 					$('.name_container').removeClass('name_container_selected');
 					$('#id_'+last_global_data[keyboard_reg_no_selected].reg_no).addClass('name_container_selected');
 
-					// $('#main_input_box').value(last_global_data[keyboard_reg_no_selected].name);
+					$('#main_input_box').val(last_global_data[keyboard_reg_no_selected].name);
 					// alert(last_global_data[keyboard_reg_no_selected].name);
 				}
 			}
@@ -629,7 +629,7 @@ p\
 						keyboard_reg_no_selected=0;
 					$('.name_container').removeClass('name_container_selected');
 					$('#id_'+last_global_data[keyboard_reg_no_selected].reg_no).addClass('name_container_selected');
-					// $('#main_input_box').value(last_global_data[keyboard_reg_no_selected].name);
+					$('#main_input_box').val(last_global_data[keyboard_reg_no_selected].name);
 					// alert(last_global_data[keyboard_reg_no_selected].name);
 				}
 			}
