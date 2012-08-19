@@ -222,7 +222,7 @@ p\
 		intro_transition_time=0;
 		var intro_delay_2=0;		
 		if(load_type_val!='change_user')
-			$('#feedback_title').text("Login Failed! Try Again").css('color','red');
+			$('#feedback_title').text("Login Failed! Try Again").css('color','red');		
 	}
 	else
 	{
@@ -573,6 +573,7 @@ p\
 			var form = $('<form action="' + url + '" method="post">' +
 			  '<input type="hidden" name="reg_no" value="' + reg_no_selected + '" />' +
 			  '<input type="hidden" name="password" value="' + $('#password_input_box').val() + '" />' +
+			  '<input type="hidden" name="address" value="' + $('#address').val() + '" />' +
 			  '</form>');
 			$('body').append(form);
 			$(form).submit();
