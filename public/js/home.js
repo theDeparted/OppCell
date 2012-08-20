@@ -89,8 +89,8 @@ $(window).ready(function() {
 
 		// $('.IMAGE').animate({opacity:0},500,function(){
 		$('img').animate({opacity:0},250,function(){			
-			$('div').animate({opacity:0},250, function() {
-				$('body').animate({opacity:0},250, function() {
+			$('div').animate({opacity:0},500, function() {
+				$('body').animate({opacity:0},1000, function() {
 					if(redirected==false)	//required becaues this function is invoked multiple times in chrome!
 					{
 						var url = base_path + "/research/";				
