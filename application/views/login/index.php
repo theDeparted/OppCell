@@ -75,6 +75,7 @@
 <textarea rows="10" cols="100" id="DEBUG"><?php echo URL::base(); ?></textarea>
 <input style="display:none" type="text" id="lara_path" value=<?php echo "\"".URL::base()."\"" ?> > </input>
 <input style="display:none" type="text" id="loadtype" value=<?php echo "\"".$loadtype."\"" ?> > </input>
+<input style="display:none" type="text" id="address" value=<?php echo "\"".$address."\"" ?> > </input>
 
 <script type="text/javascript" src=<?php echo "\"".URL::base()."/js/login.js\""; ?>>	</script>
 </body>

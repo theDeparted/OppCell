@@ -9,11 +9,11 @@
 		{
 			if(Input::has('loadtype'))
 			{
-				return View::make('login.index',array('loadtype' => Input::get('loadtype')));
+				return View::make('login.index',array('loadtype' => Input::get('loadtype'),'address' => Input::get('address')));
 			}
 			else
 			{
-				return View::make('login.index',array('loadtype' => "default"));
+				return View::make('login.index',array('loadtype' => "default",'address' => Input::get('address')));
 			}
 	
 		}
@@ -24,14 +24,6 @@
 			{
 				$s = "'%".mysql_real_escape_string(Input::get('s'))."%'";
 				$query = DB::query("select created_at, updated_at, concat_ws(' ', first_name, middle_name, last_name) as name, role, reg_no, img from students where concat_ws(' ', first_name, middle_name, last_name, reg_no) like $s ORDER BY name ASC LIMIT 8");
-				// DB::table('students')
-							// ->where('first_name', 'LIKE', $s)
-							// ->or_where('middle_name', 'LIKE', $s)
-							// ->or_where('last_name', 'LIKE', $s)
-							// ->or_where("reg_no", 'LIKE', $s)
-							// ->where('students.first_name||students.middle_name||students.last_name||students.reg_no' , 'LIKE', $s)
-							// ->or_where("first_name||' '||last_name" , 'LIKE', $s)
-							// ->get();
 				return json_encode($query);
 			}
 			else
@@ -48,27 +40,32 @@
 				$user = Student::where('reg_no','=',$reg_no)->first();
 		
 				// If first signin
-				if($user->updated_at >= $user->created_at)
+				if($user->updated_at == $user->created_at)
 				{
 
-					// return "\n";
-					$to 		= 	's.gagan.preet@gmail.com';//$user->email;
-					$r 			=	$user->reg_no;
-					$p 			=	Hash::make($user->reg_no);
-					$subject	= 	'IISER Mohali Opportunity Cell Web Portal';
-					$body		= 	"Welcome to Opportunity Cell of IISER Mohali. \n\n Please use the following details to login: \n \t Registration Number \t: $r \n \t Password \t \t: $p \n \n Make the best use of this.";
+					// $to 		= 	's.gagan.preet@gmail.com';//$user->email;
+					// $r 			=	$user->reg_no;
+					// // $p 			=	Hash::make($user->reg_no);
+					// $p 			=	"ABcd";
+					// $subject	= 	'IISER Mohali Opportunity Cell Web Portal';
+					// $body		= 	"Welcome to Opportunity Cell of IISER Mohali. \n\n Please use the following details to login: \n \t Registration Number \t: $r \n \t Password \t \t: $p \n \n Make the best use of this.";
+
+					$p = "AAAA";
+					$user->password = Hash::make($p);
+					$user->save();
+
 					// return $this->passwordEmail($to, $message, $subject);
-					$this->passwordEmail($to, $message, $subject);
-					if($this->$error == true)
-					{
-						return "new";
-						// Redirect::to("oppcell");
-					}
-					else
-					{
-						return "fail";
-						// Redirect::to("oppcell");
-					}
+					// $this->passwordEmail($to, $message, $subject, $p, $user);
+					// if($this->$error == true)
+					// {
+					// 	return "new";
+					// 	// Redirect::to("oppcell");
+					// }
+					// else
+					// {
+					// 	return "fail";
+					// 	// Redirect::to("oppcell");
+					// }
 
 				}
 		
@@ -90,14 +87,24 @@
 
 		public function post_validate()
 		{
-			// validate username and password
-			return Redirect::to("oppcell");
-			// return Redirect::to('/?loadtype=change_user');
+			$credentials = array('username' => Input::get('reg_no'), 'password' => Input::get('password'));
+
+			$user = Student::where('reg_no','=',Input::get('reg_no'))->first();
+
+			if (Auth::attempt($credentials))
+			{
+				return Redirect::to('oppcell');
+			}
+			else
+			{
+				return Redirect::to('login?loadtype=error');
+			}
 		}
 
 		public function post_passreset()
 		{
 			// Reset Password
+			$reg_no = Input::get('reg_no');
 			if(Student::where('reg_no','=',$reg_no)->count() > 0)
 			{
 				$user = Student::where('reg_no','=',$reg_no)->first();
@@ -105,11 +112,12 @@
 				// If first signin
 
 				// return "\n";
-				$to 		= 	's.gagan.preet@gmail.com';//$user->email;
-				$r 			=	$user->reg_no;
-				$p 			=	Hash::make($user->reg_no);
-				$subject	= 	'IISER Mohali Opportunity Cell Web Portal';
-				$body		= 	"Your password to the Opportunity Cell of IISER Mohali has been reset. \n\n Please use the following details to login: \n \t Registration Number \t: $r \n \t Password \t \t: $p \n \n Keep it safe this time.";
+				// $to 		= 	's.gagan.preet@gmail.com';//$user->email;
+				// $r 			=	$user->reg_no;
+				// $p 			=	Hash::make($user->reg_no);
+				$p          =   $reg_no;
+				// $subject	= 	'IISER Mohali Opportunity Cell Web Portal';
+				// $body		= 	"Your password to the Opportunity Cell of IISER Mohali has been reset. \n\n Please use the following details to login: \n \t Registration Number \t: $r \n \t Password \t \t: $p \n \n Keep it safe this time.";
 				return "new";
 			}
 			else
@@ -119,52 +127,52 @@
 
 		}
 
-		protected function passwordEmail($to, $message, $subject)
-		{
-			// return "aa";
-			// Send password Email!!
-			// Email details
-			$headers	= 	'From: noreply@oppcell.com';
+		// protected function passwordEmail($to, $message, $subject, $p, $user)
+		// {
+		// 	// return "aa";
+		// 	// Send password Email!!
+		// 	// Email details
+		// 	// $headers	= 	'From: noreply@oppcell.com';
 
-			// sending email
-			// $reply = mail('s.gagan.preet@gmail.com', $subject, $message, $headers);
+		// 	// sending email
+		// 	// $reply = mail('s.gagan.preet@gmail.com', $subject, $message, $headers);
 
-			// Updating the password to the database
-			$user->password = Hash::make($p);
-			$user->save();
-			// return "Subject: $subject \n Message = $message \n";
-			include('Mail.php');
+		// 	// Updating the password to the database
+		// 	$user->password = Hash::make($p);
+		// 	$user->save();
+		// 	// return "Subject: $subject \n Message = $message \n";
+		// 	// include('Mail.php');
 
-			$from =     "noreply.theDeparted@gmail.com";
-			$host =     "ssl://smtp.gmail.com";
-			$port =     "465";
-			$username = $from;
-			$password = "alphabetagamma";
+		// 	// $from =     "noreply.theDeparted@gmail.com";
+		// 	// $host =     "ssl://smtp.gmail.com";
+		// 	// $port =     "465";
+		// 	// $username = $from;
+		// 	// $password = "alphabetagamma";
 			
-			$headers = array (
-			         'From' => $from,
-			         'To' => $to,
-			         'Subject' => $subject);
+		// 	// $headers = array (
+		// 	//          'From' => $from,
+		// 	//          'To' => $to,
+		// 	//          'Subject' => $subject);
 			
-			$smtp = Mail::factory('smtp',
-			      array (
-			            'host' => $host,
-			            'port' => $port,
-			            'auth' => true,
-			            'username' => $username,
-			            'password' => $password));
+		// 	// $smtp = Mail::factory('smtp',
+		// 	//       array (
+		// 	//             'host' => $host,
+		// 	//             'port' => $port,
+		// 	//             'auth' => true,
+		// 	//             'username' => $username,
+		// 	//             'password' => $password));
 			
-			$mail = $smtp->send($to, $headers, $body);
+		// 	// $mail = $smtp->send($to, $headers, $body);
 
-			if (PEAR::isError($mail))
-			{
-				$this->$error = true;//$mail->getMessage();
-			}
-			else
-			{
-				$this->$error = true;
-			}
+		// 	// if (PEAR::isError($mail))
+		// 	// {
+		// 	// 	$this->$error = true;//$mail->getMessage();
+		// 	// }
+		// 	// else
+		// 	// {
+		// 	// 	$this->$error = true;
+		// 	// }
 
-		}
+		// }
 
 	}

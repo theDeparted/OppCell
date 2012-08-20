@@ -30,31 +30,42 @@ function FrameFit(biasX,biasY,frameWidth,frameHeight,winWidth,winHeight)
 	};
 }
 ////////////////////////////
-
+var a=0.0;
 $(window).ready(function() {
 ///////////////////////////////////////////////////////
 //DOM manipulation functions
 	function Resize_DOM(){
-
 		// var setting=FrameFit(0.0,180.0,388,373,$(window).width(),$(window).height());
 		var width=$('.IMAGE').width();
 		var height=$('.IMAGE').height();
 		// alert(width);
 		// alert(height);
-		var setting=FrameFit(0.0,180.0,width,height,$(window).width(),$(window).height());
+		var setting=FrameFit(0.0,180.0,width,height,$(window).width(),$(window).height()-50);
 		$('.IMAGE').height(setting.height);
 		$('.IMAGE').width(setting.width);
 		$('.IMAGE').css('top',setting.y);
 		$('.IMAGE').css('left',setting.x);
+
+		// $('.Parent > div').css('width',width/4);
+		$('.Parent > div').css('height',setting.height);
+		$('.Bar').css('z-index',10);
 
 		$('.Options_Bar').height(setting.height);
 		$('.Options_Bar').width(setting.width);
 		$('.Options_Bar').css('top',setting.y);
 		$('.Options_Bar').css('left',setting.x);
 
-		// alert(setting.y);
-		// alert(setting.x);
+		$('.About').css('top',(height*0.1));
+		$('.HowTo').css('top',(height*0.1));
+
+		// $('.Live').css('bottom','-45%');
 	}
+
+
+	$('.IMAGE').ready(function(){
+		Resize_DOM();
+	});
+	
 
 	$('.IMAGE').load(function(){
 		Resize_DOM();

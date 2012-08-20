@@ -41,21 +41,60 @@ List:
 */
 Route::controller(Controller::detect());
 
-Route::get('/', 'login@index');
-
-// OppCell Home Page
-Route::get('oppcell', function()
+Route::get('/', function()
 	{
-		return View::make('oppcell.home');
+		if (Auth::guest())
+			return Redirect::to('login');
+		else
+			return Redirect::to('oppcell');
 	}
 );
 
-// Home Page
-Route::post('home', function()
+// Login Page
+Route::get('login', 'login@index');
+
+// Logout Page
+Route::get('logout', function()
 	{
-		return "haha";
+		Auth::logout();
+		return Redirect::to('/'); 
 	}
 );
+
+// Restricted Areas
+Route::group(array('before' => 'auth'), function()
+{
+	// OppCell Home Page
+	Route::get('oppcell', function()
+		{
+			return View::make('oppcell.home');
+		}
+	);
+
+	// Home Page
+	Route::get('home', function()
+		{
+			return View::make('oppcell.redirect');
+		}
+	);
+
+	// Research At IISER
+	Route::get('oppcell/research', function()
+		{
+			return View::make('oppcell.research.researchHome');
+		}
+	);
+
+	// A Particular Profs Page (JSON)
+	Route::get('oppcell/research/(:num)', function()
+		{
+			//
+		}
+	);
+
+});
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -127,5 +166,13 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('login');
+	$address = '';
+	if(!($address != URL::to('login')))
+	{
+		$address = URL::to('oppcell') ;
+	}
+	if (Auth::guest())
+	{
+		return Redirect::to("login?loadtype=default&address=$address");
+	}
 });
