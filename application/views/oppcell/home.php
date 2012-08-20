@@ -19,7 +19,7 @@
 			<div class="OppCell_logo">Opportunity Cell</div>
 		</div>
 	</div>
-	<div class="Bar_height">		
+	<div class="Bar_height">
 	</div>
 	<!-- <img src=<?php echo "\"".URL::base()."/img/default_m.jpg\""; ?> class="IMAGE" /> -->
 	<!-- <img src="http://www.fonemenu.com/blog/wp-content/uploads/2012/04/Sunset-In-Delhi.jpg" class="IMAGE" /> -->
@@ -34,7 +34,7 @@
 			<div class="Option4">OTHER <br/> RESOURCES</div>
 		</div>
 	</div>
-
+<input style="display:none" type="text" id="opp_path" value=<?php echo "\"".URL::to('oppcell')."\"" ?> > </input>
 <script type="text/javascript" src=<?php echo "\"".URL::base()."/js/home.js\""; ?>>	</script>
 </body>
 

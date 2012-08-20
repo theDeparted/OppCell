@@ -32,8 +32,19 @@ function FrameFit(biasX,biasY,frameWidth,frameHeight,winWidth,winHeight)
 ////////////////////////////
 var a=0.0;
 $(window).ready(function() {
-///////////////////////////////////////////////////////
-//DOM manipulation functions
+	///////////////////////////////////////////////////////
+	//DOM manipulation functions
+
+	//AUTO INITIALIZE VARIABLES
+	{
+		var base_path=$('#opp_path').val();
+	}
+
+	//MANUALLY INITIALIZE VARIABLES
+	{
+
+	}
+
 	function Resize_DOM(){
 		// var setting=FrameFit(0.0,180.0,388,373,$(window).width(),$(window).height());
 		var width=$('.IMAGE').width();
@@ -72,8 +83,25 @@ $(window).ready(function() {
 	});
 	
 
+	$('.Option1').click(function(){
+		$('.IMAGE').animate({opacity:0},500,function(){
+			$('div').animate({opacity:0},1000, function() {
+				$('body').animate({opacity:0},1000,function(){
+					var url = base_path + "/research/";				
+					window.location.href = url;
+					// alert(base_path);				
+					// alert(url);
+					// var form = $('<form action="' + url +
+					//   '</form>');
+					// $('body').append(form);
+					// $(form).submit();
+				});			
+			});
+		});
+	});
+
 	$(window).resize(function(){
 		Resize_DOM();
 	});
-////////////////////////////////////////////////////
+	////////////////////////////////////////////////////
 });
