@@ -38,6 +38,7 @@ $(window).ready(function() {
 	//AUTO INITIALIZE VARIABLES
 	{
 		var base_path=$('#opp_path').val();
+		var redirected=false;
 	}
 
 	//MANUALLY INITIALIZE VARIABLES
@@ -84,20 +85,23 @@ $(window).ready(function() {
 	
 
 	$('.Option1').click(function(){
-		$('.IMAGE').animate({opacity:0},500,function(){
-			$('div').animate({opacity:0},1000, function() {
-				$('body').animate({opacity:0},1000,function(){
-					var url = base_path + "/research/";				
-					window.location.href = url;
-					// alert(base_path);				
-					// alert(url);
-					// var form = $('<form action="' + url +
-					//   '</form>');
-					// $('body').append(form);
-					// $(form).submit();
-				});			
+		// 
+
+		// $('.IMAGE').animate({opacity:0},500,function(){
+		$('img').animate({opacity:0},250,function(){			
+			$('div').animate({opacity:0},250, function() {
+				$('body').animate({opacity:0},250, function() {
+					if(redirected==false)	//required becaues this function is invoked multiple times in chrome!
+					{
+						var url = base_path + "/research/";				
+						window.location.href = url;	
+						redirected=true;				
+					}
+				});	
 			});
 		});
+		
+
 	});
 
 	$(window).resize(function(){
