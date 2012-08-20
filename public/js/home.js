@@ -32,8 +32,20 @@ function FrameFit(biasX,biasY,frameWidth,frameHeight,winWidth,winHeight)
 ////////////////////////////
 var a=0.0;
 $(window).ready(function() {
-///////////////////////////////////////////////////////
-//DOM manipulation functions
+	///////////////////////////////////////////////////////
+	//DOM manipulation functions
+
+	//AUTO INITIALIZE VARIABLES
+	{
+		var base_path=$('#opp_path').val();
+		var redirected=false;
+	}
+
+	//MANUALLY INITIALIZE VARIABLES
+	{
+
+	}
+
 	function Resize_DOM(){
 		// var setting=FrameFit(0.0,180.0,388,373,$(window).width(),$(window).height());
 		var width=$('.IMAGE').width();
@@ -72,8 +84,28 @@ $(window).ready(function() {
 	});
 	
 
+	$('.Option1').click(function(){
+		// 
+
+		// $('.IMAGE').animate({opacity:0},500,function(){
+		$('img').animate({opacity:0},250,function(){			
+			$('div').animate({opacity:0},500, function() {
+				$('body').animate({opacity:0},1000, function() {
+					if(redirected==false)	//required becaues this function is invoked multiple times in chrome!
+					{
+						var url = base_path + "/research/";				
+						window.location.href = url;	
+						redirected=true;				
+					}
+				});	
+			});
+		});
+		
+
+	});
+
 	$(window).resize(function(){
 		Resize_DOM();
 	});
-////////////////////////////////////////////////////
+	////////////////////////////////////////////////////
 });

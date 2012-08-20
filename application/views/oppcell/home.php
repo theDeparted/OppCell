@@ -19,13 +19,13 @@
 			<div class="OppCell_logo">Opportunity Cell</div>
 		</div>
 	</div>
-	<div class="Bar_height">		
+	<div class="Bar_height">
 	</div>
 	<!-- <img src=<?php echo "\"".URL::base()."/img/default_m.jpg\""; ?> class="IMAGE" /> -->
 	<!-- <img src="http://www.fonemenu.com/blog/wp-content/uploads/2012/04/Sunset-In-Delhi.jpg" class="IMAGE" /> -->
 	<!-- <img src="http://farm5.staticflickr.com/4131/5002091188_9aa74aaa2a_o.jpg" class="IMAGE" /> -->
 	<!-- <img src="http://www.psdgraphics.com/wp-content/uploads/2010/11/hot-black-background.jpg" class="IMAGE" /> -->
-	<img src=<?php echo "\"".URL::base()."/img/Home_Page.jpg\""; ?> class="IMAGE" />
+	<img src=<?php echo "\"".URL::base()."/img/Home_Page.jpg\""; ?> class="IMAGE" height="951" width="1920"/>
 	<div class="Options_Bar">
 		<div class="Parent">
 			<div class="Option1">RESEARCH <br/> @ <br/> IISER</div>			
@@ -34,7 +34,7 @@
 			<div class="Option4">OTHER <br/> RESOURCES</div>
 		</div>
 	</div>
-
+<input style="display:none" type="text" id="opp_path" value=<?php echo "\"".URL::to('oppcell')."\"" ?> > </input>
 <script type="text/javascript" src=<?php echo "\"".URL::base()."/js/home.js\""; ?>>	</script>
 </body>
 
