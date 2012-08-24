@@ -13,7 +13,6 @@
 	position:fixed;
 	display:none; /*block; none;*/
 /*	top: 0px;*/
-
 	left: 0px;
 	bottom: 0px;
 }
@@ -333,6 +332,35 @@ animation-play-state: running;
 	cursor:default;
 /*line-height:0px;*/
 }
+.list_load_text{
+	font-size: 12px;	
+	/*display:none;*/
+	opacity: 0;
+}
+
+.spin1 {
+/*	position:absolute;
+	top:40%;
+	right:40%;
+	display:block;
+	z-index:100;
+*/
+	display:block;
+	-webkit-animation-name: spinnerRotate;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+
+}
+
+@-webkit-keyframes spinnerRotate {
+	from {
+		-webkit-transform:rotate(0deg);
+	}
+	to {
+		-webkit-transform:rotate(360deg);
+	}
+}
 
 
 /*{"version":"3983802","k":"0.9.7","created":"2011-06-07T15:16:41Z","mac":"1:c76faa1039cecd7c1fedcc02c9aba45082601b4fa32c11b1960bc30ef2781aa4"}*/
@@ -360,4 +388,21 @@ font-weight:400;
 }
 h1,h2.entry-title,h3#comments-title,h3#reply-title,input[type=button],input[type=submit],nav#access,p.entry-meta .day{
 font-family:"league-gothic-1","league-gothic-2",sans-serif;
+}
+#spinner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -100px 0 0 -100px;
+	height: 200px;
+	width: 200px;
+	text-indent: 250px;
+	white-space: nowrap;
+	overflow: auto;
+	/*-webkit-mask-image: url(../img/spinner.png);*/
+	background-color: #000;
+	-webkit-animation-name: spinnerRotate;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
 }
