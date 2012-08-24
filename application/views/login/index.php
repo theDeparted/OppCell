@@ -32,22 +32,33 @@
 
 <div id="la_background_text"> 	
 	<center>
-	<img id="img_login" src=<?php echo "\"".URL::base()."/img/theDeparted_login_2.svg\""; ?> />
+		<img id="img_login" src=<?php echo "\"".URL::base()."/img/theDeparted_login_2.svg\""; ?> />
 	</center>
 </div>
+
 
 <div class="userinput_desc">
 	<center>
 	<!-- convert this bit to php, for a random function generating a new string everytime -->
 	<!-- <p class="userinput_caption">Your Name, Sapian!</p>-->
 	<p id="feedback_title">Identify Yourself</p>
+	<!-- <img class="spin" height="30" src= <?php echo "\"".URL::base()."/img/spinner.png\""; ?>  /> -->
+
 	<input id="main_input_box" class="userinput_text input_box" type="text"> </input>
+
+	<!-- 	 -->
+	<!-- <p id="Spinner" style="-webkit-mask-image: url(<?php echo URL::base()."/img/spinner.png"; ?>);">Loading</p> -->
 
 
 <div id="list_center_maker">
+	<!-- <p class="List_Loading" >Fetching Names</p> -->
+	
+	<!-- <img class="spin" src= <?php echo "\"".URL::base()."/img/spinner.png\""; ?>  /> -->
+	<p class="list_load_text">Loading..</p>
 <ul id="list_of_names">
 </ul>
 </div>
+
 
 <br/>
 <div class="userinput_desc">

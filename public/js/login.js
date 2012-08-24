@@ -113,6 +113,7 @@ p\
 	function Login_as(reg_no) {
 		login_invoked=true;
 		reg_no_selected=reg_no;	//to update events that took place with a click!
+		$('.list_load_text').hide(100);
 		$('#change_user').show().animate({opacity:1},2000);
 		$('#forgot_password').show().animate({opacity:1},2000);
 		$('#main_input_box').unbind('keyup');		
@@ -414,9 +415,11 @@ p\
 		{	
 			//the following is used for auto re request after a second if the server can't reply as fast as the user types
 			name_last_invoke=name;
+			
 
 			if($.trim(name)!='')
 			{
+				$('.list_load_text').animate({opacity:1},100);
 				workingonrequest=true;
 				$('#DEBUG').append("Invoked\n");
 					$.ajax({
@@ -438,6 +441,8 @@ p\
 					}).error(function() {
 						workingonrequest=false;
 						$('#DEBUG').append("An Error Occured!\n");
+					}).complete(function(){						
+						$('.list_load_text').animate({opacity:0},100);
 					});
 			}
 			else
