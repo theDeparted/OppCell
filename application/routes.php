@@ -81,7 +81,7 @@ Route::group(array('before' => 'auth'), function()
 	// Research At IISER
 	Route::get('oppcell/research', function()
 		{
-			return View::make('oppcell.researchHome');
+			return View::make('oppcell.research.researchhome');
 		}
 	);
 
