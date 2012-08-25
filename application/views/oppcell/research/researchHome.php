@@ -19,17 +19,26 @@
 	</div>
 	<div class="Bar_height"></div>
 
-	<coverflow>
+	<markdown>
 #Something here
 - list item
-	</coverflow>
+	</markdown>
 
-
-	<coverflow>
+	<markdown>
 #Something here
 - list item
-	</coverflow>
+	</markdown>
 
+	<my-Widget>
+		<div id="one" class="box"></div>
+		<div id="two" class="box"></div>
+	</my-Widget>
+
+	<div ng-controller="prof_coverflow">
+		<coverflow>
+			<cover ng-repeat="cover_data in covers_data" id="{{cover_data.id}}" title="{{cover_data.title}}" img="<?php echo URL::base()."/img/Research_at_IISER_background.jpg"; ?>"/>
+		</coverflow>
+	</div>
 	<script type="text/javascript" src=<?php echo "\"".URL::base()."/js/research/researchHome.js\""; ?>> </script>
 </body>
 

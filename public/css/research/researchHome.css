@@ -255,3 +255,18 @@ font-family:"league-gothic-1","league-gothic-2",sans-serif;
 	font-weight:normal;
 	text-shadow: 0px 0px 1px #333;
 }
+
+.box {
+	position: relative;
+	background-color: #abc;
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin: 5px;
+	cursor: pointer;
+}
+
+/*.background_white{
+	background-color: white;
+	opacity:0.8;
+}*/
