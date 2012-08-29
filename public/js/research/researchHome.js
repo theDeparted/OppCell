@@ -64,29 +64,59 @@ angular.module('myApp',[])
 		restrict:'E',	//Its an element tag
 		scope:{
 			title:'@',
-			img:'@'
+			img:'@',
+			id:'@'
 		},	//we want the scope iscolated
-		template: '<img src="{{img}}" height="200" width="200"/>' + 
-				'<p>{{title}} What is your problem?</p>',
+		template: '<div id="cf_{{id}}" class="coverFlowCovers"> <img id="cf_img_{{id}}" src="{{img}}" height="200" width="200"/>' + 
+				'<p id="cf_cap_{{id}}">{{title}} What is your problem?</p> </div>',
 		link:function(scope,element,attr){
-			$(element).show(1000);
+			;
+			// $(element).show(1000);
+			// $(element).hide();
 		}
 	}
-}).directive('coverflow',function(){
+}).directive('coverflow',
+// coverflow_directive_function);
+function(){
 	//Globals
-	var selected=1;
+	
 	return {
 		restrict:'E',
-		scope:{},
+		scope:{selected:'=',
+				elementcount:'@'},
 		transclude: true,
-		template: '<div class="background_white" ng-transclude> <input type="range" name="points" step="1" min="1" max="10" /></div>',
+		template: '<div class="coverFlowContainer" ng-transclude></div> <input type="range" name="points" step="1" min="1" max="1000" />',
 		compile:function (tElement, tAttrs)
 		{
-			//DO SOME STUFF HERE
+			//GLOBALS FOR THIS ZONE
+			// var selected=1;
 
  			//Linking function
  			return function(scope,element,attrs){
- 				;
+ 				//var i=scope.selected;
+ 				
+ 				// var i=$(element).children('.coverFlowCovers').size();
+
+ 				//.hide();
+
+                scope.$watch('elementcount', function (x) {    //updated everytime the variable changes the first parameter is the newValue, second (omitted here) is the oldValue                	
+				// scope.$watch(attrs.elementcount, function (x) {    //updated everytime the variable changes the first parameter is the newValue, second (omitted here) is the oldValue                	                	
+                    // element.css('left', x + 'px');
+                    alert(x);
+                });
+
+                scope.$watch(attrs.selected, function (x) {    //updated everytime the variable changes the first parameter is the newValue, second (omitted here) is the oldValue
+                    // element.css('left', x + 'px');
+                    // alert(x);
+                });
+
+ 				//children()[1]
+ 				alert(i);
+ 				// var i=scope.covers_data.length;
+// angular.forEach($scope.todos, function(todo) {
+//       count += todo.done ? 0 : 1;
+//     });
+ 				//;
  			}
 
 		}
