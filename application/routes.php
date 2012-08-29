@@ -102,6 +102,7 @@ Route::post('/', function()
 // Controllers
 // Route::controller(Controller::detect());
 
+Route::controller(array('login'));
 
 
 
