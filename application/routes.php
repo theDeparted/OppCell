@@ -32,15 +32,12 @@
 |
 */
 
-// Controllers
 /*
 List:
 	1.	Login (login)
 		a. GET 	-	Index	=>	Login page
 		b. POST	-	Index	=>	Query list of People
 */
-Route::controller(Controller::detect());
-
 Route::get('/', function()
 	{
 		if (Auth::guest())
@@ -94,6 +91,18 @@ Route::group(array('before' => 'auth'), function()
 
 });
 
+Route::post('/', function()
+	{
+		print_r($_GET);
+		print_r($_POST);
+		return "0";
+	}
+);
+
+// Controllers
+// Route::controller(Controller::detect());
+
+
 
 
 /*
@@ -138,9 +147,9 @@ Event::listen('500', function()
 |		Route::filter('filter', function()
 |		{
 |			return 'Filtered!';
-|		});
-|
-| Next, attach the filter to a route:
+|		})|
+| Next
+return Request::referrer();, attach the filter to a route:
 |
 |		Router::register('GET /', array('before' => 'filter', function()
 |		{
@@ -166,7 +175,11 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	$address = '';
+	$address = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	// $address = $_SERVER['HTTP_REFERER'];
+	// $address = Request::referrer();
+	// return Request::referrer();
+	// print_r($_SERVER);
 	if(!($address != URL::to('login')))
 	{
 		$address = URL::to('oppcell') ;
