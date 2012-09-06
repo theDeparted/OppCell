@@ -5,8 +5,10 @@
 	<title>Research @ IISER</title>
 
 	<link rel="Shortcut Icon" href=<?php echo "\"".URL::base()."/img/favicon.ico\""; ?> >
+	<link rel="stylesheet" type="text/css" href=<?php echo "\"".URL::base()."/css/research/election.css\""; ?> />
 	<link rel="stylesheet" type="text/css" href=<?php echo "\"".URL::base()."/css/research/researchHome.css\""; ?> />
-	<link rel="stylesheet" type="text/css" href=<?php echo "\"".URL::base()."/css/libraries/coverflow.css\""; ?> />
+	<link rel="stylesheet" type="text/css" href=<?php echo "\"".URL::base()."/css/libraries/coverflow.css\""; ?> />	
+
 	<script type="text/javascript" src=<?php echo "\"".URL::base()."/js/jquery-1.7.2.js\""; ?>> </script>
 	<script type="text/javascript" src=<?php echo "\"".URL::base()."/js/angular-1.0.1.js\""; ?>> </script>
 	<script type="text/javascript" src=<?php echo "\"".URL::base()."/js/libraries/showdown.js\""; ?>> </script>	
@@ -29,9 +31,15 @@
 
 
 	<div ng-controller="elections">
-		<votepanel ng-repeat="category in categories" id="{{category.id}}" title="{{category.title}}">
-			<nominee ng-repeat="person in category.list" select="select" ng-model="select" id="{{person.id}}" name="{{person.name}}" link="{{person.link}}"/>
-		</votepanel>
+		<center>
+			<div class="selection_state">
+				<div ng-repeat="category in categories"> <p>For Category:{{category.title}},</p> <p>you've selected: {{getNameFromList(category,category.selected.id)}}</p>	</div>
+			</div>
+
+			<votepanel ng-repeat="category in categories" id="{{category.id}}" title="{{category.title}}" selected="category.selected" ng-model="category.selected">
+				<nominee ng-repeat="person in category.list" category="{{category.id}}" selected="category.selected" ng-model="category.selected" id="{{person.id}}" name="{{person.name}}" link="{{person.link}}"/>
+			</votepanel>
+		</center>
 	</div>
 
 	<my-Widget>

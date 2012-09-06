@@ -127,9 +127,14 @@ function(){
 		restrict:'E',
 		scope:{id:'@',
 				title:'@',
-				list:'@'},
+				list:'@',
+				selected:'='},
 		transclude: true,
-		template:  '<p>{{title}}</p> <div ng-transclude></div>',		
+		template: '<div class="main_group"> \
+						<h1>{{title}}</h1> \
+						<div ng-transclude></div> \
+						<input type="radio" name="{{id}}" ng-model="selected.id" value="0">I am an agnostic little b*st*rd!</input> \
+					</div>',		
 		compile:function (tElement, tAttrs)
 		{
 			//GLOBALS FOR THIS ZONE
@@ -139,7 +144,7 @@ function(){
  			{
                 scope.$watch('title', function (x) 
 	                {    //updated everytime the variable changes the first parameter is the newValue, second (omitted here) is the oldValue                	
-	                    alert(x);
+	                    // alert(x);
 	                }
                 );
 
@@ -154,11 +159,14 @@ function(){
 		scope:{id:'@',
 				name:'@',
 				link:'@',
-				select:'='},
+				selected:'=',
+				category:'@'},
 		// transclude: true,
 		// ng-model="{{selection}}"
 		//ng-model="{{select.selection}}" 
-		template:  '<div id={{id}}> <input type="radio" name="COMMON" ng-model="select.selected" value="{{id}}">{{name}}</input> <p ng-dblclick="{{selectme()}}">{{link}}</p> </div>',
+		template:  '<p>{{link}}</p> \
+		<div id={{id}}> <input type="radio" name="{{category}}" ng-model="selected.id" value="{{id}}">{{name}}</input> \
+		</div>',
 		compile:function (tElement, tAttrs)
 		{
 			//GLOBALS FOR THIS ZONE
@@ -167,16 +175,15 @@ function(){
  			return function(scope,element,attrs)
  			{
  				scope.selection_work={select:'cool'};
-                scope.$watch('select.selected', function (x) 
+                scope.$watch('selected.id', function (x) 
 	                {    //updated everytime the variable changes the first parameter is the newValue, second (omitted here) is the oldValue                	
-	                    alert(x);
+	                    // alert(x);
 	                }
                 );
                 scope.selectme=function(){
                 	// alert("clicked");
                 }
  			}
-
 		}
 
 	}
@@ -194,14 +201,14 @@ function prof_coverflow($scope){
 
 function elections($scope){
 	$scope.categories=[
-	{id:1, title:'Fothermuffin 1',selection:'1',
+	{id:1, title:'Fothermuffin 1',selected:{id:'0'},
 									list:[
 										{id:1,name:'Muffin 1',link:'Image1 Link :)'},
 										{id:2,name:'Muffin 2',link:'Image2 Link :)'},
 										{id:3,name:'Muffin 3',link:'Image3 Link :)'},
 										{id:4,name:'Muffin 4',link:'Image4 Link :)'},
 										]},
-	{id:2, title:'Fothermuffin 2',selection:'2',
+	{id:2, title:'Fothermuffin 2',selected:{id:'0'},
 									list:[
 										{id:1,name:'MuffinB 1',link:'Image1 Link :)'},
 										{id:2,name:'MuffinB 2',link:'Image2 Link :)'},
@@ -211,6 +218,18 @@ function elections($scope){
 	];
 	$scope.likethis="1";
 	$scope.select={selected:'so far so good'};
+	$scope.getNameFromList=function(category,t_id){
+		var i;
+		for(i=0;i<category.list.length;i++)
+		{
+			if(category.list[i].id==t_id)
+			{
+				return category.list[i].name;
+			}			
+		}
+		return "Nothing you idiot!";
+			
+	}
 }
 
 function Ctrl($scope){
@@ -220,6 +239,6 @@ function Ctrl($scope){
     $scope.bam={selection:'red'};
 
     $scope.$watch('bam.selection',function(x){
-    	alert(x);
+    	// alert(x);
     });
 }
