@@ -201,14 +201,14 @@ function prof_coverflow($scope){
 
 function elections($scope){
 	$scope.categories=[
-	{id:1, title:'Fothermuffin 1',selected:{id:'0'},
+	{id:1, title:'Fothermuffin 1',selected:{id:'-1'},
 									list:[
 										{id:1,name:'Muffin 1',link:'Image1 Link :)'},
 										{id:2,name:'Muffin 2',link:'Image2 Link :)'},
 										{id:3,name:'Muffin 3',link:'Image3 Link :)'},
 										{id:4,name:'Muffin 4',link:'Image4 Link :)'},
 										]},
-	{id:2, title:'Fothermuffin 2',selected:{id:'0'},
+	{id:2, title:'Fothermuffin 2',selected:{id:'-1'},
 									list:[
 										{id:1,name:'MuffinB 1',link:'Image1 Link :)'},
 										{id:2,name:'MuffinB 2',link:'Image2 Link :)'},
@@ -227,7 +227,10 @@ function elections($scope){
 				return category.list[i].name;
 			}			
 		}
-		return "Nothing you idiot!";
+		if(t_id==0)
+			return "Abstane!";
+		else
+			return "Not Selected";
 			
 	}
 }

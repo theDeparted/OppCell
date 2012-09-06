@@ -9,18 +9,47 @@
 .selection_state{
 	background-color:rgba(200,200,200,0.8);
 	padding-left:20px;
-	width:500px;
-	font-family:sans-serif;	
+	width:400px;
+	font-family:paraText;	
 	font-size:20px;	
 	text-align: left;
+	right:0px;
+	position:fixed;	
 	/*color:white;*/
 }
-
+tt{
+	font-size:15px;
+}
 h1{
 	font-family:capText;	
 	font-size: 60px;
 	/*font-weight: ;*/
 }
+
+.selected_0{
+	color:red;
+}
+
+.selected_-1{
+	/*color:rgba(255,255,255,0);*/
+	opacity:0;
+}
+
+table{
+    /*border: 1px solid black;*/
+    table-layout: fixed;
+    width: 400px;
+}
+
+th, td {
+	-webkit-transition: all 2s;
+    /*border: 1px solid black;*/
+    overflow: hidden;
+    width: 200px;
+    /*color:rgba(255,255,255,1);*/
+    opacity:1;
+}
+
 @font-face
 {
 	font-family:paraText;

@@ -31,11 +31,22 @@
 
 
 	<div ng-controller="elections">
-		<center>
-			<div class="selection_state">
-				<div ng-repeat="category in categories"> <p>For Category:{{category.title}},</p> <p>you've selected: {{getNameFromList(category,category.selected.id)}}</p>	</div>
-			</div>
+		
+		<div class="selection_state">
+			<table>
+				<tr>
+					<th>Category</th>
+					<th>Selection</th>
+				</tr>
 
+				<tr ng-repeat="category in categories" class="selected_{{category.selected.id}}">
+					<td>{{category.title}}</td>
+					<td>{{getNameFromList(category,category.selected.id)}}</td>
+				</tr>
+			</table>
+			<!-- <div ng-repeat="category in categories"> <p><tt>For Category:</tt>{{category.title}}, <br> <tt>you've selected:</tt>{{getNameFromList(category,category.selected.id)}}</p>	</div> -->
+		</div>
+		<center>
 			<votepanel ng-repeat="category in categories" id="{{category.id}}" title="{{category.title}}" selected="category.selected" ng-model="category.selected">
 				<nominee ng-repeat="person in category.list" category="{{category.id}}" selected="category.selected" ng-model="category.selected" id="{{person.id}}" name="{{person.name}}" link="{{person.link}}"/>
 			</votepanel>
