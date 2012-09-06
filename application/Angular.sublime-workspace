@@ -1,0 +1,345 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"R",
+				"Route	Laravel: Route::post()"
+			],
+			[
+				"Input",
+				"Input	Laravel: Input::get()"
+			],
+			[
+				"Auth",
+				"Auth	Laravel: Auth::user()"
+			],
+			[
+				"View",
+				"View	Laravel: View::make()"
+			],
+			[
+				"Redirect",
+				"Redirect	Laravel: Redirect::to()"
+			],
+			[
+				"passw",
+				"password_input_box"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"Redir",
+				"Redirect	Laravel: Redirect::to()"
+			],
+			[
+				"Redi",
+				"Redirect	Laravel: Redirect::home()"
+			],
+			[
+				"reg",
+				"reg_no"
+			],
+			[
+				"print",
+				"print_r"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "<HTML>\n\n</HTML>",
+			"settings":
+			{
+				"buffer_size": 15,
+				"line_ending": "Unix",
+				"name": "<HTML>"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 79.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git",
+				"Git: Diff Tool"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 579.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/gps/web/laravel-project/application/config/application.php",
+		"/home/gps/web/laravel-project/application/controllers/login.php",
+		"/home/gps/web/laravel-project/application/views/oppcell/researchhome.php",
+		"/home/gps/web/laravel-project/application/views/oppcell/research/researchHome.php",
+		"/home/gps/web/laravel-project/application/models/paper.php",
+		"/home/gps/web/laravel-project/application/views/error/404.blade.php",
+		"/home/gps/web/laravel-project/application/views/home/index.blade.php",
+		"/home/gps/web/laravel-project/application/migrations/2012_08_20_112131_create_paper.php",
+		"/home/gps/web/laravel-project/application/migrations/2012_08_20_113803_create_prof.php",
+		"/home/gps/web/laravel-project/application/models/prof.html",
+		"/home/gps/web/laravel-project/application/models/paper.html",
+		"/home/gps/web/laravel-project/application/models/student.php",
+		"/home/gps/web/laravel-project/application/migrations/2012_07_21_094818_create_students_table.php",
+		"/home/gps/web/laravel-project/application/routes.php",
+		"/home/gps/web/laravel-project/application/views/OppCell/home.php",
+		"/home/gps/web/laravel-project/application/views/login/index.php",
+		"/home/gps/web/laravel-project/application/config/strings.php",
+		"/home/gps/web/laravel-project/application/config/session.php",
+		"/home/gps/web/laravel-project/reset.sh",
+		"/home/gps/web/laravel-project/reset.bat",
+		"/home/gps/web/laravel-project/public/css/login.css",
+		"/home/gps/web/laravel-project/application/config/auth.php",
+		"/home/gps/web/laravel-project/README.md",
+		"/home/gps/web/laravel-project/.git/COMMIT_EDITMSG",
+		"/var/www/laravel-project/.git/rebase-merge/git-rebase-todo",
+		"/home/gps/web/laravel-project/public/js/login.js",
+		"/home/gps/web/laravel-project/application/views/oppcell/home.php",
+		"/home/gps/web/laravel-project/public/.htaccess",
+		"/home/gps/web/laravel-project/install_db.sh",
+		"/home/gps/web/laravel-project/.gitignore",
+		"/home/gps/web/laravel-project/bundles/phpmailer/config/phpmailer.php",
+		"/home/gps/web/laravel-project/application/bundles.php",
+		"/home/gps/web/laravel-project/laravel/database/schema.php",
+		"/home/gps/web/laravel-project/application/migrations/2012_07_23_162124_student_img.php",
+		"/home/gps/web/laravel-project/application/migrations/2012_07_21_094212_create_session_table.php",
+		"/home/gps/web/laravel-project/application/tasks/add_students.php",
+		"/home/gps/web/laravel-project/laravel/config.php",
+		"/home/gps/web/laravel-project/application/config/development/database.php",
+		"/home/gps/web/laravel-project/application/config/database.php",
+		"/home/gps/Documents/LaravellNotes",
+		"/home/gps/web/laravel-project/application/config/development/application.php",
+		"/var/www/MonkeyEvolveLaravel/public/.htaccess",
+		"/var/www/MonkeyEvolveLaravel/application/config/production/application.php",
+		"/var/www/MonkeyEvolveLaravel/application/config/production/database.php",
+		"/var/www/MonkeyEvolveLaravel/application/config/auth.php",
+		"/var/www/MonkeyEvolveLaravel/application/config/database.php",
+		"/var/www/MonkeyEvolveLaravel/application/config/application.php",
+		"/home/gps/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/gps/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/gps/.config/sublime-text-2/Packages/Package Control/Package Control.sublime-settings",
+		"/usr/share/applications/sublime.desktop"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/home/gps/web/laravel-project/bundles/phpmailer"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"passwordEmail",
+			"pass",
+			"body",
+			"post",
+			"post\npost",
+			"$.ajax",
+			"$('#feedback_title').text",
+			"feedback_title",
+			"feedba",
+			"name",
+			"bundle",
+			"    ",
+			"vivek",
+			"naku",
+			"naku;",
+			"=>	 ",
+			"Shwetha",
+			"[at]",
+			"			DB::query('TRUNCATE TABLE students');",
+			"	,",
+			" =>  ",
+			"[at]",
+			"'reg_no' => 'MS",
+			"'role' => '0',\n				'role' => '0',\n				",
+			"',\n				'email' => 'ms",
+			"</TD>\n		<TD WIDTH=27% BGCOLOR=\"#fdf0e0\">Mr.",
+			"	<TR VALIGN=TOP>\n		<TD WIDTH=8% BGCOLOR=\"#fdf0e0\">",
+			"));\nTD>\n		<TD WIDTH=27% BGCOLOR=\"#fdf0e0\">Mr. ",
+			"TD>\n		<TD WIDTH=27% BGCOLOR=\"#fdf0e0\">Mr. ",
+			",\n		'email' =>",
+			"</TD>\n		<TD WIDTH=25% BGCOLOR=\"#ffffff\">			\n			",
+			"</TD>\n		<TD WIDTH=25% BGCOLOR=\"#fdf0e0\">			\n			",
+			")),",
+			"[at]",
+			"\n		<TD WIDTH=8% BGCOLOR=\"#ffffff\">",
+			"\n		<TD WIDTH=8% BGCOLOR=\"#ffffff\">	",
+			"<TR VALIGN=TOP>\n		<TD WIDTH=8% BGCOLOR=\"#ffffff\">	1.</TD>\n		",
+			"'middle_name' => 'K'",
+			"	'reg_no'",
+			")'email",
+			"@iisermohali.ac.in'));",
+			"	(Regd.No.",
+			"(Regd. No. ",
+			"raw",
+			"inj",
+			"install",
+			"Students::create",
+			"Students",
+			"]);",
+			"[",
+			");\n			Student::create(\n			",
+			"Student::create(\n				",
+			"'\n			);",
+			"				\n",
+			"'reg_no'",
+			"middle_name",
+			"				);",
+			"\n1,1),",
+			"install",
+			"theme"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"settings":
+					{
+						"buffer_size": 15,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7,
+								7
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<HTML>",
+							"default_dir": "/home/gps/web/Ang",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/home/gps/web/OppCell.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 231.0,
+	"status_bar_visible": true
+}
