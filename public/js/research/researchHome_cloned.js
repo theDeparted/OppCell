@@ -122,64 +122,6 @@ function(){
 		}
 
 	}
-}).directive('votepanel', function() {
-	return {
-		restrict:'E',
-		scope:{id:'@',
-				title:'@',
-				list:'@'},
-		transclude: true,
-		template:  '<p>{{title}}</p> <div ng-transclude></div>',		
-		compile:function (tElement, tAttrs)
-		{
-			//GLOBALS FOR THIS ZONE
-
- 			//Linking function
- 			return function(scope,element,attrs)
- 			{
-                scope.$watch('title', function (x) 
-	                {    //updated everytime the variable changes the first parameter is the newValue, second (omitted here) is the oldValue                	
-	                    alert(x);
-	                }
-                );
-
- 			}
-
-		}
-
-	}
-}).directive('nominee', function() {
-	return {
-		restrict:'E',
-		scope:{id:'@',
-				name:'@',
-				link:'@',
-				select:'='},
-		// transclude: true,
-		// ng-model="{{selection}}"
-		//ng-model="{{select.selection}}" 
-		template:  '<div id={{id}}> <input type="radio" name="COMMON" ng-model="select.selected" value="{{id}}">{{name}}</input> <p ng-dblclick="{{selectme()}}">{{link}}</p> </div>',
-		compile:function (tElement, tAttrs)
-		{
-			//GLOBALS FOR THIS ZONE
-
- 			//Linking function
- 			return function(scope,element,attrs)
- 			{
- 				scope.selection_work={select:'cool'};
-                scope.$watch('select.selected', function (x) 
-	                {    //updated everytime the variable changes the first parameter is the newValue, second (omitted here) is the oldValue                	
-	                    alert(x);
-	                }
-                );
-                scope.selectme=function(){
-                	// alert("clicked");
-                }
- 			}
-
-		}
-
-	}
 });
 
 function prof_coverflow($scope){
@@ -190,36 +132,4 @@ function prof_coverflow($scope){
 	{id:4, title:'Fothermuffin 4'},
 	{id:5, title:'Fothermuffin 5'},
 	];
-}
-
-function elections($scope){
-	$scope.categories=[
-	{id:1, title:'Fothermuffin 1',selection:'1',
-									list:[
-										{id:1,name:'Muffin 1',link:'Image1 Link :)'},
-										{id:2,name:'Muffin 2',link:'Image2 Link :)'},
-										{id:3,name:'Muffin 3',link:'Image3 Link :)'},
-										{id:4,name:'Muffin 4',link:'Image4 Link :)'},
-										]},
-	{id:2, title:'Fothermuffin 2',selection:'2',
-									list:[
-										{id:1,name:'MuffinB 1',link:'Image1 Link :)'},
-										{id:2,name:'MuffinB 2',link:'Image2 Link :)'},
-										{id:3,name:'MuffinB 3',link:'Image3 Link :)'},
-										{id:4,name:'MuffinB 4',link:'Image4 Link :)'},
-										]}
-	];
-	$scope.likethis="1";
-	$scope.select={selected:'so far so good'};
-}
-
-function Ctrl($scope){
-	    $scope.color = 'green';
-    $scope.choices = ['red', 'green', 'blue'];
-    
-    $scope.bam={selection:'red'};
-
-    $scope.$watch('bam.selection',function(x){
-    	alert(x);
-    });
 }

@@ -20,19 +20,15 @@
 	</div>
 	<div class="Bar_height"></div>
 
-	 <form name="myForm" ng-controller="Ctrl">
-	     <div ng-repeat="choice in choices">
-	     <input type="radio" name="color_common" ng-model="bam.selection" value="{{choice}}">{{choice}}</input>
-	     </div>
-	   <tt>color = {{color}}</tt><br>
-	  </form>
+	<markdown>
+#Something here
+- list item
+	</markdown>
 
-
-	<div ng-controller="elections">
-		<votepanel ng-repeat="category in categories" id="{{category.id}}" title="{{category.title}}">
-			<nominee ng-repeat="person in category.list" select="select" ng-model="select" id="{{person.id}}" name="{{person.name}}" link="{{person.link}}"/>
-		</votepanel>
-	</div>
+	<markdown>
+#Something here
+- list item
+	</markdown>
 
 	<my-Widget>
 		<div id="one" class="box"></div>
