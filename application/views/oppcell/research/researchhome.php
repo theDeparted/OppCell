@@ -16,7 +16,11 @@
 
 <body style="background-image: url(<?php echo URL::base()."/img/pattern.png"; ?>), url(<?php echo URL::base()."/img/Research_at_IISER_background.jpg"; ?>);">
 	<div class="Bar">
-		<div class="Vertical_Align_Top Bar_height">
+		<div class="LogOut">
+			<a href="<?php echo URL::base(); ?>"> HOME </a> | <a href="<?php echo URL::base()."/logout"; ?>">Log Out</a>
+		</div>
+
+		<div class="Vertical_Align_Bottom Bar_height">
 			<div class="OppCell_logo">Research @ IISER</div>
 		</div>
 	</div>
@@ -44,6 +48,7 @@
 					<td>{{getNameFromList(category,category.selected.id)}}</td>
 				</tr>
 			</table>
+			<p class="linklike" ng-click="cast()">Cast My Vote!</p>
 			<!-- <div ng-repeat="category in categories"> <p><tt>For Category:</tt>{{category.title}}, <br> <tt>you've selected:</tt>{{getNameFromList(category,category.selected.id)}}</p>	</div> -->
 		</div>
 		<center>

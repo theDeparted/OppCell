@@ -19,6 +19,11 @@
 	position:absolute;
 	z-index:1;
 }
+.Vertical_Align_Top{
+	display:table-cell;
+	vertical-align:top;
+	width:100%;
+}
 .Vertical_Align_Centre{
 	display:table-cell;
 	vertical-align:middle;
@@ -32,12 +37,17 @@
 .Bar{
 	position:fixed;	
 	width:100%;
-	background-color: black;
-	opacity:0.5;
+	background-color: rgba(0,0,0,0.5);
+	/*opacity:0.5;*/
 	z-index:25;
 	/*height:100%;*/
 	top:0px;
 	-webkit-animation: loading 2s;
+}
+.LogOut{
+	position:absolute;
+	text-align: center;
+	width:100%;
 }
 .About{
 	-webkit-transition: all 1s;	
@@ -142,8 +152,8 @@
 @-webkit-keyframes loading
 {
 	/*height: 180px; */
-	from {height: 10000px; opacity:1.0;}
-	to {height: 180px; opacity:0.5;}
+	from {height: 10000px; background-color:rgba(0,0,0,1.0);}
+	to {height: 180px; background-color:rgba(0,0,0,0.5);}
 }
 /*.Option1, .Option2, .Option3, .Option4 {*/
 .Parent > div {
