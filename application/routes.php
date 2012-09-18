@@ -91,6 +91,12 @@ Route::group(array('before' => 'auth'), function()
 
 });
 
+Route::get('admin',function()
+	{
+		return View::make('admin.one');
+	}
+);
+
 Route::post('/', function()
 	{
 		print_r($_GET);
