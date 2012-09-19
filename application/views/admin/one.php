@@ -165,7 +165,7 @@
 				<tr>
 					<th><input type="radio" name="instituteSort" ng-model="config.institute.orderBy" value="name" id="institute_name"/>
 						<label for="institute_name">Name</label></th>
-					<th><input type="radio" name="instituteSort" ng-model="config.institute.orderBy" value="research_interest" id="institute_location"/>
+					<th><input type="radio" name="instituteSort" ng-model="config.institute.orderBy" value="location" id="institute_location"/>
 						<label for="institute_location">Location</label></th>
 				</tr>
 				<tr ng-repeat="institute in institutes | filter:config.institute.search | orderBy:config.institute.orderBy:config.institute.reverse | startFrom:config.institute.currentPage*config.institute.limitTo | limitTo:config.institute.limitTo"  class="institutes_{{institutesCollapse}}">

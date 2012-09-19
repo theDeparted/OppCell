@@ -495,7 +495,7 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 				// alert("Hello1");
 				$scope.members=val;
 				$scope.init=$scope.init+1;
-				if($scope.init==1)
+				if($scope.init==2)
 					$scope.updatingInterface=false;
 				$scope.$apply();
 			});
@@ -503,9 +503,9 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 
 			truthSource.institute.fetch.Now(function(val){
 				// alert("Hello1");
-				$scope.members=val;
+				$scope.institutes=val;
 				$scope.init=$scope.init+1;
-				if($scope.init==1)
+				if($scope.init==2)
 					$scope.updatingInterface=false;
 				$scope.$apply();
 			});
@@ -558,6 +558,7 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 			truthSource.institute.add.Now(institute,function(val){
 				$scope.$apply();		
 				$scope.InstitutesRefresh();
+				$scope.DepartmentsRefresh();
 				// alert(val);
 			});
 		};
