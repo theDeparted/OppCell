@@ -97,6 +97,12 @@ Route::get('admin',function()
 	}
 );
 
+Route::get('admin/mlist',function()
+	{
+		return json_encode(Prof::all());
+	}
+);
+
 Route::post('/', function()
 	{
 		print_r($_GET);

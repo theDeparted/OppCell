@@ -1,6 +1,6 @@
 <?php
 
-class Create_Prof {
+class Create_Insti {
 
 	/**
 	 * Make changes to the database.
@@ -9,7 +9,7 @@ class Create_Prof {
 	 */
 	public function up()
 	{
-		Schema::create('profs', function($table)
+		Schema::create('institute',function($table)
 		{
 			// Autoincrement ID
 			$table->increments('id')->unsigned();
@@ -18,13 +18,7 @@ class Create_Prof {
 			$table->string('name');
 
 			// Image link
-			$table->string('img');
-
-			// Description
-			$table->string('description');
-
-			// Title
-			$table->string('title');
+			$table->string('location');
 
 			// Timestamps
 			$table->timestamps();
@@ -38,8 +32,7 @@ class Create_Prof {
 	 */
 	public function down()
 	{
-		// Dropping Students table to go back to Stone Age
-		Schema::drop('profs');
+		Schema::drop('institute');
 	}
 
 }

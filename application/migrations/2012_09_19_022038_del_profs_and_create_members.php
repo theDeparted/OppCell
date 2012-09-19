@@ -25,7 +25,7 @@ class Del_Profs_And_Create_Members {
 			$table->string('research_interest');
 
 			// Title
-			$title->string('title');
+			$table->string('title');
 
 			// Timestamps
 			$table->timestamps();
@@ -55,7 +55,7 @@ class Del_Profs_And_Create_Members {
 			$table->string('description');
 
 			// Title
-			$title->string('title');
+			$table->string('title');
 
 			// Timestamps
 			$table->timestamps();

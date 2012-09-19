@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 class Add_Journals {
 
@@ -40,7 +40,7 @@ class Add_Journals {
 	public function down()
 	{
 		Schema::drop('journals');
-		Schema::table('papers', function()
+		Schema::table('papers', function($table)
 		{
 			$table->drop_column('Journal');
 		});
