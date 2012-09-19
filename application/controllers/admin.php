@@ -104,12 +104,12 @@
 			$inst = new Institute;
 			$inst->name = $data->name;
 			$inst->location = $data->location;
-			$dep = new Department;
-			$dep->name = 'Unknown';
-			$dep->location = $data->location;
+			$dept = new Department;
+			$dept->name = 'Unknown';
+			$dept->location = $data->location;
 			$truth = $inst->save();
-			$dep->institute = $inst->id;
-			if($truth&&$dep->save())
+			$dept->institute = $inst->id;
+			if($truth&&$dept->save())
 			{
 				return "Member Adding Process ended Successfully";
 			}
@@ -139,10 +139,10 @@
 		{
 			$id = Input::get('id');
 			$inst = Institute::find($id);
-			$deps = Department::where('institute','=',$id)->get();
-			foreach($deps as $dep)
+			$depts = Department::where('institute','=',$id)->get();
+			foreach($depts as $dept)
 			{
-				$dep->delete();
+				$dept->delete();
 			}
 			if($inst->delete())
 			{
@@ -157,14 +157,14 @@
 		public function get_dlist()
 		{
 			$data = array();
-			$deps = Department::all();
-			foreach($deps as $dep)
+			$depts = Department::all();
+			foreach($depts as $dept)
 			{
 				$dat = array(
-						'id' => $dep->id,
-						'name' => $dep->name,
-						'location' => $dep->location,
-						'institute' => $dep->institute
+						'id' => $dept->id,
+						'name' => $dept->name,
+						'location' => $dept->location,
+						'institute' => $dept->institute
 					);
 				$data[] = $dat;
 			}
@@ -174,11 +174,11 @@
 		public function post_dadd()
 		{
 			$data = json_decode(Input::get('department'));
-			$dep = new Department;
-			$dep->name = $data->name;
-			$dep->location = $data->location;
-			$dep->institute = $data->institute;
-			if($dep->save())
+			$dept = new Department;
+			$dept->name = $data->name;
+			$dept->location = $data->location;
+			$dept->institute = $data->institute;
+			if($dept->save())
 			{
 				return "Member Adding Process ended Successfully";
 			}
@@ -191,11 +191,11 @@
 		public function post_dupdate()
 		{
 			$data = json_decode(Input::get('department'));
-			$dep = Department::find($data->id);
-			$dep->name = $data->name;
-			$dep->location = $data->location;
-			$dep->institute = $data->institute;
-			if($dep->save())
+			$dept = Department::find($data->id);
+			$dept->name = $data->name;
+			$dept->location = $data->location;
+			$dept->institute = $data->institute;
+			if($dept->save())
 			{
 				return "Member Adding Process ended Successfully";
 			}
@@ -208,8 +208,8 @@
 		public function post_ddel()
 		{
 			$id = Input::get('id');
-			$dep = Department::find($id);
-			if($dep->delete())
+			$dept = Department::find($id);
+			if($dept->delete())
 			{
 				return "Member Remove Process ended Successfully";
 			}
