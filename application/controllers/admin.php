@@ -19,7 +19,9 @@
 				$dat = array(
 						'id' => $prof->id,
 						'name' => $prof->name,
-						'research_interest' => $prof->research_interest
+						'research_interest' => $prof->research_interest,
+						'department' => $prof->department,
+						'institute' => Department::find($prof->department)->institute
 					);
 				$data[] = $dat;
 			}
