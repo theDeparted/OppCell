@@ -103,7 +103,7 @@ Route::get('admin/mlist',function()
 	}
 );
 
-Route::get('admin/madd',function()
+Route::post('admin/madd',function()
 	{
 		$data = json_decode(Input::get('member'));
 		$mem = Prof::create();
