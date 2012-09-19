@@ -55,26 +55,25 @@
 		public function post_mupdate()
 		{
 			$data = json_decode(Input::get('member'));
-			print_r($data);
-			// $mem = Prof::find($data->id);
-			// $mem->name = $data->name;
-			// $dept = ($data->department == 0) ? NULL : Department::find($data->department);
-			// if($dept != NULL)
-			// {
-			// 	if($dept->institute == $data->institute)
-			// 	{
-			// 		$mem->department = $data->department;
-			// 	}
-			// }
-			// $mem->research_interest = $data->research_interest;
-			// if($mem->save())
-			// {
-			// 	return "Member Adding Process ended Successfully";
-			// }
-			// else
-			// {
-			// 	return "Member Adding Process Failed";
-			// }
+			$mem = Prof::find($data->id);
+			$mem->name = $data->name;
+			$dept = ($data->department == 0) ? NULL : Department::find($data->department);
+			if($dept != NULL)
+			{
+				if($dept->institute == $data->institute)
+				{
+					$mem->department = $data->department;
+				}
+			}
+			$mem->research_interest = $data->research_interest;
+			if($mem->save())
+			{
+				return "Member Adding Process ended Successfully";
+			}
+			else
+			{
+				return "Member Adding Process Failed";
+			}
 		}
 
 		public function post_mdel()
