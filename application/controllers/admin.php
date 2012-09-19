@@ -94,11 +94,11 @@
 			$inst = new Institute;
 			$inst->name = $data->name;
 			$inst->location = $data->location;
-			$dept = Department::find($data->id);
+			$dept = new Department;
 			$dept->name = 'Unknown';
 			$dept->location = $data->location;
 			$truth = $inst->save();
-			$dept->institute = $insti->id;
+			$dept->institute = $inst->id;
 			if($truth&&$dept->save())
 			{
 				return "Member Adding Process ended Successfully";

@@ -2,6 +2,6 @@
 
 	class Department extends Eloquent
 	{
-		public static $table = 'members';
+		public static $table = 'department';
 		public static $timestamps = true;
 	}
