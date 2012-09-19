@@ -31,6 +31,10 @@
 			$data = json_decode(Input::get('member'));
 			$mem = new Prof;
 			$mem->name = $data->name;
+			if(Department::find($data->deptartment)->institute == $data->institute)
+			{
+				$mem->deptartment = $data->department;
+			}
 			$mem->research_interest = $data->research_interest;
 			if($mem->save())
 			{
@@ -47,6 +51,10 @@
 			$data = json_decode(Input::get('member'));
 			$mem = Prof::find($data->id);
 			$mem->name = $data->name;
+			if(Department::find($data->deptartment)->institute == $data->institute)
+			{
+				$mem->deptartment = $data->department;
+			}
 			$mem->research_interest = $data->research_interest;
 			if($mem->save())
 			{
@@ -163,7 +171,7 @@
 
 		public function post_dadd()
 		{
-			$data = json_decode(Input::get('institute'));
+			$data = json_decode(Input::get('department'));
 			$dept = new Department;
 			$dept->name = $data->name;
 			$dept->location = $data->location;
@@ -180,7 +188,7 @@
 
 		public function post_dupdate()
 		{
-			$data = json_decode(Input::get('institute'));
+			$data = json_decode(Input::get('department'));
 			$dept = Department::find($data->id);
 			$dept->name = $data->name;
 			$dept->location = $data->location;
