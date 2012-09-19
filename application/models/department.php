@@ -1,6 +1,6 @@
 <?php
 
-	class Prof extends Eloquent
+	class Department extends Eloquent
 	{
 		public static $table = 'members';
 		public static $timestamps = true;
