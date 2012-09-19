@@ -103,6 +103,24 @@ Route::get('admin/mlist',function()
 	}
 );
 
+Route::get('admin/madd',function()
+	{
+		$data = json_decode(Input::get('member'));
+		$mem = Prof::create();
+		$mem->name = $data['name'];
+		$mem->research_interest = $data['research_interest'];
+		if($mem->save())
+		{
+			return "Member Adding Process ended Successfully";
+		}
+		else
+		{
+			return "Member Adding Process Failed";
+		}
+
+	}
+);
+
 Route::post('/', function()
 	{
 		print_r($_GET);
