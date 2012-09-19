@@ -123,7 +123,7 @@
 		public function post_idel()
 		{
 			$id = Input::get('id');
-			$inst = Prof::find($id);
+			$inst = Institute::find($id);
 			if($inst->delete())
 			{
 				return "Member Remove Process ended Successfully";
