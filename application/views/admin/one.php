@@ -165,7 +165,7 @@
 				<tr>
 					<th><input type="radio" name="instituteSort" ng-model="config.institute.orderBy" value="name" id="institute_name"/>
 						<label for="institute_name">Name</label></th>
-					<th><input type="radio" name="instituteSort" ng-model="config.institute.orderBy" value="research_interest" id="institute_location"/>
+					<th><input type="radio" name="instituteSort" ng-model="config.institute.orderBy" value="location" id="institute_location"/>
 						<label for="institute_location">Location</label></th>
 				</tr>
 				<tr ng-repeat="institute in institutes | filter:config.institute.search | orderBy:config.institute.orderBy:config.institute.reverse | startFrom:config.institute.currentPage*config.institute.limitTo | limitTo:config.institute.limitTo"  class="institutes_{{institutesCollapse}}">
@@ -216,6 +216,83 @@
 			<br/>
 			<a href='' ng-click="config.institute.limitTo= (+config.institute.limitTo)+10">Show 10 more</a> | 
 			<a href='' ng-click="config.institute.limitTo=20">Default</a>
+			<br/><br/>
+
+		</div>
+
+<!-- END -->
+<!-- STEP 2 -->
+		<div ng-hide="isoMembers || isoDepartments">
+			<hr/>
+			<p class="subSubTitle">Journal</p>
+			<a href='' ng-click="isoJournals=1">Isolate</a> | <a href='' ng-click="isoJournals=0">Normal</a>
+			<br/><br/>
+
+			<a href='' ng-hide="journalsCollapse=='hide'" ng-click="journalsCollapse='hide'">Collapse</a>
+			<a href='' ng-show="journalsCollapse=='hide'" ng-click="journalsCollapse='show'">Show</a>
+			<a href='' ng-click="JournalsRefresh()">Refresh List</a>
+			<input type="text" ng-model="config.journal.search" placeholder="Quick Search" />		
+			<span>		
+				<a href='' ng-click="config.journal.reverse=false">Ascending</a> | 
+				<a href='' ng-click="config.journal.reverse=true">Descending</a>								
+			</span>
+
+
+			<table>
+				<tr>
+					<th><input type="radio" name="journalSort" ng-model="config.journal.orderBy" value="name" id="journal_name"/>
+						<label for="journal_name">Name</label></th>
+					<th><input type="radio" name="journalSort" ng-model="config.journal.orderBy" value="nationality" id="journal_nationality"/>
+						<label for="journal_nationality">Nationality</label></th>
+				</tr>
+				<tr ng-repeat="journal in journals | filter:config.journal.search | orderBy:config.journal.orderBy:config.journal.reverse | startFrom:config.journal.currentPage*config.journal.limitTo | limitTo:config.journal.limitTo"  class="journals_{{journalsCollapse}}">
+					<td>
+						<input type="text" ng-model="journal.name" placeholder="Name"/>
+					</td>
+					<td>
+						<input type="text" ng-model="journal.nationality" placeholder="Nationality"/>
+					</td>
+					<td>
+						<a href="" ng-click="DeleteJournal(journal.id)">Remove</a>
+					</td>
+					<td>
+						<a href="" ng-click="UpdateJournal(journal)">Update</a>
+					</td>
+
+				</tr>
+				<tr ng-hide="isoMembers">
+					<td>
+						<input type="text" ng-model="journalNew.name" placeholder="Name"/>
+					</td>
+					<td>
+						<input type="text" ng-model="journalNew.nationality" placeholder="Nationality"/>
+					</td>
+					<td></td>					
+					<td>
+						<a href="" ng-click="AddJournal(journalNew)">Add</a>
+					</td>
+				</tr>				
+			</table>			
+
+			<br/>		
+			<button ng-disabled="config.journal.currentPage==0" ng-click="config.journal.currentPage=0">
+				First
+			</button>
+			<button ng-disabled="config.journal.currentPage == 0" ng-click="config.journal.currentPage=config.journal.currentPage-1">
+		        Previous
+		    </button>
+		    {{config.journal.currentPage+1}}/{{numberOfPages(journals,config.journal.limitTo)}}
+		    <button ng-disabled="config.journal.currentPage >= journals.length/config.journal.limitTo - 1" ng-click="config.journal.currentPage=config.journal.currentPage+1">
+		        Next
+		    </button>
+			<button ng-disabled="config.journal.currentPage >= journals.length/config.journal.limitTo - 1" ng-click="config.journal.currentPage=numberOfPages(journals,config.journal.limitTo)-1">
+				Last
+			</button>
+			<br/><br/>	 
+			Show a maximum of <input cols="4" type="text" ng-model="config.journal.limitTo" placeholder="Maximum Entries" /> rows
+			<br/>
+			<a href='' ng-click="config.journal.limitTo= (+config.journal.limitTo)+10">Show 10 more</a> | 
+			<a href='' ng-click="config.journal.limitTo=20">Default</a>
 			<br/><br/>
 
 		</div>

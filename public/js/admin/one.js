@@ -71,7 +71,7 @@ angular.module('myApp',[])
 		truth.member.add.Now=function(member, OnComplete)
 		{
 			truth.io.state.working=true;
-			// alert(JSON.stringify(member));
+			alert(JSON.stringify(member));
 			// alert(truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.student.config.basePath + truth.student.add.lnk);
 			$.ajax({
 				type: 'POST',
@@ -104,6 +104,7 @@ angular.module('myApp',[])
 		truth.member.update.Now=function(member, OnComplete)
 		{
 			truth.io.state.working=true;
+			alert(JSON.stringify(member));
 			$.ajax({
 				type: 'POST',
 				url: truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.member.config.basePath + truth.member.update.lnk,
@@ -441,6 +442,7 @@ function settings($scope,truthSource,$timeout){
 $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,currentPage:0},
 				institute:{orderBy:'name',search:'',reverse:false,limitTo:20,currentPage:0},
 				department:{orderBy:'name',search:'',reverse:false,limitTo:20,currentPage:0},
+				journal:{orderBy:'name',search:'',reverse:false,limitTo:20,currentPage:0},
 					other:{hideCount:0,hideAfter:10}};
 
 	$scope.members=[
@@ -462,8 +464,15 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 	{id:'2',name:'National Chuckles University',location:'Indian Supremacy'}
 	];
 
+	$scope.instituteNew={name:'',location:''};
+
+	$scope.journals=[
+	{id:'1',name:'Journal of Muffin',location:'American'},
+	{id:'2',name:'Muffinnify Journal',location:'Indian'}
+	];
 
 	$scope.instituteNew={name:'',location:''};
+
 
 	//SET OF FUNCTIONS REQUIRED FOR DISPLAYING THE LOADING BAR
 	{
@@ -495,7 +504,7 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 				// alert("Hello1");
 				$scope.members=val;
 				$scope.init=$scope.init+1;
-				if($scope.init==1)
+				if($scope.init==2)
 					$scope.updatingInterface=false;
 				$scope.$apply();
 			});
@@ -503,9 +512,9 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 
 			truthSource.institute.fetch.Now(function(val){
 				// alert("Hello1");
-				$scope.members=val;
+				$scope.institutes=val;
 				$scope.init=$scope.init+1;
-				if($scope.init==1)
+				if($scope.init==2)
 					$scope.updatingInterface=false;
 				$scope.$apply();
 			});
@@ -558,6 +567,7 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 			truthSource.institute.add.Now(institute,function(val){
 				$scope.$apply();		
 				$scope.InstitutesRefresh();
+				$scope.DepartmentsRefresh();
 				// alert(val);
 			});
 		};
