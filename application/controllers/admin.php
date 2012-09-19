@@ -94,7 +94,7 @@
 			$inst = new Institute;
 			$inst->name = $data->name;
 			$inst->location = $data->location;
-			$dept = Department::find($data->id);
+			$dept = new Department;
 			$dept->name = 'Unknown';
 			$dept->location = $data->location;
 			$truth = $inst->save();
