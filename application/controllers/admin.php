@@ -107,7 +107,7 @@
 		public function post_iupdate()
 		{
 			$data = json_decode(Input::get('institute'));
-			$inst = Prof::find($data->id);
+			$inst = Institute::find($data->id);
 			$inst->name = $data->name;
 			$inst->location = $data->location;
 			if($inst->save())
