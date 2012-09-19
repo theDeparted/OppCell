@@ -133,7 +133,7 @@ function(){
 		template: '<div class="main_group"> \
 						<h1>{{title}}</h1> \
 						<div ng-transclude></div> \
-						<input type="radio" name="{{id}}" ng-model="selected.id" value="0">I am an agnostic little b*st*rd!</input> \
+						<input type="radio" name="{{id}}" ng-model="selected.id" value="0" id="{{id}}_abstane" /><label for="{{id}}_abstane">I am an agnostic little b*st*rd!</label> \
 					</div>',		
 		compile:function (tElement, tAttrs)
 		{
@@ -165,7 +165,7 @@ function(){
 		// ng-model="{{selection}}"
 		//ng-model="{{select.selection}}" 
 		template:  '<p>{{link}}</p> \
-		<div id={{id}}> <input type="radio" name="{{category}}" ng-model="selected.id" value="{{id}}">{{name}}</input> \
+		<div id={{id}}> <input type="radio" name="{{category}}" ng-model="selected.id" value="{{id}}" id="{{category}}_{{id}}" /><label for="{{category}}_{{id}}">{{name}}</label> \
 		</div>',
 		compile:function (tElement, tAttrs)
 		{
@@ -232,7 +232,16 @@ function elections($scope){
 		else
 			return "Not Selected";
 			
-	}
+	};
+
+    $scope.cast=function(){
+    	var r=confirm("Ensure your selections are accurate. This can NOT be undone.");
+    	if(r==1)
+    		alert("Submitted!");
+    	else
+    		alert("Cancelled");
+    };
+
 }
 
 function Ctrl($scope){
@@ -244,4 +253,5 @@ function Ctrl($scope){
     $scope.$watch('bam.selection',function(x){
     	// alert(x);
     });
+
 }

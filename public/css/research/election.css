@@ -41,13 +41,24 @@ table{
     width: 400px;
 }
 
-th, td {
+tr{
 	-webkit-transition: all 2s;
+	opacity:1.0;
+}
+th, td {
+	
     /*border: 1px solid black;*/
     overflow: hidden;
     width: 200px;
     /*color:rgba(255,255,255,1);*/
-    opacity:1;
+    /*opacity:1;*/
+}
+.linklike{
+	text-decoration: underline;
+	font-family: capText;
+	font-size:35px;
+	cursor:pointer;	
+	text-align:center;
 }
 
 @font-face

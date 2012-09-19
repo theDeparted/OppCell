@@ -14,7 +14,10 @@
 	<!-- <div class="verticalText">HOW TO</div> -->
 	<div class="HowTo"><h1> HOW TO </h1> <br/>Now what do you want?</div>
 	<div class="Live"><h1> LIVE BAR </h1> <br/> I am online! <br/></div>
-	<div class="Bar">
+	<div class="Bar">		
+		<div class="LogOut">
+			<a href="<?php echo URL::base()."/logout"; ?>">Log Out</a>
+		</div>
 		<div class="Vertical_Align_Bottom Bar_height">
 			<div class="OppCell_logo">Opportunity Cell</div>
 		</div>
