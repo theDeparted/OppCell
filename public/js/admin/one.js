@@ -12,8 +12,8 @@ angular.module('myApp',[])
 //http://localhost/IISERM/elections/public
 	var truth={
 		member:{	fetch:{Now:{},lnk:'/mlist'},
-					add:{Now:{},lnk:'/sadd'},
-					remove:{Now:{},lnk:'/sdel'},
+					add:{Now:{},lnk:'/madd'},
+					remove:{Now:{},lnk:'/mdel'},
 					update:{Now:{},lnk:'/supdate'},
 					config:{basePath:'/admin'},
 					data:{}
@@ -49,6 +49,39 @@ angular.module('myApp',[])
 					// alert("done");
 					truth.io.state.working=false;
 					OnComplete(truth.member.data);
+			});
+		};
+
+		truth.member.add.Now=function(member, OnComplete)
+		{
+			truth.io.state.working=true;
+			// alert(JSON.stringify(member));
+			// alert(truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.student.config.basePath + truth.student.add.lnk);
+			$.ajax({
+				type: 'POST',
+				url: truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.member.config.basePath + truth.member.add.lnk,
+				statusCode: {
+					404: function () {
+						;
+					},
+					500: function () {
+						;
+					}
+				},				
+				data: {member:JSON.stringify(member), ajax: '1'},
+				// dataType: 'json',
+				success: function (data) {
+					truth.io.state.log = truth.io.state.log + '<br/><br/>' + data;
+					truth.io.state.last=data;
+					// alert(data);
+				}
+				}).error(function() {
+					;
+				}).complete(function() {
+					// alert(truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.io.userInfo.lnk);
+					// alert("COMPLETED");
+					truth.io.state.working=false;
+					OnComplete(truth.io.state.last);
 			});
 		};
 
@@ -109,7 +142,7 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 		// 	$timeout(autoHide,1000);
 		// };
 		// autoHide();
-		
+
 		$scope.$watch('truthSource.io.state.last',function(newVal,oldVal){
 			$scope.config.other.hideCount=$scope.config.other.hideAfter;
 		});
@@ -118,17 +151,38 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 		});
 	}
 	
-	$timeout(function(){
-		$scope.init=0;
+	//INITIAL REFRESH
+	{
+		// $timeout(function(){
+		// 	$scope.init=0;
 
+		// 	truthSource.member.fetch.Now(function(val){
+		// 		// alert("Hello1");
+		// 		$scope.members=val;
+		// 		$scope.init=$scope.init+1;
+		// 		if($scope.init==1)			
+		// 			$scope.updatingInterface=false;
+		// 		$scope.$apply();
+		// 	});
+		// },1000);
+	}
+
+	$scope.AddMember=function(member){
+		truthSource.member.add.Now(member,function(val){
+			$scope.$apply();
+			// $scope.PostsRefresh();
+			// alert(val);
+		});
+	}	
+	$scope.MembersRefresh=function(){
 		truthSource.member.fetch.Now(function(val){
-			// alert("Hello1");
+			$scope.$apply();
+			$scope.updatingInterface=true;
+			$scope.$apply();
 			$scope.members=val;
-			$scope.init=$scope.init+1;
-			if($scope.init==1)			
-				$scope.updatingInterface=false;
+			$scope.updatingInterface=false;
 			$scope.$apply();
 		});
-	},1000);
+	}
 
 }

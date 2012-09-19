@@ -51,7 +51,7 @@
 
 			<a href='' ng-hide="membersCollapse=='hide'" ng-click="membersCollapse='hide'">Collapse</a>
 			<a href='' ng-show="membersCollapse=='hide'" ng-click="membersCollapse='show'">Show</a>
-			<a href='' ng-click="StudentsRefresh()">Refresh List</a>
+			<a href='' ng-click="MembersRefresh()">Refresh List</a>
 			<input type="text" ng-model="config.member.search" placeholder="Quick Search" />		
 			<span>		
 				<a href='' ng-click="config.member.reverse=false">Ascending</a> | 
@@ -106,6 +106,12 @@
 					<td>
 						<select ng-model="memberNew.department" ng-options="department.id as department.name for department in  departments | filter:{institute:memberNew.institute}"></select>
 					</td>					
+					<td>
+					</td>
+					<td>
+						<a href="" ng-click="AddMember(memberNew)">Add</a>
+					</td>
+
 				</tr>				
 			</table>			
 
