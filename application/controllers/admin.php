@@ -98,7 +98,7 @@
 			$dept->name = 'Unknown';
 			$dept->location = $data->location;
 			$truth = $inst->save();
-			$dept->institute = $insti->id;
+			$dept->institute = $inst->id;
 			if($truth&&$dept->save())
 			{
 				return "Member Adding Process ended Successfully";
