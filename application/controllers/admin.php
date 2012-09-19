@@ -94,7 +94,12 @@
 			$inst = new Institute;
 			$inst->name = $data->name;
 			$inst->location = $data->location;
-			if($inst->save())
+			$dept = Department::find($data->id);
+			$dept->name = 'Unknown';
+			$dept->location = $data->location;
+			$truth = $inst->save();
+			$dept->institute = $insti->id;
+			if($truth&&$dept->save())
 			{
 				return "Member Adding Process ended Successfully";
 			}
