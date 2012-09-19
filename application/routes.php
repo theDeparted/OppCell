@@ -107,8 +107,8 @@ Route::post('admin/madd',function()
 	{
 		$data = json_decode(Input::get('member'));
 		$mem = new Prof;
-		$mem->name = $data['name'];
-		$mem->research_interest = $data['research_interest'];
+		$mem->name = $data->name;
+		$mem->research_interest = $data->research_interest;
 		if($mem->save())
 		{
 			return "Member Adding Process ended Successfully";
