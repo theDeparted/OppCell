@@ -90,7 +90,7 @@
 
 		public function post_iadd()
 		{
-			$data = json_decode(Input::get('member'));
+			$data = json_decode(Input::get('institute'));
 			$inst = new Institute;
 			$inst->name = $data->name;
 			$inst->location = $data->location;
@@ -106,7 +106,7 @@
 
 		public function post_iupdate()
 		{
-			$data = json_decode(Input::get('member'));
+			$data = json_decode(Input::get('institute'));
 			$inst = Prof::find($data->id);
 			$inst->name = $data->name;
 			$inst->location = $data->location;
