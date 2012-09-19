@@ -33,7 +33,7 @@
 			$data = json_decode(Input::get('member'));
 			$mem = new Prof;
 			$mem->name = $data->name;
-			if(Department::find($data->deptartment)->institute == $data->institute)
+			if(Department::find($data->department)->institute == $data->institute)
 			{
 				$mem->deptartment = $data->department;
 			}
@@ -53,7 +53,7 @@
 			$data = json_decode(Input::get('member'));
 			$mem = Prof::find($data->id);
 			$mem->name = $data->name;
-			if(Department::find($data->deptartment)->institute == $data->institute)
+			if(Department::find($data->department)->institute == $data->institute)
 			{
 				$mem->deptartment = $data->department;
 			}
