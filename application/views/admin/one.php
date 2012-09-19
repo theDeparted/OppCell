@@ -88,6 +88,12 @@
 					<td>
 						<select ng-model="member.department" ng-options="department.id as department.name for department in departments | filter:{institute:member.institute}"></select>
 					</td>
+					<td>
+						<a href="" ng-click="DeleteMember(member.id)">Remove</a>
+					</td>
+					<td>
+						<a href="" ng-click="UpdateMember(member)">Update</a>
+					</td>
 
 				</tr>
 				<tr ng-hide="isoMembers">
@@ -147,11 +153,11 @@
 
 			<a href='' ng-hide="institutesCollapse=='hide'" ng-click="institutesCollapse='hide'">Collapse</a>
 			<a href='' ng-show="institutesCollapse=='hide'" ng-click="institutesCollapse='show'">Show</a>
-			<a href='' ng-click="StudentsRefresh()">Refresh List</a>
+			<a href='' ng-click="InstitutesRefresh()">Refresh List</a>
 			<input type="text" ng-model="config.institute.search" placeholder="Quick Search" />		
 			<span>		
 				<a href='' ng-click="config.institute.reverse=false">Ascending</a> | 
-				<a href='' ng-click="config.institute.reverse=true">Descending</a>				
+				<a href='' ng-click="config.institute.reverse=true">Descending</a>								
 			</span>
 
 
@@ -159,7 +165,7 @@
 				<tr>
 					<th><input type="radio" name="instituteSort" ng-model="config.institute.orderBy" value="name" id="institute_name"/>
 						<label for="institute_name">Name</label></th>
-					<th><input type="radio" name="instituteSort" ng-model="config.institute.orderBy" value="research_interest" id="institute_research_interest"/>
+					<th><input type="radio" name="instituteSort" ng-model="config.institute.orderBy" value="research_interest" id="institute_location"/>
 						<label for="institute_location">Location</label></th>
 				</tr>
 				<tr ng-repeat="institute in institutes | filter:config.institute.search | orderBy:config.institute.orderBy:config.institute.reverse | startFrom:config.institute.currentPage*config.institute.limitTo | limitTo:config.institute.limitTo"  class="institutes_{{institutesCollapse}}">
@@ -169,6 +175,13 @@
 					<td>
 						<input type="text" ng-model="institute.location" placeholder="Location"/>
 					</td>
+					<td>
+						<a href="" ng-click="DeleteInstitute(institute.id)">Remove</a>
+					</td>
+					<td>
+						<a href="" ng-click="UpdateInstitute(institute)">Update</a>
+					</td>
+
 				</tr>
 				<tr ng-hide="isoMembers">
 					<td>
@@ -209,6 +222,91 @@
 
 <!-- END -->
 
+		<div ng-hide="isoMembers || isoInstitutes">
+			<hr/>
+			<p class="subSubTitle">Departments</p>
+			<a href='' ng-click="isoDepartments=1">Isolate</a> | <a href='' ng-click="isoDepartments=0">Normal</a>
+			<br/><br/>
+
+			<a href='' ng-hide="departmentsCollapse=='hide'" ng-click="departmentsCollapse='hide'">Collapse</a>
+			<a href='' ng-show="departmentsCollapse=='hide'" ng-click="departmentsCollapse='show'">Show</a>
+			<a href='' ng-click="DepartmentsRefresh()">Refresh List</a>
+			<input type="text" ng-model="config.department.search" placeholder="Quick Search" />		
+			<span>		
+				<a href='' ng-click="config.department.reverse=false">Ascending</a> | 
+				<a href='' ng-click="config.department.reverse=true">Descending</a>								
+			</span>
+
+			<table>
+				<tr>
+					<th><input type="radio" name="departmentSort" ng-model="config.department.orderBy" value="name" id="department_name"/>
+						<label for="department_name">Name</label></th>
+					<th><input type="radio" name="departmentSort" ng-model="config.department.orderBy" value="location" id="department_location"/>
+						<label for="department_location">Location</label></th>
+					<th><input type="radio" name="departmentSort" ng-model="config.department.orderBy" value="institute" id="department_institute"/>
+						<label for="department_institute">Institute</label></th>
+
+				</tr>
+				<tr ng-repeat="department in departments | filter:config.department.search | orderBy:config.department.orderBy:config.department.reverse | startFrom:config.department.currentPage*config.department.limitTo | limitTo:config.department.limitTo"  class="departments_{{departmentsCollapse}}">
+					<td>
+						<input type="text" ng-model="department.name" placeholder="Name"/>
+					</td>
+					<td>
+						<input type="text" ng-model="department.location" placeholder="Location"/>
+					</td>
+					<td>
+						<select ng-model="department.institute" ng-options="institute.id as institute.name for institute in institutes"></select>
+					</td>
+
+					<td>
+						<a href="" ng-click="DeleteDepartment(department.id)">Remove</a>
+					</td>
+					<td>
+						<a href="" ng-click="UpdateDepartment(department)">Update</a>
+					</td>
+				</tr>
+				<tr ng-hide="isoMembers">
+					<td>
+						<input type="text" ng-model="departmentNew.name" placeholder="Name"/>
+					</td>
+					<td>
+						<input type="text" ng-model="departmentNew.location" placeholder="Location"/>
+					</td>
+					<td>
+						<select ng-model="departmentNew.institute" ng-options="institute.id as institute.name for institute in institutes"></select>
+					</td>					
+					<td></td>					
+					<td>
+						<a href="" ng-click="AddDepartment(departmentNew)">Add</a>
+					</td>
+				</tr>				
+			</table>			
+
+			<br/>		
+			<button ng-disabled="config.department.currentPage==0" ng-click="config.department.currentPage=0">
+				First
+			</button>
+			<button ng-disabled="config.department.currentPage == 0" ng-click="config.department.currentPage=config.department.currentPage-1">
+		        Previous
+		    </button>
+		    {{config.department.currentPage+1}}/{{numberOfPages(departments,config.department.limitTo)}}
+		    <button ng-disabled="config.department.currentPage >= departments.length/config.department.limitTo - 1" ng-click="config.department.currentPage=config.department.currentPage+1">
+		        Next
+		    </button>
+			<button ng-disabled="config.department.currentPage >= departments.length/config.department.limitTo - 1" ng-click="config.department.currentPage=numberOfPages(departments,config.department.limitTo)-1">
+				Last
+			</button>
+			<br/><br/>	 
+			Show a maximum of <input cols="4" type="text" ng-model="config.department.limitTo" placeholder="Maximum Entries" /> rows
+			<br/>
+			<a href='' ng-click="config.department.limitTo= (+config.department.limitTo)+10">Show 10 more</a> | 
+			<a href='' ng-click="config.department.limitTo=20">Default</a>
+			<br/><br/>
+
+		</div>
+
+
+<!-- END -->
 	
 	
 
