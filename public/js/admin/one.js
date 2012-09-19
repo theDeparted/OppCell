@@ -440,6 +440,7 @@ function settings($scope,truthSource,$timeout){
 
 $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,currentPage:0},
 				institute:{orderBy:'name',search:'',reverse:false,limitTo:20,currentPage:0},
+				department:{orderBy:'name',search:'',reverse:false,limitTo:20,currentPage:0},
 					other:{hideCount:0,hideAfter:10}};
 
 	$scope.members=[
@@ -582,7 +583,7 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 				$scope.$apply();
 				$scope.updatingInterface=true;
 				$scope.$apply();
-				$scope.members=val;
+				$scope.institutes=val;
 				$scope.updatingInterface=false;
 				$scope.$apply();
 			});
@@ -621,7 +622,7 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 				$scope.$apply();
 				$scope.updatingInterface=true;
 				$scope.$apply();
-				$scope.members=val;
+				$scope.departments=val;
 				$scope.updatingInterface=false;
 				$scope.$apply();
 			});
