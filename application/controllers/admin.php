@@ -219,4 +219,67 @@
 			}
 		}
 
+		public function get_jlist()
+		{
+			$data = array();
+			$jours = Journal::all();
+			foreach($jours as $jour)
+			{
+				$dat = array(
+						'id' => $jour->id,
+						'name' => $jour->name,
+					);
+				$data[] = $dat;
+			}
+			return json_encode($data);
+		}
+
+		public function post_jadd()
+		{
+			$data = json_decode(Input::get('journal'));
+			$jour = new Journal;
+			$jour->name = $data->name;
+			$jour->nationality = $data->nationality;
+			$jour->rating = $data->rating;
+			if($jour->save())
+			{
+				return "Member Adding Process ended Successfully";
+			}
+			else
+			{
+				return "Member Adding Process Failed";
+			}
+		}
+
+		public function post_jupdate()
+		{
+			$data = json_decode(Input::get('journal'));
+			$jour = Journal::find($data->id);
+			$jour->name = $data->name;
+			$jour->nationality = $data->nationality;
+			$jour->rating = $data->rating;
+			if($jour->save())
+			{
+				return "Member Adding Process ended Successfully";
+			}
+			else
+			{
+				return "Member Adding Process Failed";
+			}
+		}
+
+		public function post_jdel()
+		{
+			$id = Input::get('id');
+			$jour = Journal::find($id);
+			if($jour->delete())
+			{
+				return "Member Remove Process ended Successfully";
+			}
+			else
+			{
+				return "Member Remove Process Failed";
+			}
+		}
+
 }
