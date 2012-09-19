@@ -99,7 +99,18 @@ Route::get('admin',function()
 
 Route::get('admin/mlist',function()
 	{
-		return json_encode(Prof::all());
+		$data = array();
+		$profs = Prof::all();
+		foreach($profs as $prof)
+		{
+			$dat = array(
+					'id' => $prof->id,
+					'name' => $prof->name,
+					'research_interest' => $prof->research_interest
+				);
+			$data[] = $dat;
+		}
+		return json_encode($data);
 	}
 );
 
@@ -118,6 +129,41 @@ Route::post('admin/madd',function()
 			return "Member Adding Process Failed";
 		}
 
+	}
+);
+
+
+
+Route::post('admin/mupdate',function()
+	{
+		$data = json_decode(Input::get('member'));
+		$mem = Prof::find($data->id);
+		$mem->name = $data->name;
+		$mem->research_interest = $data->research_interest;
+		if($mem->save())
+		{
+			return "Member Adding Process ended Successfully";
+		}
+		else
+		{
+			return "Member Adding Process Failed";
+		}
+
+	}
+);
+
+Route::post('admin/mdel',function()
+	{
+		$id = Input::get('id');
+		$mem = Prof::find($id);
+		if($mem->delete())
+		{
+			return "Member Remove Process ended Successfully";
+		}
+		else
+		{
+			return "Member Remove Process Failed";
+		}
 	}
 );
 
