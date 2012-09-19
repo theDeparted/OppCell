@@ -129,6 +129,11 @@
 		{
 			$id = Input::get('id');
 			$inst = Institute::find($id);
+			$depts = Department::where('institute','=',$id)->get();
+			foreach($depts as $dept)
+			{
+				$dept->delete();
+			}
 			if($inst->delete())
 			{
 				return "Member Remove Process ended Successfully";
