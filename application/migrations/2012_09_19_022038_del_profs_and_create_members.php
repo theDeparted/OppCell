@@ -24,6 +24,9 @@ class Del_Profs_And_Create_Members {
 			// Description
 			$table->string('research_interest');
 
+			//Department
+			$table->string('department');
+
 			// Title
 			$table->string('title');
 
