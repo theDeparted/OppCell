@@ -106,7 +106,7 @@ Route::get('admin/mlist',function()
 Route::post('admin/madd',function()
 	{
 		$data = json_decode(Input::get('member'));
-		$mem = Prof::create();
+		$mem = new Prof;
 		$mem->name = $data['name'];
 		$mem->research_interest = $data['research_interest'];
 		if($mem->save())
