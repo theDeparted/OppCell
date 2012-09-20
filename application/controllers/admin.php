@@ -236,6 +236,8 @@
 				$dat = array(
 						'id' => $jour->id,
 						'name' => $jour->name,
+						'nationality' => $jour->nationality,
+						'rating' => $jour->rating
 					);
 				$data[] = $dat;
 			}
