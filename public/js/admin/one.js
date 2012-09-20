@@ -32,6 +32,13 @@ angular.module('myApp',[])
 					config:{basePath:'/admin'},
 					data:{}
 				},
+		journal:{	fetch:{Now:{},lnk:'/jlist'},
+					add:{Now:{},lnk:'/jadd'},
+					remove:{Now:{},lnk:'/jdel'},
+					update:{Now:{},lnk:'/jupdate'},
+					config:{basePath:'/admin'},
+					data:{}
+				},
 
 		io:{state:{log:'OppCell Admin Panel Log\n',last:'',working:false},config:{basePath:"",addIndexDotPHP:"/index.php"}}
 		};
@@ -71,7 +78,7 @@ angular.module('myApp',[])
 		truth.member.add.Now=function(member, OnComplete)
 		{
 			truth.io.state.working=true;
-			alert(JSON.stringify(member));
+			//alert(JSON.stringify(member));
 			// alert(truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.student.config.basePath + truth.student.add.lnk);
 			$.ajax({
 				type: 'POST',
@@ -104,7 +111,7 @@ angular.module('myApp',[])
 		truth.member.update.Now=function(member, OnComplete)
 		{
 			truth.io.state.working=true;
-			alert(JSON.stringify(member));
+			//alert(JSON.stringify(member));
 			$.ajax({
 				type: 'POST',
 				url: truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.member.config.basePath + truth.member.update.lnk,
@@ -417,6 +424,134 @@ angular.module('myApp',[])
 		};
 	}
 
+	//JOURNAL
+	{
+		truth.journal.fetch.Now=function(OnComplete)
+		{
+			// alert(truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.student.config.basePath + truth.student.fetch.lnk);
+			truth.io.state.working=true;
+			$.ajax({
+				type: 'GET',
+				url: truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.journal.config.basePath + truth.journal.fetch.lnk,
+				statusCode: {
+					404: function () {
+						;
+					},
+					500: function () {
+						;
+					}
+				},
+				data: {ajax: '1'},
+				success: function (data) {
+					truth.io.state.log = truth.io.state.log + '<br/><br/>' + data;
+					var dat = jQuery.parseJSON(data);
+					truth.journal.data=dat;					
+				}
+				}).error(function() {
+					;
+				}).complete(function() {
+					// alert(truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.io.userInfo.lnk);
+					// alert("done");
+					truth.io.state.working=false;
+					OnComplete(truth.journal.data);
+			});
+		};
+
+		truth.journal.add.Now=function(journal, OnComplete)
+		{
+			truth.io.state.working=true;
+			// alert(JSON.stringify(journal));
+			// alert(truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.student.config.basePath + truth.student.add.lnk);
+			$.ajax({
+				type: 'POST',
+				url: truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.journal.config.basePath + truth.journal.add.lnk,
+				statusCode: {
+					404: function () {
+						;
+					},
+					500: function () {
+						;
+					}
+				},				
+				data: {journal:JSON.stringify(journal), ajax: '1'},
+				// dataType: 'json',
+				success: function (data) {
+					truth.io.state.log = truth.io.state.log + '<br/><br/>' + data;
+					truth.io.state.last=data;
+					// alert(data);
+				}
+				}).error(function() {
+					;
+				}).complete(function() {
+					// alert(truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.io.userInfo.lnk);
+					// alert("COMPLETED");
+					truth.io.state.working=false;
+					OnComplete(truth.io.state.last);
+			});
+		};
+
+		truth.journal.update.Now=function(journal, OnComplete)
+		{
+			truth.io.state.working=true;
+			$.ajax({
+				type: 'POST',
+				url: truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.journal.config.basePath + truth.journal.update.lnk,
+				statusCode: {
+					404: function () {
+						;
+					},
+					500: function () {
+						;
+					}
+				},
+				data: {journal:JSON.stringify(journal), ajax: '1'},
+				success: function (data) {
+					truth.io.state.log = truth.io.state.log + '<br/><br/>' + data;
+					truth.io.state.last=data;
+					// alert(data);
+
+				}
+				}).error(function() {
+					;
+				}).complete(function() {
+					// alert(truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.io.userInfo.lnk);
+					truth.io.state.working=false;
+					OnComplete(truth.io.state.last);
+			});
+		};
+
+		truth.journal.remove.Now=function(id, OnComplete)
+		{
+			truth.io.state.working=true;
+			// alert(truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.journal.config.basePath + truth.journal.remove.lnk);
+			$.ajax({
+				type: 'POST',
+				url: truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.journal.config.basePath + truth.journal.remove.lnk,
+				statusCode: {
+					404: function () {
+						;
+					},
+					500: function () {
+						;
+					}
+				},
+				data: {id:id, ajax: '1'},
+				success: function (data) {
+					truth.io.state.log = truth.io.state.log + '<br/><br/>' + data;
+					truth.io.state.last=data;
+					// alert(data);
+				}
+				}).error(function() {
+					;
+				}).complete(function() {
+					// alert(truth.io.config.basePath + truth.io.config.addIndexDotPHP + truth.io.userInfo.lnk);
+					truth.io.state.working=false;
+					OnComplete(truth.io.state.last);
+			});
+		};
+	}
+
+
 		return truth;
 })
 .directive('basepathwidget', function(truthSource) {
@@ -467,11 +602,11 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 	$scope.instituteNew={name:'',location:''};
 
 	$scope.journals=[
-	{id:'1',name:'Journal of Muffin',location:'American'},
-	{id:'2',name:'Muffinnify Journal',location:'Indian'}
+	{id:'1',name:'Journal of Muffin',nationality:'American',rating:''},
+	{id:'2',name:'Muffinnify Journal',nationality:'Indian',rating:''}
 	];
 
-	$scope.instituteNew={name:'',location:''};
+	$scope.instituteNew={name:'',location:'',nationlity:'',rating:''};
 
 
 	//SET OF FUNCTIONS REQUIRED FOR DISPLAYING THE LOADING BAR
@@ -504,7 +639,7 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 				// alert("Hello1");
 				$scope.members=val;
 				$scope.init=$scope.init+1;
-				if($scope.init==2)
+				if($scope.init==4)
 					$scope.updatingInterface=false;
 				$scope.$apply();
 			});
@@ -514,7 +649,26 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 				// alert("Hello1");
 				$scope.institutes=val;
 				$scope.init=$scope.init+1;
-				if($scope.init==2)
+				if($scope.init==4)
+					$scope.updatingInterface=false;
+				$scope.$apply();
+			});
+
+
+			truthSource.department.fetch.Now(function(val){
+				// alert("Hello1");
+				$scope.departments=val;
+				$scope.init=$scope.init+1;
+				if($scope.init==4)
+					$scope.updatingInterface=false;
+				$scope.$apply();
+			});
+
+			truthSource.journal.fetch.Now(function(val){
+				// alert("Hello1");
+				$scope.journals=val;
+				$scope.init=$scope.init+1;
+				if($scope.init==4)
 					$scope.updatingInterface=false;
 				$scope.$apply();
 			});
@@ -633,6 +787,46 @@ $scope.config={member:{orderBy:'name',search:'',reverse:false,limitTo:20,current
 				$scope.updatingInterface=true;
 				$scope.$apply();
 				$scope.departments=val;
+				$scope.updatingInterface=false;
+				$scope.$apply();
+			});
+		};
+
+	}
+
+/////////////////////////////////////
+	//JOURNAL
+	{
+		$scope.AddJournal=function(journal){
+			truthSource.journal.add.Now(journal,function(val){
+				$scope.$apply();		
+				$scope.JournalsRefresh();
+				// alert(val);
+			});
+		};
+
+		$scope.UpdateJournal=function(journal){
+			truthSource.journal.update.Now(journal,function(val){
+				$scope.$apply();
+				$scope.JournalsRefresh();
+				// alert(val);
+			});
+		};
+
+		$scope.DeleteJournal=function(id){
+			truthSource.journal.remove.Now(id,function(val){
+				$scope.$apply();
+				$scope.JournalsRefresh();
+				// alert(val);
+			});
+		};
+
+		$scope.JournalsRefresh=function(){
+			truthSource.journal.fetch.Now(function(val){
+				$scope.$apply();
+				$scope.updatingInterface=true;
+				$scope.$apply();
+				$scope.journals=val;
 				$scope.updatingInterface=false;
 				$scope.$apply();
 			});

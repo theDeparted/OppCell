@@ -244,6 +244,9 @@
 						<label for="journal_name">Name</label></th>
 					<th><input type="radio" name="journalSort" ng-model="config.journal.orderBy" value="nationality" id="journal_nationality"/>
 						<label for="journal_nationality">Nationality</label></th>
+					<th><input type="radio" name="journalSort" ng-model="config.journal.orderBy" value="rating" id="journal_rating"/>
+						<label for="journal_rating">Rating</label></th>
+
 				</tr>
 				<tr ng-repeat="journal in journals | filter:config.journal.search | orderBy:config.journal.orderBy:config.journal.reverse | startFrom:config.journal.currentPage*config.journal.limitTo | limitTo:config.journal.limitTo"  class="journals_{{journalsCollapse}}">
 					<td>
@@ -251,6 +254,9 @@
 					</td>
 					<td>
 						<input type="text" ng-model="journal.nationality" placeholder="Nationality"/>
+					</td>
+					<td>
+						<input type="text" ng-model="journal.rating" placeholder="Rating"/>
 					</td>
 					<td>
 						<a href="" ng-click="DeleteJournal(journal.id)">Remove</a>
@@ -266,6 +272,9 @@
 					</td>
 					<td>
 						<input type="text" ng-model="journalNew.nationality" placeholder="Nationality"/>
+					</td>
+					<td>
+						<input type="text" ng-model="journalNew.rating" placeholder="Rating"/>
 					</td>
 					<td></td>					
 					<td>
